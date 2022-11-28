@@ -17,13 +17,15 @@ export interface Task {
 })
 export class ListeComponent {
   task: Task = {
-    name: 'Indeterminate',
+    name: 'Pâtes au pesto',
     completed: false,
     color: 'primary',
     subtasks: [
-      {name: 'Primary', completed: false, color: 'primary'},
-      {name: 'Accent', completed: false, color: 'accent'},
-      {name: 'Warn', completed: false, color: 'warn'},
+      {name: 'Faire cuire les pâtes al dente', completed: false, color: 'accent'},
+      {name: "Dans un mortier, pilez le basilic avec l'ail et les pignons jusqu'à obtention d'une crème lisse.", completed: false, color: 'accent'},
+      {name: "Mettez la préparation dans un bol, puis ajouter l'huile peu à peu en fouettant.", completed: false, color: 'accent'},
+      {name: "Rajoutez les fromage râpés, assaisonner et mélangez.", completed: false, color: 'accent'},
+      {name: "Egouttez les pâtes, méxlangez-les au pesto et servez.", completed: false, color: 'accent'},
     ],
   };
 
