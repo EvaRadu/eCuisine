@@ -8,18 +8,24 @@ import { ListeComponent } from './liste/liste.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 
+import { CardComponent } from './card/card.component';
+
+import {MatCardModule} from '@angular/material/card'; 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListeComponent
+    CardComponent,
+    ListeComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule, 
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
