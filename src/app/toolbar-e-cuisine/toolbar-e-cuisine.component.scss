@@ -1,3 +1,11 @@
 .example-spacer{
     flex: 1 1 auto
 }
+.mat-button-toggle-group {
+    margin-left: 12px;
+}
+// set the color to green on the chosen mode
+.mat-button-toggle-checked {
+    background-color: green;
+}
+

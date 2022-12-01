@@ -1,5 +1,4 @@
-import { Component, NgModule } from '@angular/core';
-import { MatToolbarModule} from '@angular/material/toolbar';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',

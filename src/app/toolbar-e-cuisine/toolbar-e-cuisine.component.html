@@ -1,9 +1,12 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <mat-button-toggle-group>
-            <mat-button-toggle> Novice</mat-button-toggle>
-            <mat-button-toggle> Expert</mat-button-toggle>
+            <mat-button-toggle value="novice"> Novice</mat-button-toggle>
+            <mat-button-toggle value="expert"> Expert</mat-button-toggle>
         </mat-button-toggle-group>
+        <span class="example-spacer"></span>
         <span> e-cuisine </span>
+        <span class="example-spacer"></span>
+        <p>{{ dateTime | date:'hh:mm:ss'}}</p>
     </mat-toolbar-row>
 </mat-toolbar>
