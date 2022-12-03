@@ -1,9 +1,13 @@
-<mat-card>
+
+<mat-card class="card">
     <mat-card-header>
-      <mat-card-title>COMMANDE n°{{this.idee}} </mat-card-title>
-      <mat-card-subtitle>Recette de {{this.title}}</mat-card-subtitle>
+      <mat-card-title>COMMANDE n°{{task.id}} </mat-card-title>
+      <mat-card-subtitle>Recette de {{task.name}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-actions>
+      <mat-card-content>
+      <liste [task]=task></liste>
+      </mat-card-content>
+    <mat-card-actions align="end">
       <button mat-button>VALIDER</button>
     </mat-card-actions>
   </mat-card>

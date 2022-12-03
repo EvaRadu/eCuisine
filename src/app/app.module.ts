@@ -9,16 +9,14 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 
 import { CardComponent } from './card/card.component';
-
 import {MatCardModule} from '@angular/material/card'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    ListeComponent,
-    CardComponent
-  ],
+    ListeComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
