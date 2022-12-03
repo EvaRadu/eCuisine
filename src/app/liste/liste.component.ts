@@ -1,13 +1,5 @@
-import {Component} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
-import {ThemePalette} from '@angular/material/core';
-
-export interface Task {
-  name: string;
-  completed: boolean;
-  color: ThemePalette;
-  subtasks?: Task[];
-}
+import {Component, Input} from '@angular/core';
+import { Task } from '../tasks';
 
 /** @title Checkboxes with reactive forms */
 @Component({
@@ -16,22 +8,9 @@ export interface Task {
   styleUrls: ['./liste.component.scss'],
 })
 export class ListeComponent {
-  task: Task = {
-    name: 'Pâtes au pesto',
-    completed: false,
-    color: 'primary',
-    subtasks: [
-      {name: 'Faire cuire les pâtes al dente', completed: false, color: 'accent'},
-      {name: "Dans un mortier, pilez le basilic avec l'ail et les pignons jusqu'à obtention d'une crème lisse.", completed: false, color: 'accent'},
-      {name: "Mettez la préparation dans un bol, puis ajouter l'huile peu à peu en fouettant.", completed: false, color: 'accent'},
-      {name: "Rajoutez les fromage râpés, assaisonner et mélangez.", completed: false, color: 'accent'},
-      {name: "Egouttez les pâtes, méxlangez-les au pesto et servez.", completed: false, color: 'accent'},
-    ],
-  };
+  @Input() task !: Task; 
 
   ngOnInit(): void {}
-
-
 
   allComplete: boolean = false;
 

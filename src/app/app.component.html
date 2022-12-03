@@ -1,2 +1,3 @@
-<app-card title="macDo" [idee]=1 ></app-card>
-<liste></liste>
+<div *ngFor="let task of tasks">
+<app-card [task]=task ></app-card>
+</div>
