@@ -6,6 +6,8 @@ import { tasks } from './tasks';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent {
   title = 'ecuisine';
   tasks = tasks;
