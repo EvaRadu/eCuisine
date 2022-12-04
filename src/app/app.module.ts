@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms';
 
 import { CardComponent } from './card/card.component';
 import {MatCardModule} from '@angular/material/card';
+import { CardClusterComponent } from './card-cluster/card-cluster.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    ListeComponent
+    ListeComponent,
+    CardClusterComponent
     ],
   imports: [
     BrowserModule,
