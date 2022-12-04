@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {Task, tasks} from './../tasks';
 
 @Component({
@@ -10,6 +10,7 @@ import {Task, tasks} from './../tasks';
 export class BoardComponent {
   tasks = tasks;
   clusterize = true;
+  breakpoint = 5;
 
   notClusterize(task: Task) {
     if (task.pressingNumber != undefined) {
@@ -20,6 +21,25 @@ export class BoardComponent {
     }
     return true;
   }
+
+  onResize(event) {
+    this.breakpoint = this.getCols();
+  }
+
+  getCols() {
+    if (window.innerWidth < 600) {
+      return 1;
+    } else if (window.innerWidth >= 600 && window.innerWidth < 960) {
+      return 2;
+    } else if (window.innerWidth >= 960 && window.innerWidth < 1280) {
+      return 3;
+    } else if (window.innerWidth >= 1280 && window.innerWidth < 1920) {
+      return 4;
+    } else {
+      return 5;
+    }
+  }
+
 
   numberOfGreen() {
     let nbGreen = 0;
