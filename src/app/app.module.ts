@@ -5,21 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarECuisineComponent } from './toolbar-e-cuisine/toolbar-e-cuisine.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ListeComponent } from './liste/liste.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 
 import { CardComponent } from './card/card.component';
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+import { BoardComponent } from './board/board.component'; 
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarECuisineComponent,
     CardComponent,
-    ListeComponent
+    ListeComponent,
+    BoardComponent
     ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonToggleModule,
     MatCheckboxModule,
     FormsModule, 
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

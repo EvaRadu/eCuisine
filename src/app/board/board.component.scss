@@ -1,0 +1,17 @@
+.board{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+}
+mat-grid-tile{
+    height: fit-content;
+    width: fit-content;
+}
+.mat-grid-tile-content{
+    height:max-content;
+    width: max-content;
+}
+mat-grid-tile{
+    border: 2px solid black;
+}
