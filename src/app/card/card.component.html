@@ -1,5 +1,5 @@
 
-<mat-card class="card">
+<mat-card class="card" [ngStyle]="{background: getColor()}">
     <mat-card-header>
       <mat-card-title>COMMANDE n°{{task.id}} </mat-card-title>
       <mat-card-subtitle>Recette de {{task.name}}</mat-card-subtitle>
@@ -8,6 +8,6 @@
       <liste [task]=task></liste>
       </mat-card-content>
     <mat-card-actions align="end">
-      <button mat-button>VALIDER</button>
+      <button mat-button *ngIf="true">VALIDER</button>
     </mat-card-actions>
   </mat-card>

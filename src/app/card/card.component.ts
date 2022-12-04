@@ -11,4 +11,16 @@ export class CardComponent {
   @Input() title !: string;
   @Input() idee !: number;
   @Input() task !: Task;
+
+  getColor() {
+    if (this.task.pressingNumber != undefined) {
+      if(this.task.pressingNumber < 30) {
+        return "green"
+      } else if (this.task.pressingNumber < 60) {
+        return "yellow"
+      }
+      return "red"
+    }
+    return "pink"
+  }
 }

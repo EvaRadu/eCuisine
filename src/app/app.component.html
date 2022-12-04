@@ -1,3 +1,3 @@
 <div *ngFor="let task of tasks">
-<app-card [task]=task ></app-card>
+<app-card *ngIf="notClusterize(task)" [task]=task></app-card>
 </div>
