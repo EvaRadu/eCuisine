@@ -1,0 +1,15 @@
+<div class="board">
+    <mat-grid-list cols="2">
+        <mat-grid-tile
+            *ngFor="let task of tasks"
+            [colspan]="1"
+            [rowspan]="1">
+         <app-card [task]=task ></app-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+</div>
+<!-- <div> -->
+    <!-- <div *ngFor="let task of tasks"> -->
+        <!-- <app-card [task]=task ></app-card> -->
+        <!-- </div> -->
+<!-- </div> -->

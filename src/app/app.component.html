@@ -1,6 +1,4 @@
-<div *ngFor="let task of tasks">
-<app-card *ngIf="notClusterize(task)" [task]=task></app-card>
+<div id="main">
+    <app-toolbar-e-cuisine></app-toolbar-e-cuisine>
+    <app-board id="board"></app-board>
 </div>
-
-<app-card-cluster *ngIf="clusterize" [numberOfCommand]="numberOfGreen()" [typeCluster]="'Green'"></app-card-cluster>
-<app-card-cluster *ngIf="clusterize" [numberOfCommand]="numberOfYellow()" [typeCluster]="'Yellow'"></app-card-cluster>
