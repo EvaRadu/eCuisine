@@ -8,17 +8,17 @@
         </mat-grid-tile>
       </div>
 
-      <mat-grid-tile *ngIf="doClusterGreen()" [colspan]="1"
+      <mat-grid-tile *ngIf="doCluster('Green')" [colspan]="1"
         [rowspan]="1">
         <app-card-cluster class="card" (click)="clickGreenCluster()" [numberOfCommand]="numberOfGreen()" [typeCluster]="'Green'"></app-card-cluster>
       </mat-grid-tile>
 
-      <mat-grid-tile *ngIf="doClusterRed()"  [colspan]="1"
+      <mat-grid-tile *ngIf="doCluster('Red')"  [colspan]="1"
                      [rowspan]="1">
         <app-card-cluster class="card" (click)="clickRedCluster()" [numberOfCommand]="numberOfRed()" [typeCluster]="'Red'"></app-card-cluster>
       </mat-grid-tile>
 
-      <mat-grid-tile *ngIf="doClusterYellow()" [colspan]="1"
+      <mat-grid-tile *ngIf="doCluster('Yellow')" [colspan]="1"
                      [rowspan]="1">
         <app-card-cluster class="card" (click)="clickYellowCluster()" [numberOfCommand]="numberOfYellow()" [typeCluster]="'Yellow'"></app-card-cluster>
       </mat-grid-tile>

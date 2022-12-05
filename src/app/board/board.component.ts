@@ -27,10 +27,7 @@ export class BoardComponent {
       this.borneSuperieur = 60;
     }
     if (task.pressingNumber != undefined) {
-      if(task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur && this.clusterize) {
-        return true;
-      }
-      return false;
+      return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur && this.clusterize;
     }
     return false;
   }
@@ -65,14 +62,8 @@ export class BoardComponent {
     this.notCluster = "Red"
   }
 
-  doClusterGreen() {
-    return this.notCluster != "Green"
-  }
-  doClusterRed() {
-    return this.notCluster != "Red"
-  }
-  doClusterYellow() {
-    return this.notCluster != "Yellow"
+  doCluster(typeCluster: String) {
+    return this.notCluster != typeCluster
   }
 
 
