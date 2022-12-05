@@ -10,7 +10,6 @@ import {Recipe, recipes} from './../tasks';
 
 export class BoardComponent {
   recipes = recipes;
-
   clusterize = true;
   breakpoint = 5;
   notCluster = "Red"
@@ -34,23 +33,8 @@ export class BoardComponent {
     }
     if (recipe.pressingNumber != undefined) {
       return recipe.pressingNumber >= this.borne && recipe.pressingNumber < this.borneSuperieur && this.clusterize;
-
     }
     return false;
-  }
-
-
-  determineBorne(typeCluster: string) {
-    if(typeCluster == "Red") {
-      this.borne = 60;
-      this.borneSuperieur = 100;
-    } else if(typeCluster == "Green") {
-      this.borne = 0;
-      this.borneSuperieur = 30;
-    } else {
-      this.borne = 30;
-      this.borneSuperieur = 60;
-    }
   }
 
   onResize(event) {
@@ -71,11 +55,19 @@ export class BoardComponent {
     }
   }
 
-  clickCluster(typeCluster: string) {
-    this.notCluster = typeCluster;
+  clickGreenCluster() {
+    this.notCluster = "Green"
   }
 
-  doCluster(typeCluster: string) {
+  clickYellowCluster() {
+    this.notCluster = "Yellow"
+  }
+
+  clickRedCluster() {
+    this.notCluster = "Red"
+  }
+
+  doCluster(typeCluster: String) {
     return this.notCluster != typeCluster
   }
 
@@ -98,11 +90,10 @@ export class BoardComponent {
       if(recipe.pressingNumber != undefined) {
         if (recipe.pressingNumber < 30) {
           nbRed += 1;
-
         }
       }
     })
-    return nb;
+    return nbRed;
   }
 
   determineColAndRow(recipe : Recipe) {
@@ -134,6 +125,5 @@ export class BoardComponent {
     })
     return nbYellow;
   }
-
 
 }
