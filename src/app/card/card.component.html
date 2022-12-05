@@ -1,12 +1,15 @@
 
   <mat-card class="card" [ngStyle]="{background: getColor()}">
+
     <mat-card-header>
-      <mat-card-title>COMMANDE n°{{task.id}} </mat-card-title>
-      <mat-card-subtitle>Recette de {{task.name}}</mat-card-subtitle>
+      <mat-card-title>COMMANDE n°{{recipe.id}} </mat-card-title>
+      <mat-card-subtitle>Recette de {{recipe.name}} {{type}}</mat-card-subtitle>
     </mat-card-header>
-      <mat-card-content>
-      <liste [task]=task></liste>
+
+      <mat-card-content *ngIf="test()">
+      <liste [recipe]=recipe></liste>
       </mat-card-content>
+
     <mat-card-actions align="end">
       <button mat-button *ngIf="true">VALIDER</button>
     </mat-card-actions>

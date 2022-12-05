@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import { CardClusterComponent } from './card-cluster/card-cluster.component';
 import { BoardComponent } from './board/board.component'; 
 import { MatGridListModule } from '@angular/material/grid-list';
+import { AppService } from 'src/app.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCardModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [ AppService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
-import { Component, HostListener } from '@angular/core';
-import {Task, tasks} from './../tasks';
+import { Component, HostListener, Input, ViewChild } from '@angular/core';
+import {Recipe, recipes} from './../recipes';
+
 
 @Component({
   selector: 'app-board',
@@ -8,14 +9,16 @@ import {Task, tasks} from './../tasks';
 })
 
 export class BoardComponent {
-  tasks = tasks;
+  recipes = recipes;
   clusterize = true;
   breakpoint = 5;
   notCluster = "Red"
   borne = 60;
   borneSuperieur = 100;
 
-  notClusterize(task: Task) {
+
+  
+  notClusterize(recipe: Recipe) {
     if(this.notCluster == "Red") {
       this.borne = 60;
       this.borneSuperieur = 100;
@@ -26,8 +29,8 @@ export class BoardComponent {
       this.borne = 30;
       this.borneSuperieur = 60;
     }
-    if (task.pressingNumber != undefined) {
-      return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur && this.clusterize;
+    if (recipe.pressingNumber != undefined) {
+      return recipe.pressingNumber >= this.borne && recipe.pressingNumber < this.borneSuperieur && this.clusterize;
     }
     return false;
   }
@@ -69,9 +72,9 @@ export class BoardComponent {
 
   numberOfGreen() {
     let nbGreen = 0;
-    tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber < 30) {
+    recipes.forEach(function(recipe) {
+      if(recipe.pressingNumber != undefined) {
+        if(recipe.pressingNumber < 30) {
           nbGreen += 1;
         }
       }
@@ -81,9 +84,9 @@ export class BoardComponent {
 
   numberOfRed() {
     let nbRed = 0;
-    tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber < 30) {
+    recipes.forEach(function(recipe) {
+      if(recipe.pressingNumber != undefined) {
+        if (recipe.pressingNumber < 30) {
           nbRed += 1;
         }
       }
@@ -91,18 +94,18 @@ export class BoardComponent {
     return nbRed;
   }
 
-  determineColAndRow(task: Task) {
-    if(task.pressingNumber != undefined) {
-      if(this.clusterize && task.pressingNumber < 60) {
+  determineColAndRow(recipe : Recipe) {
+    if(recipe.pressingNumber != undefined) {
+      if(this.clusterize && recipe.pressingNumber < 60) {
         return 0
       }
-      if(task.pressingNumber < 30) {
+      if(recipe.pressingNumber < 30) {
         return 1
       }
-      if(task.pressingNumber < 60) {
+      if(recipe.pressingNumber < 60) {
         return 2
       }
-      if(task.pressingNumber < 60) {
+      if(recipe.pressingNumber < 60) {
         return 3
       }
     }
@@ -111,9 +114,9 @@ export class BoardComponent {
 
   numberOfYellow() {
     let nbYellow = 0;
-    tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber >= 30 && task.pressingNumber < 60) {
+    recipes.forEach(function(recipe) {
+      if(recipe.pressingNumber != undefined) {
+        if(recipe.pressingNumber >= 30 && recipe.pressingNumber < 60) {
           nbYellow += 1;
         }
       }
