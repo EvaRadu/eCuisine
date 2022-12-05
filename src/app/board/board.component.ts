@@ -1,5 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input} from '@angular/core';
 import {Task, tasks} from './../tasks';
+import * as cluster from "cluster";
 
 @Component({
   selector: 'app-board',
@@ -9,28 +10,18 @@ import {Task, tasks} from './../tasks';
 
 export class BoardComponent {
   tasks = tasks;
-  clusterize = true;
+  @Input() clusterize = true;
   breakpoint = 5;
-  notCluster = "Red"
+  @Input() notCluster = "Red"
   borne = 60;
   borneSuperieur = 100;
   borneSuperieurGreen = 30;
   borneSuperieurYellow = 60;
 
   notClusterize(task: Task) {
-    if(this.notCluster == "Red") {
-      this.borne = 60;
-      this.borneSuperieur = 100;
-    } else if(this.notCluster == "Green") {
-      this.borne = 0;
-      this.borneSuperieur = 30;
-    } else {
-      this.borne = 30;
-      this.borneSuperieur = 60;
-    }
-    this.determineBorne(this.notCluster);
+    this.determineBorne(this.notCluster)
     if (task.pressingNumber != undefined) {
-      return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur && this.clusterize;
+      return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur;
     }
     return false;
   }
@@ -43,9 +34,12 @@ export class BoardComponent {
     } else if(typeCluster == "Green") {
       this.borne = 0;
       this.borneSuperieur = 30;
-    } else {
+    } else if (typeCluster == "Yellow") {
       this.borne = 30;
       this.borneSuperieur = 60;
+    } else {
+      this.borne = 0;
+      this.borneSuperieur = 100;
     }
   }
 
@@ -68,13 +62,12 @@ export class BoardComponent {
   }
 
   clickCluster(typeCluster: string) {
-    this.notCluster = typeCluster;
+    this.notCluster = typeCluster
   }
 
   doCluster(typeCluster: string) {
-    return this.notCluster != typeCluster
+    return this.notCluster != typeCluster && this.clusterize
   }
-
 
   numberOfType(typeCluster: string) {
     this.determineBorne(typeCluster)
