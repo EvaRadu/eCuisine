@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import {Task, tasks} from './../tasks';
 
 @Component({
@@ -8,6 +8,8 @@ import {Task, tasks} from './../tasks';
 })
 
 export class BoardComponent {
+  @Input() mode !: string;
+
   tasks = tasks;
   clusterize = true;
   breakpoint = 5;
