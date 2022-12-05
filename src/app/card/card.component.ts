@@ -11,6 +11,7 @@ export class CardComponent {
   @Input() title !: string;
   @Input() idee !: number;
   @Input() task !: Task;
+  @Input() mode !: string;
 
   getColor() {
     if (this.task.pressingNumber != undefined) {

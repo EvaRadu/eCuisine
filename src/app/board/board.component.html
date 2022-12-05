@@ -4,7 +4,7 @@
         <mat-grid-tile *ngIf="notClusterize(task)"
             [colspan]="1"
             [rowspan]="1">
-          <app-card class="card" [task]=task></app-card>
+          <app-card class="card" [task]=task [mode]=mode></app-card>
         </mat-grid-tile>
       </div>
 
