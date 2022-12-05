@@ -1,5 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Task, tasks} from './tasks';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -9,15 +11,15 @@ import {Task, tasks} from './tasks';
 
 
 export class AppComponent implements OnInit {
-  title = 'ecuisine';
-  tasks = tasks;
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    setInterval(() => {
-      let index = Math.floor(Math.random() * (tasks.length))
-      console.log(index)
-      this.tasks[index].pressingNumber = Math.random() * 100;
-    }, 1000);
+
+  }
+
+
+  modeTablette(){
+    this.router.navigateByUrl('tablet');
   }
 }
 
