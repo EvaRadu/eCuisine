@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import  { changeType } from './../recipes';
+import  { changeType } from './../tasks';
 
 //@ViewChild('myToolbar') myToolbar : ElementRef;
 

@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { recipes} from './recipes';
+import { recipes} from './tasks';
 
 @Component({
   selector: 'app-root',
