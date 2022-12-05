@@ -4,13 +4,15 @@
     <mat-card-header>
       <mat-card-title>COMMANDE n°{{recipe.id}} </mat-card-title>
       <mat-card-subtitle>Recette de {{recipe.name}} {{type}}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="mode == 'tv'">Cuisinier : {{recipe.chef.name}} </mat-card-subtitle>
+
     </mat-card-header>
 
-      <mat-card-content *ngIf="test()">
+      <mat-card-content *ngIf="(mode == 'tablet' && test()) || (mode == 'tv' && recipe.chef.level == 'novice')">
       <liste [recipe]=recipe></liste>
       </mat-card-content>
 
-    <mat-card-actions align="end">
+    <mat-card-actions align="end" *ngIf="mode == 'tablet'">
       <button mat-button *ngIf="true">VALIDER</button>
     </mat-card-actions>
   </mat-card>

@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { AppService } from 'src/app.service';
 import  { changeType } from './../recipes';
 
 //@ViewChild('myToolbar') myToolbar : ElementRef;
@@ -14,7 +13,8 @@ import  { changeType } from './../recipes';
 
 export class ToolbarECuisineComponent implements OnInit {
   dateTime: any;
-  constructor(private appService: AppService) { };
+  @Input() mode!: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
+
   
   
   // get the new time every second and put it into the variable dateTime 

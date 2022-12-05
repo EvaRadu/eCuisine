@@ -15,6 +15,8 @@ export class BoardComponent {
   notCluster = "Red"
   borne = 60;
   borneSuperieur = 100;
+  
+  @Input() mode !: string;
 
 
   

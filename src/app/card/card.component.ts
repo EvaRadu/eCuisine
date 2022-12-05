@@ -16,6 +16,8 @@ export class CardComponent {
   @Input() idee !: number;
   @Input() recipe !: Recipe;
   @Input() type !: string;
+  @Input() mode !: string;
+
 
   @Output() onChange = new EventEmitter<any>();
 
