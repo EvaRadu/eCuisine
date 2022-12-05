@@ -11,15 +11,28 @@ export class BoardComponent {
   tasks = tasks;
   clusterize = true;
   breakpoint = 5;
+  notCluster = "Red"
+  borne = 60;
+  borneSuperieur = 100;
 
   notClusterize(task: Task) {
-    if (task.pressingNumber != undefined) {
-      if(task.pressingNumber < 60 && this.clusterize) {
-        return false;
-      }
-      return true;
+    if(this.notCluster == "Red") {
+      this.borne = 60;
+      this.borneSuperieur = 100;
+    } else if(this.notCluster == "Green") {
+      this.borne = 0;
+      this.borneSuperieur = 30;
+    } else {
+      this.borne = 30;
+      this.borneSuperieur = 60;
     }
-    return true;
+    if (task.pressingNumber != undefined) {
+      if(task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur && this.clusterize) {
+        return true;
+      }
+      return false;
+    }
+    return false;
   }
 
   onResize(event) {
@@ -40,6 +53,28 @@ export class BoardComponent {
     }
   }
 
+  clickGreenCluster() {
+    this.notCluster = "Green"
+  }
+
+  clickYellowCluster() {
+    this.notCluster = "Yellow"
+  }
+
+  clickRedCluster() {
+    this.notCluster = "Red"
+  }
+
+  doClusterGreen() {
+    return this.notCluster != "Green"
+  }
+  doClusterRed() {
+    return this.notCluster != "Red"
+  }
+  doClusterYellow() {
+    return this.notCluster != "Yellow"
+  }
+
 
   numberOfGreen() {
     let nbGreen = 0;
@@ -51,6 +86,18 @@ export class BoardComponent {
       }
     })
     return nbGreen;
+  }
+
+  numberOfRed() {
+    let nbRed = 0;
+    tasks.forEach(function(task) {
+      if(task.pressingNumber != undefined) {
+        if(task.pressingNumber < 30) {
+          nbRed += 1;
+        }
+      }
+    })
+    return nbRed;
   }
 
   determineColAndRow(task: Task) {
