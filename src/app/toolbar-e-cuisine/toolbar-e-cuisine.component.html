@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <mat-button-toggle-group>
-            <mat-button-toggle value="novice"> Novice</mat-button-toggle>
-            <mat-button-toggle value="expert"> Expert</mat-button-toggle>
+            <mat-button-toggle value="novice" (click)="this.changeModeUser('novice');" > Novice</mat-button-toggle>
+            <mat-button-toggle value="expert" (click)="this.changeModeUser('expert');" > Expert</mat-button-toggle>
         </mat-button-toggle-group>
         <span class="example-spacer"></span>
         <span> e-cuisine </span>

@@ -1,6 +1,6 @@
-import { Component, HostListener, Input} from '@angular/core';
-import {Task, tasks} from './../tasks';
-import * as cluster from "cluster";
+import { Component, HostListener, Input, ViewChild } from '@angular/core';
+import {Recipe, recipes} from './../recipes';
+
 
 @Component({
   selector: 'app-board',
@@ -9,8 +9,8 @@ import * as cluster from "cluster";
 })
 
 export class BoardComponent {
-  tasks = tasks;
   @Input() clusterize = true;
+  recipes = recipes;
   breakpoint = 5;
   @Input() notCluster = "Red"
   borne = 60;
@@ -18,10 +18,10 @@ export class BoardComponent {
   borneSuperieurGreen = 30;
   borneSuperieurYellow = 60;
 
-  notClusterize(task: Task) {
+  notClusterize(recipe: Recipe) {
     this.determineBorne(this.notCluster)
-    if (task.pressingNumber != undefined) {
-      return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur;
+    if (recipe.pressingNumber != undefined) {
+      return recipe.pressingNumber >= this.borne && recipe.pressingNumber < this.borneSuperieur;
     }
     return false;
   }
@@ -74,9 +74,9 @@ export class BoardComponent {
     let borneInferieur = this.borne;
     let borneSuperieur = this.borneSuperieur;
     let nb = 0;
-    tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber >= borneInferieur && task.pressingNumber < borneSuperieur) {
+    recipes.forEach(function(recipe) {
+      if(recipe.pressingNumber != undefined) {
+        if(recipe.pressingNumber >= borneInferieur && recipe.pressingNumber < borneSuperieur) {
           nb += 1;
         }
       }
@@ -84,18 +84,18 @@ export class BoardComponent {
     return nb;
   }
 
-  determineColAndRow(task: Task) {
-    if(task.pressingNumber != undefined) {
-      if(this.clusterize && task.pressingNumber < 60) {
+  determineColAndRow(recipe : Recipe) {
+    if(recipe.pressingNumber != undefined) {
+      if(this.clusterize && recipe.pressingNumber < 60) {
         return 0
       }
-      if(task.pressingNumber < 30) {
+      if(recipe.pressingNumber < 30) {
         return 1
       }
-      if(task.pressingNumber < 60) {
+      if(recipe.pressingNumber < 60) {
         return 2
       }
-      if(task.pressingNumber < 60) {
+      if(recipe.pressingNumber < 60) {
         return 3
       }
     }
