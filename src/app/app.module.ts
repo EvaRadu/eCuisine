@@ -19,6 +19,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { TvComponent } from './tv/tv.component';
 import { TabletComponent } from './tablet/tablet.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { TabletComponent } from './tablet/tablet.component';
     BoardComponent,
     TvComponent,
     TabletComponent
+
     ],
   imports: [
     BrowserModule,

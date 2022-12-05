@@ -1,6 +1,7 @@
 import {ThemePalette} from '@angular/material/core';
 import { Chef } from './chefs';
 
+
 export class Task {
     id : number;
     content: string;
@@ -71,7 +72,11 @@ export class Recipe {
       new Task(0, 'Faîtes fondre le chocolat.', false, 'accent'),
       new Task(1, "Enfournez le tout.", false, 'accent'),
       new Task(2, "Ajoutez une de la chantilly.", false, 'accent')
+
+
+
+
+
     ])
 ];
-
 

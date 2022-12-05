@@ -15,8 +15,11 @@ export class TabletComponent implements OnInit {
   ngOnInit() {
     setInterval(() => {
       let index = Math.floor(Math.random() * (recipes.length))
+
       console.log(index)
       this.tasks[index].pressingNumber = Math.random() * 100;
     }, 1000);
   }
+
 }
+

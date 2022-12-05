@@ -22,6 +22,7 @@ export class CardComponent {
   @Output() onChange = new EventEmitter<any>();
 
 
+
   getColor() {
     if (this.recipe.pressingNumber != undefined) {
       if(this.recipe.pressingNumber < 30) {

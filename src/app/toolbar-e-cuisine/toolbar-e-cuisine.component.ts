@@ -4,6 +4,7 @@ import  { changeType } from './../tasks';
 
 //@ViewChild('myToolbar') myToolbar : ElementRef;
 
+
 @Component({
   selector: 'app-toolbar-e-cuisine',
   templateUrl: './toolbar-e-cuisine.component.html',
@@ -17,6 +18,13 @@ export class ToolbarECuisineComponent implements OnInit {
 
   
   
+dateTime: any;
+
+  @Input() mode!: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
+
+constructor(private router: Router) { }
+
+
   // get the new time every second and put it into the variable dateTime 
   ngOnInit(): void {
     setInterval(() => {this.dateTime = new Date();  
@@ -26,5 +34,14 @@ export class ToolbarECuisineComponent implements OnInit {
   changeModeUser(val) {
     changeType(val);
   }
+
+  
+  /*
+  Si on veut afficher le bouton Tablette - Tv 
+
+  modeTablette(){
+    this.router.navigateByUrl('tablet');
+  }
+  */
   
 }
