@@ -1,11 +1,23 @@
 <div class="board">
-    <mat-grid-list cols="2">
-        <mat-grid-tile
-            *ngFor="let task of tasks"
+    <mat-grid-list class="grid" [cols]="breakpoint" (window:resize)="onResize($event)">
+      <div *ngFor="let task of tasks">
+        <mat-grid-tile *ngIf="notClusterize(task)"
             [colspan]="1"
             [rowspan]="1">
-         <app-card [task]=task ></app-card>
+          <app-card class="card" *ngIf="notClusterize(task)" [task]=task></app-card>
         </mat-grid-tile>
+      </div>
+
+      <mat-grid-tile [colspan]="1"
+        [rowspan]="1">
+        <app-card-cluster class="card" *ngIf="clusterize" [numberOfCommand]="numberOfGreen()" [typeCluster]="'Green'"></app-card-cluster>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1"
+                     [rowspan]="1">
+        <app-card-cluster class="card" *ngIf="clusterize" [numberOfCommand]="numberOfYellow()" [typeCluster]="'Yellow'"></app-card-cluster>
+      </mat-grid-tile>
+
       </mat-grid-list>
 </div>
 <!-- <div> -->

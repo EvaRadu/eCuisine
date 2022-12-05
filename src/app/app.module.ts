@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 
 import { CardComponent } from './card/card.component';
 import {MatCardModule} from '@angular/material/card';
+import { CardClusterComponent } from './card-cluster/card-cluster.component';
 import { BoardComponent } from './board/board.component'; 
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -22,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ToolbarECuisineComponent,
     CardComponent,
     ListeComponent,
+    CardClusterComponent,
     BoardComponent
     ],
   imports: [
@@ -31,6 +33,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatToolbarModule,
     MatButtonToggleModule,
     MatCheckboxModule,
+    FormsModule,
+    MatCardModule,
     FormsModule, 
     MatCardModule,
     MatGridListModule
