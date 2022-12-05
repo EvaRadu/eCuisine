@@ -1,6 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Task, tasks} from './tasks';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,15 +10,10 @@ import { Router } from '@angular/router';
 
 
 export class AppComponent implements OnInit {
-  constructor(private router: Router) { }
-
   ngOnInit() {
 
   }
 
 
-  modeTablette(){
-    this.router.navigateByUrl('tablet');
-  }
 }
 
