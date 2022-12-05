@@ -16,6 +16,8 @@ import {MatCardModule} from '@angular/material/card';
 import { CardClusterComponent } from './card-cluster/card-cluster.component';
 import { BoardComponent } from './board/board.component'; 
 import { MatGridListModule } from '@angular/material/grid-list';
+import { TabletComponent } from './tablet/tablet.component';
+import { TvComponent } from './tv/tv.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     CardComponent,
     ListeComponent,
     CardClusterComponent,
-    BoardComponent
+    BoardComponent,
+    TabletComponent,
+    TvComponent
     ],
   imports: [
     BrowserModule,
