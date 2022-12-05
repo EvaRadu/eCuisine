@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -9,12 +9,22 @@ import { DatePipe } from '@angular/common';
 })
 
 export class ToolbarECuisineComponent implements OnInit {
-dateTime: any;
-  
+  dateTime: any;
+  toogle = true;
+  status = 'Enable'
+
+  @Output() messageEvent = new EventEmitter<string>();
   // get the new time every second and put it into the variable dateTime 
   ngOnInit(): void {
     setInterval(() => {this.dateTime = new Date();  
     }, 1000)
   }
   
+  sendAddOrder(){
+    this.messageEvent.emit("addOrder");
+    console.log("add order");
+  }
+
 }
+
+
