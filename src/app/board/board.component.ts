@@ -14,6 +14,8 @@ export class BoardComponent {
   notCluster = "Red"
   borne = 60;
   borneSuperieur = 100;
+  borneSuperieurGreen = 30;
+  borneSuperieurYellow = 60;
 
   notClusterize(task: Task) {
     if(this.notCluster == "Red") {
@@ -26,10 +28,25 @@ export class BoardComponent {
       this.borne = 30;
       this.borneSuperieur = 60;
     }
+    this.determineBorne(this.notCluster);
     if (task.pressingNumber != undefined) {
       return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur && this.clusterize;
     }
     return false;
+  }
+
+
+  determineBorne(typeCluster: string) {
+    if(typeCluster == "Red") {
+      this.borne = 60;
+      this.borneSuperieur = 100;
+    } else if(typeCluster == "Green") {
+      this.borne = 0;
+      this.borneSuperieur = 30;
+    } else {
+      this.borne = 30;
+      this.borneSuperieur = 60;
+    }
   }
 
   onResize(event) {
@@ -50,45 +67,28 @@ export class BoardComponent {
     }
   }
 
-  clickGreenCluster() {
-    this.notCluster = "Green"
+  clickCluster(typeCluster: string) {
+    this.notCluster = typeCluster;
   }
 
-  clickYellowCluster() {
-    this.notCluster = "Yellow"
-  }
-
-  clickRedCluster() {
-    this.notCluster = "Red"
-  }
-
-  doCluster(typeCluster: String) {
+  doCluster(typeCluster: string) {
     return this.notCluster != typeCluster
   }
 
 
-  numberOfGreen() {
-    let nbGreen = 0;
+  numberOfType(typeCluster: string) {
+    this.determineBorne(typeCluster)
+    let borneInferieur = this.borne;
+    let borneSuperieur = this.borneSuperieur;
+    let nb = 0;
     tasks.forEach(function(task) {
       if(task.pressingNumber != undefined) {
-        if(task.pressingNumber < 30) {
-          nbGreen += 1;
+        if(task.pressingNumber >= borneInferieur && task.pressingNumber < borneSuperieur) {
+          nb += 1;
         }
       }
     })
-    return nbGreen;
-  }
-
-  numberOfRed() {
-    let nbRed = 0;
-    tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber < 30) {
-          nbRed += 1;
-        }
-      }
-    })
-    return nbRed;
+    return nb;
   }
 
   determineColAndRow(task: Task) {
@@ -107,18 +107,6 @@ export class BoardComponent {
       }
     }
     return 1
-  }
-
-  numberOfYellow() {
-    let nbYellow = 0;
-    tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber >= 30 && task.pressingNumber < 60) {
-          nbYellow += 1;
-        }
-      }
-    })
-    return nbYellow;
   }
 
 }
