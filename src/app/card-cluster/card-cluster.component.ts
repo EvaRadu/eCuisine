@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {Task} from "../tasks";
 
 @Component({
   selector: 'app-card-cluster',

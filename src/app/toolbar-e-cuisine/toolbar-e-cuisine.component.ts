@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import  { changeType } from './../tasks';
+
+//@ViewChild('myToolbar') myToolbar : ElementRef;
+
 
 @Component({
   selector: 'app-toolbar-e-cuisine',
@@ -10,16 +13,26 @@ import { Router } from '@angular/router';
 })
 
 export class ToolbarECuisineComponent implements OnInit {
+  dateTime: any;
+  @Input() mode!: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
+
+  
+  
 dateTime: any;
 
   @Input() mode!: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
 
 constructor(private router: Router) { }
 
+
   // get the new time every second and put it into the variable dateTime 
   ngOnInit(): void {
     setInterval(() => {this.dateTime = new Date();  
     }, 1000)
+  };
+
+  changeModeUser(val) {
+    changeType(val);
   }
 
   

@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { Task } from '../tasks';
+import { Component, Input, EventEmitter } from '@angular/core';
+import { Recipe } from '../tasks';
+import { Output } from '@angular/core';
+import { modeUser } from '../tasks';
+
+
 
 @Component({
   selector: 'app-card',
@@ -10,18 +14,28 @@ import { Task } from '../tasks';
 export class CardComponent {
   @Input() title !: string;
   @Input() idee !: number;
-  @Input() task !: Task;
+  @Input() recipe !: Recipe;
+  @Input() type !: string;
   @Input() mode !: string;
 
+
+  @Output() onChange = new EventEmitter<any>();
+
+
+
   getColor() {
-    if (this.task.pressingNumber != undefined) {
-      if(this.task.pressingNumber < 30) {
+    if (this.recipe.pressingNumber != undefined) {
+      if(this.recipe.pressingNumber < 30) {
         return "green"
-      } else if (this.task.pressingNumber < 60) {
+      } else if (this.recipe.pressingNumber < 60) {
         return "yellow"
       }
       return "red"
     }
     return "pink"
   }
+
+  test() {
+  return  modeUser=='novice';
+ }
 }

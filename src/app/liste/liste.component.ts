@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import { Task } from '../tasks';
+import { Recipe } from '../tasks';
 
 /** @title Checkboxes with reactive forms */
 @Component({
@@ -8,28 +8,28 @@ import { Task } from '../tasks';
   styleUrls: ['./liste.component.scss'],
 })
 export class ListeComponent {
-  @Input() task !: Task; 
+  @Input() recipe !: Recipe; 
 
   ngOnInit(): void {}
 
   allComplete: boolean = false;
 
   updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    this.allComplete = this.recipe.tasks != null && this.recipe.tasks.every(t => t.completed);
   }
 
   someComplete(): boolean {
-    if (this.task.subtasks == null) {
+    if (this.recipe.tasks == null) {
       return false;
     }
-    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+    return this.recipe.tasks.filter(t => t.completed).length > 0 && !this.allComplete;
   }
 
   setAll(completed: boolean) {
     this.allComplete = completed;
-    if (this.task.subtasks == null) {
+    if (this.recipe.tasks == null) {
       return;
     }
-    this.task.subtasks.forEach(t => (t.completed = completed));
+    this.recipe.tasks.forEach(t => (t.completed = completed));
   }
 }

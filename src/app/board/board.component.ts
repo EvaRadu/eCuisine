@@ -1,5 +1,6 @@
-import { Component, HostListener, Input } from '@angular/core';
-import {Task, tasks} from './../tasks';
+import { Component, HostListener, Input, ViewChild } from '@angular/core';
+import {Recipe, recipes} from './../tasks';
+
 
 @Component({
   selector: 'app-board',
@@ -8,18 +9,19 @@ import {Task, tasks} from './../tasks';
 })
 
 export class BoardComponent {
-  @Input() mode !: string;
+  recipes = recipes;
 
-  tasks = tasks;
   clusterize = true;
   breakpoint = 5;
   notCluster = "Red"
   borne = 60;
   borneSuperieur = 100;
-  borneSuperieurGreen = 30;
-  borneSuperieurYellow = 60;
+  
+  @Input() mode !: string;
 
-  notClusterize(task: Task) {
+
+  
+  notClusterize(recipe: Recipe) {
     if(this.notCluster == "Red") {
       this.borne = 60;
       this.borneSuperieur = 100;
@@ -30,9 +32,9 @@ export class BoardComponent {
       this.borne = 30;
       this.borneSuperieur = 60;
     }
-    this.determineBorne(this.notCluster);
-    if (task.pressingNumber != undefined) {
-      return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur && this.clusterize;
+    if (recipe.pressingNumber != undefined) {
+      return recipe.pressingNumber >= this.borne && recipe.pressingNumber < this.borneSuperieur && this.clusterize;
+
     }
     return false;
   }
@@ -78,37 +80,60 @@ export class BoardComponent {
   }
 
 
-  numberOfType(typeCluster: string) {
-    this.determineBorne(typeCluster)
-    let borneInferieur = this.borne;
-    let borneSuperieur = this.borneSuperieur;
-    let nb = 0;
-    tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber >= borneInferieur && task.pressingNumber < borneSuperieur) {
-          nb += 1;
+  numberOfGreen() {
+    let nbGreen = 0;
+    recipes.forEach(function(recipe) {
+      if(recipe.pressingNumber != undefined) {
+        if(recipe.pressingNumber < 30) {
+          nbGreen += 1;
+        }
+      }
+    })
+    return nbGreen;
+  }
+
+  numberOfRed() {
+    let nbRed = 0;
+    recipes.forEach(function(recipe) {
+      if(recipe.pressingNumber != undefined) {
+        if (recipe.pressingNumber < 30) {
+          nbRed += 1;
+
         }
       }
     })
     return nb;
   }
 
-  determineColAndRow(task: Task) {
-    if(task.pressingNumber != undefined) {
-      if(this.clusterize && task.pressingNumber < 60) {
+  determineColAndRow(recipe : Recipe) {
+    if(recipe.pressingNumber != undefined) {
+      if(this.clusterize && recipe.pressingNumber < 60) {
         return 0
       }
-      if(task.pressingNumber < 30) {
+      if(recipe.pressingNumber < 30) {
         return 1
       }
-      if(task.pressingNumber < 60) {
+      if(recipe.pressingNumber < 60) {
         return 2
       }
-      if(task.pressingNumber < 60) {
+      if(recipe.pressingNumber < 60) {
         return 3
       }
     }
     return 1
   }
+
+  numberOfYellow() {
+    let nbYellow = 0;
+    recipes.forEach(function(recipe) {
+      if(recipe.pressingNumber != undefined) {
+        if(recipe.pressingNumber >= 30 && recipe.pressingNumber < 60) {
+          nbYellow += 1;
+        }
+      }
+    })
+    return nbYellow;
+  }
+
 
 }
