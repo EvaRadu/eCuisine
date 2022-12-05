@@ -1,6 +1,4 @@
 import {ThemePalette} from '@angular/material/core';
-import { Recipe } from './recipe';
-import { subtask } from './subtask';
 
   export class Task {
     id : number;
@@ -9,28 +7,25 @@ import { subtask } from './subtask';
     preparationTime: number;
     endTime: number;
     completed: boolean;
+    pressingNumber ?: number;
     color: ThemePalette;
-    pressingNumber: number;
-    subtasks: subtask[];
+    subtasks?: Task[];
 
-    constructor(id: number, completed: boolean, color: ThemePalette, recipe: Recipe) {
+    constructor(id: number, name: string, completed: boolean, color: ThemePalette, subtasks?: Task[]) {
       this.id = id;
       this.name = recipe.name;
       this.completed = completed;
       this.color = color;
-      this.subtasks = [];
-      for (const s in recipe.stepList){
-        if (recipe.stepList[s] != undefined){
-          this.subtasks.push(new subtask(false, color, recipe.stepList[s]));
-        }
-      }
-      this.orderTime = Date.now();
-      this.preparationTime = recipe.preparationTime; 
-      this.endTime = this.orderTime+this.preparationTime;
+      this.subtasks = subtasks;
       this.pressingNumber = 70;
     }
   }
-
+  
+  export const chefs : Chef[]= [
+    new Chef(1, "Mia", "expert"),
+    new Chef(2, "Raph", "novice"),
+    new Chef(3, "Ju", "expert"),
+    new Chef(4, "Eva", "novice"),
+  ];
   export const tasks : Task[]= [];
-
 

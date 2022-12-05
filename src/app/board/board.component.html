@@ -4,23 +4,23 @@
         <mat-grid-tile *ngIf="notClusterize(task)"
             [colspan]="1"
             [rowspan]="1">
-          <app-card class="card" [task]=task></app-card>
+          <app-card class="card" [task]=task [mode]=mode></app-card>
         </mat-grid-tile>
       </div>
 
       <mat-grid-tile *ngIf="doCluster('Green')" [colspan]="1"
         [rowspan]="1">
-        <app-card-cluster class="card" (click)="clickGreenCluster()" [numberOfCommand]="numberOfGreen()" [typeCluster]="'Green'"></app-card-cluster>
+        <app-card-cluster class="card" (click)="clickCluster('Green')" [numberOfCommand]="numberOfType('Green')" [typeCluster]="'Green'"></app-card-cluster>
       </mat-grid-tile>
 
       <mat-grid-tile *ngIf="doCluster('Red')"  [colspan]="1"
                      [rowspan]="1">
-        <app-card-cluster class="card" (click)="clickRedCluster()" [numberOfCommand]="numberOfRed()" [typeCluster]="'Red'"></app-card-cluster>
+        <app-card-cluster class="card" (click)="clickCluster('Red')" [numberOfCommand]="numberOfType('Red')" [typeCluster]="'Red'"></app-card-cluster>
       </mat-grid-tile>
 
       <mat-grid-tile *ngIf="doCluster('Yellow')" [colspan]="1"
                      [rowspan]="1">
-        <app-card-cluster class="card" (click)="clickYellowCluster()" [numberOfCommand]="numberOfYellow()" [typeCluster]="'Yellow'"></app-card-cluster>
+        <app-card-cluster class="card" (click)="clickCluster('Yellow')" [numberOfCommand]="numberOfType('Yellow')" [typeCluster]="'Yellow'"></app-card-cluster>
       </mat-grid-tile>
 
       </mat-grid-list>
