@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <mat-button-toggle-group>
+        <mat-button-toggle-group *ngIf="mode == 'tablet'">
             <mat-button-toggle value="novice"> Novice</mat-button-toggle>
             <mat-button-toggle value="expert"> Expert</mat-button-toggle>
         </mat-button-toggle-group>
