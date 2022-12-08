@@ -13,9 +13,10 @@ export class BoardComponent {
   recipes = recipes;
   breakpoint = 5;
   @Input() notCluster = "Red"
+  @Input() notEmptyCard = true;
   borne = 60;
   borneSuperieur = 100;
-  
+
   @Input() mode !: string;
 
   notClusterize(recipe: Recipe) {
@@ -44,7 +45,7 @@ export class BoardComponent {
   }
 
   onResize(event) {
-    this.breakpoint = this.getCols();
+      this.breakpoint = this.notEmptyCard ? this.getCols() : 5;
   }
 
   getCols() {

@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter } from '@angular/core';
-import { Recipe } from '../tasks';
+import {Recipe, recipes} from '../tasks';
 import { Output } from '@angular/core';
 import { modeUser } from '../tasks';
 
@@ -17,15 +17,15 @@ export class CardComponent {
   @Input() recipe !: Recipe;
   @Input() type !: string;
   @Input() mode !: string;
+  @Input() notEmptyCard !: boolean;
 
 
   @Output() onChange = new EventEmitter<any>();
 
 
-
   getColor() {
     if (this.recipe.pressingNumber != undefined) {
-      if(this.recipe.pressingNumber < 30) {
+      if (this.recipe.pressingNumber < 30) {
         return "green"
       } else if (this.recipe.pressingNumber < 60) {
         return "yellow"
@@ -36,6 +36,15 @@ export class CardComponent {
   }
 
   test() {
-  return  modeUser=='novice';
- }
+    return modeUser == 'novice';
+  }
+
+  onClickButton() {
+    for (var i = 0; i < recipes.length; i++) {
+      if (this.recipe.id === recipes[i].id && this.recipe.completed) {
+        recipes.splice(i, 1);
+        return
+      }
+    }
+  }
 }

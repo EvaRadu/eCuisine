@@ -1,9 +1,9 @@
-<mat-card class="cardCluster" [ngStyle]="{background: 'white'}">
-  <mat-card-header>
+<mat-card class="cardCluster">
+  <mat-card-header class="header" [ngStyle]="{background: typeCluster}">
     <mat-card-title>COMMANDE de type {{typeCluster}} </mat-card-title>
     <mat-card-subtitle>Il y a {{numberOfCommand}} commandes</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <app-board [notCluster]="typeCluster" [clusterize]="false"></app-board>
+  <mat-card-content class="content">
+    <app-board [notEmptyCard]="false" [notCluster]="typeCluster" [clusterize]="false"></app-board>
   </mat-card-content>
 </mat-card>

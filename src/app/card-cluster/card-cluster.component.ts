@@ -9,3 +9,5 @@ export class CardClusterComponent {
   @Input() typeCluster !: string;
   @Input() numberOfCommand !: number;
 }
+
+
