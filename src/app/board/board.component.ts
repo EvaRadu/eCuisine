@@ -1,5 +1,5 @@
 import { Component, HostListener, Input, ViewChild } from '@angular/core';
-import {Recipe, recipes} from './../recipes';
+import {Recipe, recipes} from './../tasks';
 
 
 @Component({
@@ -15,8 +15,8 @@ export class BoardComponent {
   @Input() notCluster = "Red"
   borne = 60;
   borneSuperieur = 100;
-  borneSuperieurGreen = 30;
-  borneSuperieurYellow = 60;
+  
+  @Input() mode !: string;
 
   notClusterize(recipe: Recipe) {
     this.determineBorne(this.notCluster)

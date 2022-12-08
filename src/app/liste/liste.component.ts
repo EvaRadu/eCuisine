@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import { Recipe } from '../recipes';
+import { Recipe } from '../tasks';
 
 /** @title Checkboxes with reactive forms */
 @Component({

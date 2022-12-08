@@ -1,7 +1,7 @@
 import { Component, Input, EventEmitter } from '@angular/core';
-import { Recipe } from '../recipes';
+import { Recipe } from '../tasks';
 import { Output } from '@angular/core';
-import { modeUser } from '../recipes';
+import { modeUser } from '../tasks';
 
 
 
@@ -16,8 +16,11 @@ export class CardComponent {
   @Input() idee !: number;
   @Input() recipe !: Recipe;
   @Input() type !: string;
+  @Input() mode !: string;
+
 
   @Output() onChange = new EventEmitter<any>();
+
 
 
   getColor() {

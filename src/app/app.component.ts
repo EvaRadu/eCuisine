@@ -1,5 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { recipes} from './recipes';
+import {recipes} from './tasks';
+
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,14 @@ import { recipes} from './recipes';
 
 
 export class AppComponent implements OnInit {
-  title = 'ecuisine';
-  recipes = recipes;
 
   ngOnInit() {
     setInterval(() => {
       let index = Math.floor(Math.random() * (recipes.length))
-      this.recipes[index].pressingNumber = Math.random() * 100;
+      recipes[index].pressingNumber = Math.random() * 100;
     }, 1000);
   }
+
+
 }
 
