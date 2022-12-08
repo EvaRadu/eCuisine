@@ -9,32 +9,38 @@ import {Recipe, recipes} from './../tasks';
 })
 
 export class BoardComponent {
+  @Input() clusterize = true;
   recipes = recipes;
-  clusterize = true;
   breakpoint = 5;
-  notCluster = "Red"
+  @Input() notCluster = "Red"
   borne = 60;
   borneSuperieur = 100;
   
   @Input() mode !: string;
 
-
-  
   notClusterize(recipe: Recipe) {
-    if(this.notCluster == "Red") {
-      this.borne = 60;
-      this.borneSuperieur = 100;
-    } else if(this.notCluster == "Green") {
-      this.borne = 0;
-      this.borneSuperieur = 30;
-    } else {
-      this.borne = 30;
-      this.borneSuperieur = 60;
-    }
+    this.determineBorne(this.notCluster)
     if (recipe.pressingNumber != undefined) {
-      return recipe.pressingNumber >= this.borne && recipe.pressingNumber < this.borneSuperieur && this.clusterize;
+      return recipe.pressingNumber >= this.borne && recipe.pressingNumber < this.borneSuperieur;
     }
     return false;
+  }
+
+
+  determineBorne(typeCluster: string) {
+    if(typeCluster == "Red") {
+      this.borne = 60;
+      this.borneSuperieur = 100;
+    } else if(typeCluster == "Green") {
+      this.borne = 0;
+      this.borneSuperieur = 30;
+    } else if (typeCluster == "Yellow") {
+      this.borne = 30;
+      this.borneSuperieur = 60;
+    } else {
+      this.borne = 0;
+      this.borneSuperieur = 100;
+    }
   }
 
   onResize(event) {
@@ -55,45 +61,27 @@ export class BoardComponent {
     }
   }
 
-  clickGreenCluster() {
-    this.notCluster = "Green"
+  clickCluster(typeCluster: string) {
+    this.notCluster = typeCluster
   }
 
-  clickYellowCluster() {
-    this.notCluster = "Yellow"
+  doCluster(typeCluster: string) {
+    return this.notCluster != typeCluster && this.clusterize
   }
 
-  clickRedCluster() {
-    this.notCluster = "Red"
-  }
-
-  doCluster(typeCluster: String) {
-    return this.notCluster != typeCluster
-  }
-
-
-  numberOfGreen() {
-    let nbGreen = 0;
+  numberOfType(typeCluster: string) {
+    this.determineBorne(typeCluster)
+    let borneInferieur = this.borne;
+    let borneSuperieur = this.borneSuperieur;
+    let nb = 0;
     recipes.forEach(function(recipe) {
       if(recipe.pressingNumber != undefined) {
-        if(recipe.pressingNumber < 30) {
-          nbGreen += 1;
+        if(recipe.pressingNumber >= borneInferieur && recipe.pressingNumber < borneSuperieur) {
+          nb += 1;
         }
       }
     })
-    return nbGreen;
-  }
-
-  numberOfRed() {
-    let nbRed = 0;
-    recipes.forEach(function(recipe) {
-      if(recipe.pressingNumber != undefined) {
-        if (recipe.pressingNumber < 30) {
-          nbRed += 1;
-        }
-      }
-    })
-    return nbRed;
+    return nb;
   }
 
   determineColAndRow(recipe : Recipe) {
@@ -112,18 +100,6 @@ export class BoardComponent {
       }
     }
     return 1
-  }
-
-  numberOfYellow() {
-    let nbYellow = 0;
-    recipes.forEach(function(recipe) {
-      if(recipe.pressingNumber != undefined) {
-        if(recipe.pressingNumber >= 30 && recipe.pressingNumber < 60) {
-          nbYellow += 1;
-        }
-      }
-    })
-    return nbYellow;
   }
 
 }
