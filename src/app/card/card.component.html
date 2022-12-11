@@ -5,6 +5,9 @@
       <mat-card-title>COMMANDE n°{{recipe.id}} </mat-card-title>
       <mat-card-subtitle>Recette de {{recipe.name}} {{type}}</mat-card-subtitle>
       <mat-card-subtitle *ngIf="mode == 'tv'">Cuisinier : {{recipe.chef.name}} </mat-card-subtitle>
+      <!--mat-card-subtitle align="end" >Commande passée à : {{dateTime | date:'hh:mm:ss'}} </mat-card-subtitle-->
+      <!--mat-card-subtitle align="end">Temps de préparation estimé : {{recipe.time}} secondes </mat-card-subtitle-->
+      <mat-card-subtitle>Fin prévue : {{getEndOfRecipe() | date:'hh:mm:ss'}}</mat-card-subtitle>
 
     </mat-card-header>
 
