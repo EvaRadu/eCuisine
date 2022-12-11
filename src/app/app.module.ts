@@ -19,6 +19,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { TvComponent } from './tv/tv.component';
 import { TabletComponent } from './tablet/tablet.component';
 
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+
 
 @NgModule({
   declarations: [
@@ -43,8 +46,9 @@ import { TabletComponent } from './tablet/tablet.component';
     MatCardModule,
     FormsModule, 
     MatCardModule,
-    MatGridListModule
-  ],
+    MatGridListModule,
+    ScrollingModule
+    ],
   providers: [  ],
   bootstrap: [AppComponent]
 })
