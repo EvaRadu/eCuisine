@@ -1,6 +1,8 @@
 import {ThemePalette} from '@angular/material/core';
+import { Chef } from './chefs';
 
-  export class Task {
+
+export class Task {
     id : number;
     name: string;
     orderTime: number;
@@ -8,16 +10,43 @@ import {ThemePalette} from '@angular/material/core';
     endTime: number;
     completed: boolean;
     pressingNumber ?: number;
+    content: string;
     color: ThemePalette;
     subtasks?: Task[];
 
-    constructor(id: number, name: string, completed: boolean, color: ThemePalette, subtasks?: Task[]) {
+    constructor(id: number, content: string, completed: boolean, color: ThemePalette, subtasks?: Task[]) {
       this.id = id;
-      this.name = recipe.name;
+      this.content = content;
       this.completed = completed;
       this.color = color;
-      this.subtasks = subtasks;
+    }
+  }
+
+export let modeUser = 'novice';
+
+export function changeType(newType: string) {
+  modeUser = newType;
+}
+
+export class Recipe {
+    id : number; //id de la recette
+    name: string; //nom de la recette
+    time : number; //temps de la recette
+    completed: boolean; //la recette est terminée ou non
+    pressingNumber ?: number; //urgence de la recette
+    chef?: Chef;
+    color: ThemePalette;
+    tasks : Task[]; //liste des tâches de la recette
+
+    constructor(id: number, time : number, name: string, completed: boolean, color: ThemePalette, chef: Chef, tasks : Task[]) {
+      this.id = id;
+      this.name = name;
+      this.time = time;
+      this.completed = completed;
+      this.color = color;
+      this.tasks = tasks;
       this.pressingNumber = 70;
+      this.chef = chef;
     }
   }
   

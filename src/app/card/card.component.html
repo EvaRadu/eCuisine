@@ -1,14 +1,21 @@
 
   <mat-card class="card" [ngStyle]="{background: getColor()}">
-    <mat-card-header>
-      <mat-card-title>COMMANDE n°{{task.id}} </mat-card-title>
-      <mat-card-subtitle>Recette de {{task.name}}</mat-card-subtitle>
-      <mat-card-subtitle *ngIf="mode == 'tv'">Cuisinier : {{task.chef.name}} </mat-card-subtitle>
+
+    <mat-card-header *ngIf="notEmptyCard">
+      <mat-card-title>COMMANDE n°{{recipe.id}} </mat-card-title>
+      <mat-card-subtitle>Recette de {{recipe.name}} {{type}}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="mode == 'tv'">Cuisinier : {{recipe.chef.name}} </mat-card-subtitle>
+      <!--mat-card-subtitle align="end" >Commande passée à : {{dateTime | date:'hh:mm:ss'}} </mat-card-subtitle-->
+      <!--mat-card-subtitle align="end">Temps de préparation estimé : {{recipe.time}} secondes </mat-card-subtitle-->
+      <mat-card-subtitle>Fin prévue : {{getEndOfRecipe() | date:'hh:mm:ss'}}</mat-card-subtitle>
+
     </mat-card-header>
-      <mat-card-content *ngIf="mode == 'tv' && task.chef.level == 'novice' ">
-      <liste [task]=task></liste>
+
+      <mat-card-content class="content" *ngIf="(mode == 'tablet' && test()) || (mode == 'tv' && recipe.chef.level == 'novice')"  [ngStyle]="{background: '#c9bebe'}">
+        <div class="liste"><liste [recipe]=recipe></liste></div>
+        <mat-card-actions class="button" align="end" *ngIf="mode == 'tablet'">
+          <button mat-button *ngIf="true" (click)="onClickButton()">VALIDER</button>
+        </mat-card-actions>
       </mat-card-content>
-    <mat-card-actions align="end" *ngIf="mode == 'tablet'">
-      <button mat-button *ngIf="true">VALIDER</button>
-    </mat-card-actions>
+
   </mat-card>

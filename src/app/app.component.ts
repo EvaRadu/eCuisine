@@ -3,7 +3,7 @@ import { Task, tasks} from './tasks';
 import * as recipesJson from "./recipes.json";
 import {Recipe} from "./recipe"; 
 import { allRecipes } from './allRecipes';
-
+import {recipes} from './tasks';
 
 
 @Component({
@@ -23,6 +23,10 @@ export class AppComponent implements OnInit {
     for (let i=0; i<9; i++){
       tasks.push(new Task(0,false, "primary", this.myRecipes[i%3]));
     }
+    setInterval(() => {
+      let index = Math.floor(Math.random() * (recipes.length))
+      recipes[index].pressingNumber = Math.random() * 100;
+    }, 1000);
   }
 
 
