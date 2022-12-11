@@ -18,11 +18,15 @@ export class CardComponent {
   @Input() type !: string;
   @Input() mode !: string;
   @Input() notEmptyCard !: boolean;
-
+  dateTime : number =  Date.now();
 
   @Output() onChange = new EventEmitter<any>();
 
-
+  getEndOfRecipe() {
+    var t = new Date(this.dateTime);
+    t.setSeconds(t.getSeconds() + this.recipe.time);
+    return t;
+  }
   getColor() {
     if (this.recipe.pressingNumber != undefined) {
       if (this.recipe.pressingNumber < 30) {

@@ -1,11 +1,17 @@
 import {Component, Input} from '@angular/core';
 import { Recipe } from '../tasks';
+import {ChangeDetectionStrategy} from '@angular/core';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+
 
 /** @title Checkboxes with reactive forms */
 @Component({
   selector: 'liste',
   templateUrl: './liste.component.html',
   styleUrls: ['./liste.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class ListeComponent {
   @Input() recipe !: Recipe;

@@ -9,14 +9,18 @@
       </mat-checkbox>
     </span>
     <span class="example-list-section">
+      <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
+
       <ul>
-        <li *ngFor="let subtask of recipe.tasks">
-          <mat-checkbox [(ngModel)]="subtask.completed"
+        <li *cdkVirtualFor="let subtask of recipe.tasks">
+          <mat-checkbox  [(ngModel)]="subtask.completed"
                         [color]="subtask.color"
                         (ngModelChange)="updateAllComplete()">
             {{subtask.content}}
           </mat-checkbox>
         </li>
       </ul>
+    </cdk-virtual-scroll-viewport>
+
     </span>
 </section>
