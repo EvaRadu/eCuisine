@@ -22,19 +22,24 @@ export class CardComponent {
 
   @Output() onChange = new EventEmitter<any>();
 
-  getEndOfRecipe() {
+  getEndOfRecipe() : any {
     var t = new Date(this.dateTime);
     t.setSeconds(t.getSeconds() + this.recipe.time);
     return t;
   }
+
+  intervalColor = setInterval(this.getColor, 10000);
+
   getColor() {
+    console.log(Math.abs(this.getEndOfRecipe() - Date.now()));
     if (this.recipe.pressingNumber != undefined) {
-      if (this.recipe.pressingNumber < 30) {
-        return "green"
-      } else if (this.recipe.pressingNumber < 60) {
+      if ( Math.abs(this.getEndOfRecipe() - Date.now()) < 5000) {
+        return "red"
+      } else if (( Math.abs(this.getEndOfRecipe() - Date.now()) > 5000) &&  Math.abs(this.getEndOfRecipe() - Date.now()) < 10000) {
         return "yellow"
+      } else {
+      return "green"
       }
-      return "red"
     }
     return "pink"
   }
