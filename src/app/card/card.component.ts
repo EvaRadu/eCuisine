@@ -39,7 +39,6 @@ export class CardComponent {
   }
 
   getColor() {
-    if (this.task.pressingNumber != undefined) {
       if ( Math.abs(this.task.endTime - Date.now()) < 5000) {
         return "red"
       } else if (( Math.abs(this.task.endTime - Date.now()) > 5000) &&  Math.abs(this.task.endTime - Date.now()) < 10000) {
@@ -47,8 +46,6 @@ export class CardComponent {
       } else {
       return "green"
       }
-    }
-    return "pink"
   }
 
   test() {

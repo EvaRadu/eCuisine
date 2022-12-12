@@ -14,12 +14,7 @@ export class TvComponent implements OnInit {
   title = 'ecuisine';
 
   ngOnInit() {
-    setInterval(() => {
-      let index = Math.floor(Math.random() * (tasks.length))
 
-      console.log(index)
-      tasks[index].pressingNumber = Math.random() * 100;
-    }, 1000);
   }
 }
 
