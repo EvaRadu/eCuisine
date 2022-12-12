@@ -8,6 +8,7 @@ import {Component, Input} from '@angular/core';
 export class CardClusterComponent {
   @Input() typeCluster !: string;
   @Input() numberOfCommand !: number;
+  @Input() nameCluster !: string;
 }
 
 

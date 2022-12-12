@@ -21,6 +21,10 @@ import { TabletComponent } from './tablet/tablet.component';
 
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import {ProgressBarMode} from '@angular/material/progress-bar';
+import {MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 
 @NgModule({
@@ -32,7 +36,8 @@ import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
     CardClusterComponent,
     BoardComponent,
     TvComponent,
-    TabletComponent
+    TabletComponent,
+    ProgressBarComponent
 
     ],
   imports: [
@@ -47,7 +52,8 @@ import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
     FormsModule, 
     MatCardModule,
     MatGridListModule,
-    ScrollingModule
+    ScrollingModule,
+    MatProgressBarModule 
     ],
   providers: [  ],
   bootstrap: [AppComponent]

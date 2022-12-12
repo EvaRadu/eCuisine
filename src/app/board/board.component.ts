@@ -1,6 +1,8 @@
 import { Component, HostListener, Input, ViewChild } from '@angular/core';
 import { tasks , recipes, chefs} from '../app.component'
 import { Task } from '../task';
+
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
