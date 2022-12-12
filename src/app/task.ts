@@ -14,6 +14,7 @@ export class Task {
     recipe : Recipe;  // recipe of the order
     chef: Chef;  // chef assign to the order
     subtasks: Subtask[];
+    pressingNumber: number; // to remove 
 
     constructor(id: number, name: string, completed: boolean, color: ThemePalette, recipe: Recipe, chef: Chef) {
       this.recipe = recipe;
@@ -27,6 +28,7 @@ export class Task {
       recipe.stepList.forEach( function(step){
         this.subtasks.add(new Subtask(false, step))
       })
+      this.pressingNumber = 70;
     }
 }
 

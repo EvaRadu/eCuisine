@@ -12,12 +12,10 @@ import { chefs, recipes, tasks } from '../app.component'
 
 export class TvComponent implements OnInit {
   title = 'ecuisine';
-  tasks = recipes;
-
 
   ngOnInit() {
     setInterval(() => {
-      let index = Math.floor(Math.random() * (recipes.length))
+      let index = Math.floor(Math.random() * (tasks.length))
 
       console.log(index)
       tasks[index].pressingNumber = Math.random() * 100;
