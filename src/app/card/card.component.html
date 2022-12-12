@@ -10,9 +10,8 @@
       <mat-card-subtitle>Fin prévue : {{getEndOfRecipe() | date:'hh:mm:ss'}}</mat-card-subtitle>
 
     </mat-card-header>
-
-      <mat-card-content class="content" *ngIf="(mode == 'tablet' && test()) || (mode == 'tv' && recipe.chef.level == 'novice')"  [ngStyle]="{background: '#c9bebe'}">
-        <div class="liste"><liste [recipe]=recipe></liste></div>
+      <mat-card-content [ngClass]="{'content' : (mode=='tablet')}" *ngIf="(mode == 'tablet' && test()) || (mode == 'tv' && recipe.chef.level == 'novice')"  [ngStyle]="{background: (mode=='tablet')  ? '#c9bebe' : ''}">
+        <div class="liste"><liste [recipe]=recipe [mode]=mode></liste></div>
         <mat-card-actions class="button" align="end" *ngIf="mode == 'tablet'">
           <button mat-button *ngIf="true" (click)="onClickButton()">VALIDER</button>
         </mat-card-actions>
