@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
 import { Recipe } from '../tasks';
 import {ChangeDetectionStrategy} from '@angular/core';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import { Output, EventEmitter } from '@angular/core';
+
 
 
 /** @title Checkboxes with reactive forms */
@@ -18,6 +18,14 @@ export class ListeComponent {
   @Input() mode !: string;
 
 
+  @Output() checkerEvent = new EventEmitter<boolean>();
+  
+  send() {
+    console.log("send")
+    this.checkerEvent.emit(this.checked);
+  }
+
+
   ngOnInit(): void {}
 
   ngOnChanges(): void {
@@ -25,6 +33,8 @@ export class ListeComponent {
   }
 
   allComplete: boolean = false;
+  checked = false;
+
   percentage: number = 0;
 
   

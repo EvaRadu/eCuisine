@@ -18,6 +18,7 @@ export class Task {
 
 export let modeUser = 'novice';
 
+
 export function changeType(newType: string) {
   modeUser = newType;
 }

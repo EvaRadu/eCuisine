@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     setInterval(() => {
       let index = Math.floor(Math.random() * (recipes.length))
       recipes[index].pressingNumber = Math.random() * 100;
-    }, 1000);
+    }, 10000);
   }
 
 

@@ -1,11 +1,12 @@
 <section class="example-section" *ngIf="mode == 'tablet'">
     <span class="example-list-section">
+      <!-- [checked]="allComplete" -->
       <mat-checkbox class="example-margin"
-                    [checked]="allComplete"
                     [color]="recipe.color"
-                    [indeterminate]="someComplete()"
-                    (change)="setAll($event.checked)">
-        {{recipe.name}}
+                    [(ngModel)]="checked"
+                    (change)="setAll($event.checked)"
+                    (click)="send()">
+        J'ai terminé la commande.
       </mat-checkbox>
     </span>
     <span class="example-list-section" >
