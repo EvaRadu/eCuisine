@@ -15,24 +15,10 @@ export class AppComponent implements OnInit {
   title = 'ecuisine';
 
   ngOnInit(): void {
-    console.log(chefs);
 
-    for (let i=0; i<9; i++){
-      tasks.push(new Task(i,"",false, "primary", recipes[i%3], chefs[i%4]));
-    }
-  }
-
-  addOrder(){
-    console.log("add order");
-  }
-
-  recieveMessage($event){
-    console.log($event)
-    this.addOrder();
-    //tasks.push(new Task(0,false,"primary",))
   }
 }
 
-export let chefs = <Chef[]>JSON.parse(JSON.stringify(chefsJson));
-export let recipes = <Recipe[]>JSON.parse(JSON.stringify(recipesJson));
-export let tasks = [];
+export let chefs : Chef[] = JSON.parse(JSON.stringify(chefsJson)).chefs;
+export let recipes: Recipe[]= JSON.parse(JSON.stringify(recipesJson)).recipes;
+export let tasks : Task[] = [];

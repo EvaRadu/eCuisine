@@ -1,22 +1,24 @@
 {
-    "0":{
+    "chefs":[
+    {
         "id":0,
         "name":"Mia",
         "level":"expert"
     },
-    "1":{
+    {
         "id":1,
         "name":"Raph",
         "level":"novice"
     },
-    "2":{
+    {
         "id":2,
         "name":"Juliette",
         "level":"expert"
     },
-    "3":{
+    {
         "id":3,
         "name":"Eva",
         "level":"novice"
     }
+    ]
 }

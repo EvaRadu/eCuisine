@@ -1,5 +1,5 @@
 {
-    "0":{
+    "recipes":[{
         "id":0,
         "name": "Pâtes au pesto",
         "preparationTime":1000,
@@ -9,7 +9,7 @@
         "Rajoutez les fromage râpés, assaisonner et mélangez.",
         "Egouttez les pâtes, méxlangez-les au pesto et servez."]
     },
-    "1":{
+    {
         "id":1,
         "name": "'Salade César'",
         "preparationTime":1000,
@@ -17,13 +17,13 @@
         "Faîtes cuire le poulet.",
         "Mélangez."]
     },
-    "2":{
+    {
         "id":2,
         "name": "Fondant au chocolat",
         "preparationTime":0,
         "stepList":["Faîtes fondre le chocolat.",
         "Enfournez le tout.",
         "Ajoutez une de la chantilly."]
-    }
+    }]
 
 }

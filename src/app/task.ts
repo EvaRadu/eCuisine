@@ -25,9 +25,10 @@ export class Task {
       this.completed = completed;
       this.color = color;
       this.chef = chef;
-      recipe.stepList.forEach( function(step){
-        this.subtasks.add(new Subtask(false, step))
-      })
+      this.subtasks = new Array();
+      for (let i=0; i<recipe.stepList.length; i++){
+        this.subtasks.push(new Subtask(false, recipe.stepList[i]));
+      }
       this.pressingNumber = 70;
     }
 }

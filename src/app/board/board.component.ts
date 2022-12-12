@@ -14,6 +14,7 @@ export class BoardComponent {
   @Input() notEmptyCard = true;
   borne = 60;
   borneSuperieur = 100;
+  tasks = tasks;
 
   @Input() mode !: string;
 

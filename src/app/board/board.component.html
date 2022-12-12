@@ -1,10 +1,10 @@
 <div class="board">
   <mat-grid-list class="grid" [cols]="breakpoint" (window:resize)="onResize($event)">
-    <div *ngFor="let recipe of recipes">
-      <mat-grid-tile *ngIf="notClusterize(recipe)"
+    <div *ngFor="let task of tasks">
+      <mat-grid-tile *ngIf="notClusterize(task)"
           [colspan]="1"
           [rowspan]="1">
-        <app-card class="card" [notEmptyCard]=notEmptyCard [recipe]=recipe [mode]=mode></app-card>
+        <app-card class="card" [notEmptyCard]=notEmptyCard [task]=task [mode]=mode></app-card>
       </mat-grid-tile>
     </div>
 

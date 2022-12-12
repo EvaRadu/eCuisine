@@ -15,8 +15,6 @@ import { tasks, recipes, chefs} from '../app.component'
 
 })
 export class ListeComponent {
-  @Input() recipe !: Task;
-
   @Input() task !: Task;
 
   ngOnInit(): void {}
@@ -25,7 +23,7 @@ export class ListeComponent {
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
-    this.recipe.completed = this.allComplete;
+    this.task.completed = this.allComplete;
   }
 
   someComplete(): boolean {
@@ -37,7 +35,7 @@ export class ListeComponent {
 
   setAll(completed: boolean) {
     this.allComplete = completed;
-    this.recipe.completed = completed;
+    this.task.completed = completed;
     if (this.task.subtasks == null) {
       return;
     }
