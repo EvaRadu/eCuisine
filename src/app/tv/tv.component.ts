@@ -19,7 +19,7 @@ export class TvComponent implements OnInit {
 
       console.log(index)
       this.tasks[index].pressingNumber = Math.random() * 100;
-    }, 1000);
+    }, 10000);
   }
 }
 

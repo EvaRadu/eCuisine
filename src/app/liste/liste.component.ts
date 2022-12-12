@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
 import { Recipe } from '../tasks';
 import {ChangeDetectionStrategy} from '@angular/core';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import { Output, EventEmitter } from '@angular/core';
+
 
 
 /** @title Checkboxes with reactive forms */
@@ -16,9 +16,19 @@ import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 export class ListeComponent {
   @Input() recipe !: Recipe;
 
+  @Output() checkerEvent = new EventEmitter<boolean>();
+  
+  send() {
+    console.log("send")
+    this.checkerEvent.emit(this.checked);
+  }
+
+
   ngOnInit(): void {}
 
   allComplete: boolean = false;
+  checked = false;
+
 
   updateAllComplete() {
     this.allComplete = this.recipe.tasks != null && this.recipe.tasks.every(t => t.completed);
