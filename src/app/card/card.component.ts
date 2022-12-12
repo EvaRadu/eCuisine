@@ -29,12 +29,8 @@ export class CardComponent {
   //intervalDestroy = setInterval(this.destroy, 10000);
   
   receiveCheckValue(bool) {
-    this.checkBoxValue=bool ;
     console.log("hello");
-    this.checking();
-  }
-
-  checking() {
+    this.checkBoxValue=bool ;
     if (this.checkBoxValue) {this.destroy()};
   }
 

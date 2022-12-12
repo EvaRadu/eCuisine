@@ -1,9 +1,10 @@
 
-  <mat-card (checkerEvent)=this.receiveCheckValue($event) class="card" [ngStyle]="{background: getColor()}">
+  <mat-card (checkerEvent)=receiveCheckValue($event) class="card" [ngStyle]="{background: getColor()}">
 
     <mat-card-header *ngIf="notEmptyCard">
+      <div mat-card-avatar *ngIf="mode=='tv'" src="https://fr.wikipedia.org/wiki/Shiba_%28chien%29#/media/Fichier:Pride_of_Pets_Dog_Show,_2011_(6271388774).jpg"></div>
       <mat-card-title>COMMANDE n°{{task.id}} </mat-card-title>
-      <mat-card-subtitle class="text"><b> Recette de {{task.recipe.name}} {{type}} </b></mat-card-subtitle>
+      <mat-card-subtitle class="text"><b>{{task.recipe.name}} {{type}} </b></mat-card-subtitle>
       <mat-card-subtitle class="text"><b>Fin prévue : </b> {{task.endTime | date:'hh:mm:ss'}}</mat-card-subtitle>
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Cuisinier : </b> {{task.chef.name}} </mat-card-subtitle>
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Niveau : </b> {{task.chef.level}} </mat-card-subtitle>
@@ -13,11 +14,8 @@
     </mat-card-header>
       <mat-card-content  [ngClass]="{'content' : (mode=='tablet')}" *ngIf="(mode == 'tablet' && test()) || (mode == 'tv' && task.chef.level == 'novice')"  [ngStyle]="{background: (mode=='tablet')  ? '#c9bebe' : ''}">
         <div class="liste">
-          <liste (checkerEvent)="receiveCheckValue($event)" [task]=task [mode]=mode>
+          <liste [task]=task [mode]=mode>
           </liste></div>
-        <mat-card-actions class="button" align="end" *ngIf="mode == 'tablet'">
-          <button mat-button *ngIf="true" (click)="destroy()">VALIDER</button>
-        </mat-card-actions>
       </mat-card-content>
 
   </mat-card>
