@@ -1,35 +1,26 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import { Task, tasks} from './tasks';
+import {Component, HostListener, Input, OnInit, ViewChild} from '@angular/core';
+import { Task } from './task';
 import * as recipesJson from "./recipes.json";
+import * as chefsJson from "./chefs.json";
 import {Recipe} from "./recipe"; 
-import { allRecipes } from './allRecipes';
-import {recipes} from './tasks';
-
+import { Chef } from "./chef";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
   title = 'ecuisine';
-  tasks = tasks;
-  myRecipes: allRecipes;
 
-    
   ngOnInit(): void {
-    this.myRecipes = new allRecipes(recipesJson);
-    console.log(this.myRecipes);
+    console.log(chefs);
+
     for (let i=0; i<9; i++){
-      tasks.push(new Task(0,false, "primary", this.myRecipes[i%3]));
+      tasks.push(new Task(i,"",false, "primary", recipes[i%3], chefs[i%4]));
     }
-    setInterval(() => {
-      let index = Math.floor(Math.random() * (recipes.length))
-      recipes[index].pressingNumber = Math.random() * 100;
-    }, 1000);
   }
-
-
 
   addOrder(){
     console.log("add order");
@@ -42,7 +33,6 @@ export class AppComponent implements OnInit {
   }
 }
 
-function ngOnInit() {
-  throw new Error('Function not implemented.');
-}
-
+export let chefs = <Chef[]>JSON.parse(JSON.stringify(chefsJson));
+export let recipes = <Recipe[]>JSON.parse(JSON.stringify(recipesJson));
+export let tasks = [];

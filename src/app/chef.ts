@@ -1,18 +1,12 @@
-import {ThemePalette} from '@angular/material/core';
-
   export class Chef {
-    id!: number;
-    name!: string;
-    level!: string;
+    id!: number;  //identifiant chaf
+    name!: string;  // name of the chef
+    level!: string; // expert or novice
 
-
-    constructor(id: number, name: string, level: string) {
-        this.id = id;
-        this.name = name;
-        this.level = level;
+    constructor(jsonStr: string) {
+      let jsonObj = JSON.parse(jsonStr);
+      this.id = jsonObj.id;
+      this.name = jsonObj.name;
+      this.level = jsonObj.level;
     }
   }
-
-
-
-

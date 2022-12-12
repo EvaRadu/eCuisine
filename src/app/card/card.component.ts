@@ -1,7 +1,8 @@
 import { Component, Input, EventEmitter } from '@angular/core';
-import {Recipe, recipes} from '../tasks';
 import { Output } from '@angular/core';
-import { modeUser } from '../tasks';
+import { modeUser } from '../task';
+import { Recipe } from '../recipe';
+import { recipes, tasks, chefs } from '../app.component';
 
 
 

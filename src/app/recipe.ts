@@ -1,9 +1,9 @@
-
 export class Recipe{
-    id: number;
-    name: string;
+    id : number; //id de la recette
+    name: string; //nom de la recette
+    time : number; //temps de la recette
     preparationTime: number;
-    stepList: string[];
+    stepList: string[]; //liste des tâches de la recette
 
     constructor(jsonStr: string){
         let jsonObj = JSON.parse(jsonStr);
