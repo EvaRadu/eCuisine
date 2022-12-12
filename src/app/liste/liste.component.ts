@@ -15,6 +15,8 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class ListeComponent {
   @Input() recipe !: Recipe;
+  @Input() mode !: string;
+
 
   @Output() checkerEvent = new EventEmitter<boolean>();
   
@@ -26,16 +28,31 @@ export class ListeComponent {
 
   ngOnInit(): void {}
 
+  ngOnChanges(): void {
+    this.updateAllComplete();
+  }
+
   allComplete: boolean = false;
   checked = false;
 
+  percentage: number = 0;
+
+  
+  updatePercentage() {
+    if (this.recipe.tasks == null) {
+      return;
+    }
+    this.percentage = this.recipe.tasks.filter(t => t.completed).length / this.recipe.tasks.length;
+  }
 
   updateAllComplete() {
     this.allComplete = this.recipe.tasks != null && this.recipe.tasks.every(t => t.completed);
     this.recipe.completed = this.allComplete;
+    this.updatePercentage();
   }
 
   someComplete(): boolean {
+    this.updatePercentage();
     if (this.recipe.tasks == null) {
       return false;
     }
@@ -43,6 +60,7 @@ export class ListeComponent {
   }
 
   setAll(completed: boolean) {
+    this.updatePercentage();
     this.allComplete = completed;
     this.recipe.completed = completed;
     if (this.recipe.tasks == null) {
@@ -50,4 +68,5 @@ export class ListeComponent {
     }
     this.recipe.tasks.forEach(t => (t.completed = completed));
   }
+
 }
