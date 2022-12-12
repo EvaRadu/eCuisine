@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild,EventEmitter, ElementRef, Input, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import  { changeType } from './../tasks';
+import  { changeType, Task } from '../task';
+import { Recipe } from '../recipe';
+import { tasks, recipes, chefs} from '../app.component';
 
 //@ViewChild('myToolbar') myToolbar : ElementRef;
 
@@ -13,10 +15,12 @@ import  { changeType } from './../tasks';
 })
 
 export class ToolbarECuisineComponent implements OnInit {
-  dateTime: any;
+dateTime: any;
+toogle = true;
+status = 'Enable'
+
+@Output() messageEvent = new EventEmitter<string>();
   @Input() mode!: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
-
-
 
   // get the new time every second and put it into the variable dateTime 
   ngOnInit(): void {
@@ -28,13 +32,23 @@ export class ToolbarECuisineComponent implements OnInit {
     changeType(val);
   }
 
-  
-  /*
-  Si on veut afficher le bouton Tablette - Tv 
+  addTask(){
+    console.log("add tasks");
 
-  modeTablette(){
-    this.router.navigateByUrl('tablet');
+    // prendre un recette au hasard
+    let rd = Math.floor(Math.random()*recipes.length)
+    let recipe = recipes[rd];
+    // prendre un chef au hasard
+    let chef = chefs[Math.floor(Math.random()*chefs.length)];
+
+    // créer une tasks a partir de la recette
+    let task = new Task(tasks.length+1, recipe.name, false, "primary", recipe, chef);
+
+    // ajouter la tache dans la liste des taches
+    tasks.push(task);
+    console.log(tasks);
   }
-  */
   
 }
+
+

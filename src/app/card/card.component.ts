@@ -1,7 +1,8 @@
 import { Component, Input, EventEmitter } from '@angular/core';
-import {Recipe, recipes} from '../tasks';
 import { Output } from '@angular/core';
-import { modeUser } from '../tasks';
+import { modeUser } from '../task';
+import { Task } from '../task';
+import { recipes, tasks, chefs } from '../app.component';
 
 
 
@@ -14,7 +15,7 @@ import { modeUser } from '../tasks';
 export class CardComponent {
   @Input() title !: string;
   @Input() idee !: number;
-  @Input() recipe !: Recipe;
+  @Input() task !: Task;
   @Input() type !: string;
   @Input() mode !: string;
   @Input() notEmptyCard !: boolean;
@@ -22,12 +23,6 @@ export class CardComponent {
   checkBoxValue = false;
 
   @Output() onChange = new EventEmitter<any>();
-
-  getEndOfRecipe() : any {
-    var t = new Date(this.dateTime);
-    t.setSeconds(t.getSeconds() + this.recipe.time);
-    return t;
-  }
 
   intervalColor = setInterval(this.getColor, 10000);
 
@@ -44,16 +39,13 @@ export class CardComponent {
   }
 
   getColor() {
-    if (this.recipe.pressingNumber != undefined) {
-      if ( Math.abs(this.getEndOfRecipe() - Date.now()) < 5000) {
+      if ( Math.abs(this.task.endTime - Date.now()) < 5000) {
         return "red"
-      } else if (( Math.abs(this.getEndOfRecipe() - Date.now()) > 5000) &&  Math.abs(this.getEndOfRecipe() - Date.now()) < 10000) {
+      } else if (( Math.abs(this.task.endTime - Date.now()) > 5000) &&  Math.abs(this.task.endTime - Date.now()) < 10000) {
         return "yellow"
       } else {
       return "green"
       }
-    }
-    return "pink"
   }
 
   test() {
@@ -62,7 +54,7 @@ export class CardComponent {
 
   destroy() {
     for (var i = 0; i < recipes.length; i++) {
-      if (this.recipe.id === recipes[i].id && this.recipe.completed) {
+      if (this.task.id === recipes[i].id && this.task.completed) {
         recipes.splice(i, 1);
         return
       }

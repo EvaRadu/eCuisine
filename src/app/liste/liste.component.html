@@ -2,7 +2,7 @@
     <span class="example-list-section">
       <!-- [checked]="allComplete" -->
       <mat-checkbox class="example-margin"
-                    [color]="recipe.color"
+                    [color]="task.color"
                     [(ngModel)]="checked"
                     (change)="setAll($event.checked)"
                     (click)="send()">
@@ -13,11 +13,11 @@
       <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
 
       <ul>
-        <li *cdkVirtualFor="let subtask of recipe.tasks">
+        <li *cdkVirtualFor="let subtask of task.subtasks">
           <mat-checkbox  [(ngModel)]="subtask.completed"
                         [color]="subtask.color"
                         (ngModelChange)="updateAllComplete()">
-            {{subtask.content}}
+            {{subtask.name}}
           </mat-checkbox>
         </li>
       </ul>

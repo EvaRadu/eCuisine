@@ -1,0 +1,24 @@
+{
+    "chefs":[
+    {
+        "id":0,
+        "name":"Mia",
+        "level":"expert"
+    },
+    {
+        "id":1,
+        "name":"Raph",
+        "level":"novice"
+    },
+    {
+        "id":2,
+        "name":"Juliette",
+        "level":"expert"
+    },
+    {
+        "id":3,
+        "name":"Eva",
+        "level":"novice"
+    }
+    ]
+}

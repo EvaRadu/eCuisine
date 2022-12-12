@@ -1,6 +1,11 @@
 import {Component, Input} from '@angular/core';
-import { Recipe } from '../tasks';
+import { Recipe } from '../recipe';
 import {ChangeDetectionStrategy} from '@angular/core';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import { Task } from '../task'
+import { Chef } from '../chef'
+import { tasks, recipes, chefs} from '../app.component'
 import { Output, EventEmitter } from '@angular/core';
 
 
@@ -14,7 +19,7 @@ import { Output, EventEmitter } from '@angular/core';
 
 })
 export class ListeComponent {
-  @Input() recipe !: Recipe;
+  @Input() task !: Task;
   @Input() mode !: string;
 
 
@@ -39,34 +44,34 @@ export class ListeComponent {
 
   
   updatePercentage() {
-    if (this.recipe.tasks == null) {
+    if (this.task.subtasks == null) {
       return;
     }
-    this.percentage = this.recipe.tasks.filter(t => t.completed).length / this.recipe.tasks.length;
+    this.percentage = this.task.subtasks.filter(t => t.completed).length / this.task.subtasks.length;
   }
 
   updateAllComplete() {
-    this.allComplete = this.recipe.tasks != null && this.recipe.tasks.every(t => t.completed);
-    this.recipe.completed = this.allComplete;
+    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    this.task.completed = this.allComplete;
     this.updatePercentage();
   }
 
   someComplete(): boolean {
     this.updatePercentage();
-    if (this.recipe.tasks == null) {
+    if (this.task.subtasks == null) {
       return false;
     }
-    return this.recipe.tasks.filter(t => t.completed).length > 0 && !this.allComplete;
+    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
   }
 
   setAll(completed: boolean) {
     this.updatePercentage();
     this.allComplete = completed;
-    this.recipe.completed = completed;
-    if (this.recipe.tasks == null) {
+    this.task.completed = completed;
+    if (this.task.subtasks == null) {
       return;
     }
-    this.recipe.tasks.forEach(t => (t.completed = completed));
+    this.task.subtasks.forEach(t => (t.completed = completed));
   }
 
 }
