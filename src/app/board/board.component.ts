@@ -14,16 +14,16 @@ export class BoardComponent {
   breakpoint = 5;
   @Input() notCluster = "Red"
   @Input() notEmptyCard = true;
-  borne = 60;
-  borneSuperieur = 100;
+  borne = 0;
+  borneSuperieur = 5000;
   tasks = tasks;
 
   @Input() mode !: string;
 
   notClusterize(task: Task) {
     this.determineBorne(this.notCluster)
-    if (task.pressingNumber != undefined) {
-      return task.pressingNumber >= this.borne && task.pressingNumber < this.borneSuperieur;
+    if (task.endTime != undefined) {
+      return Math.abs(task.endTime - Date.now())  >= this.borne && Math.abs(task.endTime - Date.now())  < this.borneSuperieur;
     }
     return false;
   }
@@ -31,17 +31,17 @@ export class BoardComponent {
 
   determineBorne(typeCluster: string) {
     if(typeCluster == "Red") {
-      this.borne = 60;
-      this.borneSuperieur = 100;
+      this.borne = 10000;
+      this.borneSuperieur = Number.MAX_VALUE;
     } else if(typeCluster == "Green") {
       this.borne = 0;
-      this.borneSuperieur = 30;
+      this.borneSuperieur = 5000;
     } else if (typeCluster == "Yellow") {
-      this.borne = 30;
-      this.borneSuperieur = 60;
+      this.borne = 5000;
+      this.borneSuperieur = 10000;
     } else {
       this.borne = 0;
-      this.borneSuperieur = 100;
+      this.borneSuperieur = Number.MAX_VALUE;
     }
   }
 
@@ -77,31 +77,13 @@ export class BoardComponent {
     let borneSuperieur = this.borneSuperieur;
     let nb = 0;
     tasks.forEach(function(task) {
-      if(task.pressingNumber != undefined) {
-        if(task.pressingNumber >= borneInferieur && task.pressingNumber < borneSuperieur) {
+      if(task.endTime != undefined) {
+        if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }
       }
     })
     return nb;
-  }
-
-  determineColAndRow(task : Task) {
-    if(task.pressingNumber != undefined) {
-      if(this.clusterize && task.pressingNumber < 60) {
-        return 0
-      }
-      if(task.pressingNumber < 30) {
-        return 1
-      }
-      if(task.pressingNumber < 60) {
-        return 2
-      }
-      if(task.pressingNumber < 60) {
-        return 3
-      }
-    }
-    return 1
   }
 
 }
