@@ -24,10 +24,9 @@ export class CardComponent {
 
   @Output() onChange = new EventEmitter<any>();
 
-  intervalColor = setInterval(this.getColor, 10000);
-
+  //intervalColor = setInterval(this.getColor, 10000);
   //intervalDestroy = setInterval(this.destroy, 10000);
-  
+
   receiveCheckValue(bool) {
     console.log("hello");
     this.checkBoxValue=bool ;
@@ -35,12 +34,12 @@ export class CardComponent {
   }
 
   getColor() {
-      if ( Math.abs(this.task.endTime - Date.now()) < 5000) {
-        return "red"
+      if (Math.abs(this.task.endTime - Date.now()) < 5000) {
+        return "green"
       } else if (( Math.abs(this.task.endTime - Date.now()) > 5000) &&  Math.abs(this.task.endTime - Date.now()) < 10000) {
         return "yellow"
       } else {
-      return "green"
+      return "red"
       }
   }
 
