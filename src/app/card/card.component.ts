@@ -35,11 +35,11 @@ export class CardComponent {
 
   getColor() {
       if (Math.abs(this.task.endTime - Date.now()) < 5000) {
-        return "#a6c875" // GREEN
+        return "Green" // GREEN
       } else if (( Math.abs(this.task.endTime - Date.now()) > 5000) &&  Math.abs(this.task.endTime - Date.now()) < 10000) {
-        return "#fce166" // YELLOW
+        return "Yellow" // YELLOW
       } else {
-      return "#fa4224"  // RED
+      return "Red"  // RED
       }
   }
 
