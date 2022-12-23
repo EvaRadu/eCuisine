@@ -10,6 +10,15 @@
       </mat-checkbox>
     </span>
     <span class="example-list-section" >
+      <div class="recette" id="scrollbar">
+        <li *ngFor="let subtask of task.subtasks">
+          <mat-checkbox  [(ngModel)]="subtask.completed"
+                        (ngModelChange)="updateAllComplete()">
+            {{subtask.name}}
+          </mat-checkbox>
+        </li>
+    </div>
+      <!--
       <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
 
       <ul>
@@ -22,6 +31,7 @@
         </li>
       </ul>
     </cdk-virtual-scroll-viewport>
+  -->
     </span>
 </section>
 

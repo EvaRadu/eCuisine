@@ -1,19 +1,45 @@
-.example-section {
-    margin: 12px 0;
-  }
-  
-  .example-margin {
-    margin: 0 12px;
-  }
-  
-  ul {
+.example-section{
+  margin-top: 5px;
+}
+
+
+  li{
     list-style-type: none;
-    margin-top: 4px;
+    margin-left: 10px;
+    height: auto;
   }
   
-  .example-viewport {
-    height: 135px;
-    width: 250px;
-    border: 1px solid black;
+  .recette {
+    height: 80px;
+    border: 1px solid #3f51b5;
+    border-radius: 5px;
+    overflow-y: auto;
   }
+
+#scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+#scrollbar::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca;
+    box-shadow: inset 0 0 6px #495495;
+}
+
+#scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #3f51b5;
+}
+  /*
+  .example-viewport {
+    height: 80px;
+    border: 1px solid #3f51b5;
+    border-radius: 5px;
+  }*/
+
+ 
+
+
+
 

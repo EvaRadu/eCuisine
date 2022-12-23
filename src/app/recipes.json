@@ -7,11 +7,11 @@
         "Dans un mortier, pilez le basilic avec l'ail et les pignons jusqu'à obtention d'une crème lisse.",
         "Mettez la préparation dans un bol, puis ajouter l'huile peu à peu en fouettant.",
         "Rajoutez les fromage râpés, assaisonner et mélangez.",
-        "Egouttez les pâtes, méxlangez-les au pesto et servez."]
+        "Egouttez les pâtes, mélangez-les au pesto et servez."]
     },
     {
         "id":1,
-        "name": "'Salade César'",
+        "name": "Salade César",
         "preparationTime":1000,
         "stepList":["Lavez la salade.",
         "Faîtes cuire le poulet.",
