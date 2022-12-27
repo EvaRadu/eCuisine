@@ -3,6 +3,8 @@ import { Output } from '@angular/core';
 import { modeUser } from '../task';
 import { Task } from '../task';
 import { recipes, tasks, chefs } from '../app.component';
+import {MatIconModule} from '@angular/material/icon'
+
 
 
 
