@@ -24,6 +24,8 @@ import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import {ProgressBarMode} from '@angular/material/progress-bar';
 import {MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon'
+
 
 
 
@@ -53,7 +55,8 @@ import {MatProgressBarModule } from '@angular/material/progress-bar';
     MatCardModule,
     MatGridListModule,
     ScrollingModule,
-    MatProgressBarModule 
+    MatProgressBarModule,
+    MatIconModule
     ],
   providers: [  ],
   bootstrap: [AppComponent]

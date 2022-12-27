@@ -3,22 +3,26 @@
     {
         "id":0,
         "name":"Mia",
-        "level":"expert"
+        "level":"expert", 
+        "genre":"femme"
     },
     {
         "id":1,
         "name":"Raph",
-        "level":"novice"
+        "level":"novice", 
+        "genre":"homme"
     },
     {
         "id":2,
         "name":"Juliette",
-        "level":"expert"
+        "level":"expert", 
+        "genre":"femme"
     },
     {
         "id":3,
         "name":"Eva",
-        "level":"novice"
+        "level":"novice", 
+        "genre":"femme"
     }
     ]
 }
