@@ -30,9 +30,10 @@ export class CardComponent {
   //intervalDestroy = setInterval(this.destroy, 10000);
 
   receiveCheckValue(bool) {
-    console.log("hello");
+    console.log("received");
     this.checkBoxValue=bool ;
-    if (this.checkBoxValue) {this.destroy()};
+    this.destroy();
+    //if (this.checkBoxValue) {this.destroy()};
   }
 
   getColor() {
@@ -45,16 +46,20 @@ export class CardComponent {
       }
   }
 
-  test() {
+  novice() {
     return modeUser == 'novice';
   }
 
   destroy() {
+    console.log("called destroy");
+
     for (var i = 0; i < recipes.length; i++) {
       if (this.task.id === recipes[i].id && this.task.completed) {
         recipes.splice(i, 1);
+        console.log("destroyed");
         return
       }
     }
+
   }
 }

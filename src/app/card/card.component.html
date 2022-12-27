@@ -1,5 +1,5 @@
 
-  <mat-card (checkerEvent)=receiveCheckValue($event) class="card" [ngStyle]="{background: getColor()}">
+  <mat-card  class="card" [ngStyle]="{background: getColor()}">
 
     <mat-card-header *ngIf="notEmptyCard" class="header">
 
@@ -7,20 +7,17 @@
       <img mat-card-avatar class="avatar" *ngIf="mode == 'tv' && this.task.chef.genre=='femme'" src="../../assets/cheffe.jpg" alt="femme">
       
       <mat-card-title>COMMANDE n°{{task.id}} </mat-card-title>
+      
       <mat-card-subtitle class="text"><b>{{task.recipe.name}} {{type}} </b></mat-card-subtitle>
       <mat-card-subtitle class="text"><b>Fin prévue : </b> {{task.endTime | date:'hh:mm:ss'}}</mat-card-subtitle>
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Cuisinier : </b> {{task.chef.name}} </mat-card-subtitle>
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Niveau : </b> {{task.chef.level}} </mat-card-subtitle>
 
-
-      <!--mat-card-subtitle align="end" >Commande passée à : {{dateTime | date:'hh:mm:ss'}} </mat-card-subtitle-->
-      <!--mat-card-subtitle align="end">Temps de préparation estimé : {{recipe.time}} secondes </mat-card-subtitle-->
-
     </mat-card-header>
-      <mat-card-content  [ngClass]="{'content' : (mode=='tablet')}" *ngIf="(mode == 'tablet' && test()) || (mode == 'tv' && task.chef.level == 'novice')"  [ngStyle]="{background: (mode=='tablet')  ? '#f1f3f4' : ''}">
+
+      <mat-card-content [ngClass]="{'content' : (mode=='tablet')}" *ngIf="(mode == 'tablet' && novice()) || (mode == 'tv' && task.chef.level == 'novice')"  [ngStyle]="{background: (mode=='tablet')  ? '#f1f3f4' : ''}">
         <div class="liste">
-          <liste [task]=task [mode]=mode>
-          </liste></div>
+          <liste (checkerEvent)=receiveCheckValue($event) [task]=task [mode]=mode> </liste></div>
       </mat-card-content>
 
   </mat-card>

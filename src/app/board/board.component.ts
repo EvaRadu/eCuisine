@@ -23,7 +23,7 @@ export class BoardComponent {
   notClusterize(task: Task) {
     this.determineBorne(this.notCluster)
     if (task.endTime != undefined) {
-      return Math.abs(task.endTime - Date.now())  >= this.borne && Math.abs(task.endTime - Date.now())  < this.borneSuperieur;
+      return Math.abs(task.endTime - Date.now())  >= this.borne && Math.abs(task.endTime - Date.now()) < this.borneSuperieur;
     }
     return false;
   }
