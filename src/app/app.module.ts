@@ -26,6 +26,7 @@ import {ProgressBarMode} from '@angular/material/progress-bar';
 import {MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
 import { TeamComponent } from './team/team.component'
+import { AvatarModule } from '@coreui/angular';
 
 
 
@@ -42,7 +43,6 @@ import { TeamComponent } from './team/team.component'
     TabletComponent,
     ProgressBarComponent,
     TeamComponent
-
     ],
   imports: [
     BrowserModule,
@@ -58,7 +58,8 @@ import { TeamComponent } from './team/team.component'
     MatGridListModule,
     ScrollingModule,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    AvatarModule
     ],
   providers: [  ],
   bootstrap: [AppComponent]

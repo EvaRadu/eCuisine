@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import { AvatarModule } from '@coreui/angular';
 
 import { chefs } from '../app.component';
 
