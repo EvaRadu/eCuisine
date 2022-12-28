@@ -2,25 +2,25 @@
     "chefs":[
     {
         "id":0,
-        "name":"Mia",
+        "name":"mia",
         "level":"expert", 
         "genre":"femme"
     },
     {
         "id":1,
-        "name":"Raph",
+        "name":"raph",
         "level":"novice", 
         "genre":"homme"
     },
     {
         "id":2,
-        "name":"Juliette",
+        "name":"juliette",
         "level":"expert", 
         "genre":"femme"
     },
     {
         "id":3,
-        "name":"Eva",
+        "name":"eva",
         "level":"novice", 
         "genre":"femme"
     }

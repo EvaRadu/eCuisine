@@ -1,1 +1,5 @@
-<p>team works!</p>
+
+<button *ngFor="let chef of chefs" 
+(click)="redirection(chef.name)">
+{{chef.name | titlecase}}
+</button>
