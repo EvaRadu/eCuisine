@@ -14,9 +14,16 @@
         </mat-button-toggle-group>
         -->
         <span class="example-spacer"></span>
-        <span> e-cuisine </span>
+        <span *ngIf="mode == 'tablet'"> {{this.profile | titlecase}} </span>
+        <span *ngIf="mode == 'tv'"> e-cuisine </span>
         <span class="example-spacer"></span>
-        <button (click)="addTask()"> Ajouter commande</button>
+
+            <div class="example-flex-container">
+        <button mat-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="addTask()">
+            <mat-icon>plus_one</mat-icon>
+          </button>
+        </div>
+        <!-- button (click)="addTask()"> Ajouter une commande</button -->
         <span class="example-spacer"></span>
         <p>{{ dateTime | date:'hh:mm:ss'}}</p>
     </mat-toolbar-row>

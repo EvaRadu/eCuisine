@@ -19,6 +19,8 @@ export class BoardComponent {
   tasks = tasks;
 
   @Input() mode !: string;
+  //@Input() profile !: string;
+
 
   notClusterize(task: Task) {
     this.determineBorne(this.notCluster)
