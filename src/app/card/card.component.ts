@@ -1,12 +1,9 @@
-import { Component, Input, EventEmitter } from '@angular/core';
+import { Component, Input, EventEmitter, ComponentRef,HostListener, ElementRef , Renderer2, OnDestroy } from '@angular/core';
 import { Output } from '@angular/core';
 import { modeUser } from '../task';
 import { Task } from '../task';
 import { recipes, tasks, chefs } from '../app.component';
 import {MatIconModule} from '@angular/material/icon'
-
-
-
 
 @Component({
   selector: 'app-card',
@@ -14,7 +11,7 @@ import {MatIconModule} from '@angular/material/icon'
   styleUrls: ['./card.component.scss']
 })
 
-export class CardComponent {
+export class CardComponent{
   @Input() title !: string;
   @Input() idee !: number;
   @Input() task !: Task;
@@ -30,9 +27,9 @@ export class CardComponent {
   //intervalDestroy = setInterval(this.destroy, 10000);
 
   receiveCheckValue(bool) {
-    console.log("hello");
-    this.checkBoxValue=bool ;
-    if (this.checkBoxValue) {this.destroy()};
+    console.log("received");
+    this.checkBoxValue=bool;
+    this.task.destroy = bool;
   }
 
   getColor() {
@@ -45,16 +42,23 @@ export class CardComponent {
       }
   }
 
-  test() {
+  novice() {
     return modeUser == 'novice';
   }
 
   destroy() {
+    console.log("called destroy");
+    console.log(this.task.id);
+    console.log(this.task.completed);
+    console.log("recipes before : ", recipes);
     for (var i = 0; i < recipes.length; i++) {
-      if (this.task.id === recipes[i].id && this.task.completed) {
+      if (this.task.recipe.name === recipes[i].name && this.task.completed) {
+        console.log("destroying");
         recipes.splice(i, 1);
+        console.log("recipes after : ", recipes);
         return
       }
     }
   }
+
 }

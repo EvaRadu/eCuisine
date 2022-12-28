@@ -27,7 +27,7 @@ export class ListeComponent {
   
   send() {
     console.log("send")
-    this.checkerEvent.emit(this.checked);
+    this.checkerEvent.emit(this.checked && this.allComplete);
   }
 
 

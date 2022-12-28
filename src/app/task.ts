@@ -15,6 +15,7 @@ export class Task {
     chef: Chef;  // chef assign to the order
     subtasks: Subtask[];
     pressingNumber: number; // to remove 
+    destroy: boolean = false; 
 
     constructor(id: number, name: string, completed: boolean, color: ThemePalette, recipe: Recipe, chef: Chef) {
       this.recipe = recipe;
