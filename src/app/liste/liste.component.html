@@ -9,7 +9,8 @@
         J'ai terminé la commande.
       </mat-checkbox>
     </span>
-    <span class="example-list-section" >
+
+    <span *ngIf="typeAffichage" class="example-list-section" >
       <div class="recette" id="scrollbar">
         <li *ngFor="let subtask of task.subtasks">
           <mat-checkbox  [(ngModel)]="subtask.completed"

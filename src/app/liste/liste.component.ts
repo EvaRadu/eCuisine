@@ -22,6 +22,9 @@ export class ListeComponent {
   @Input() task !: Task;
   @Input() mode !: string;
 
+  @Input() typeAffichage !: boolean;
+
+
 
   @Output() checkerEvent = new EventEmitter<boolean>();
   

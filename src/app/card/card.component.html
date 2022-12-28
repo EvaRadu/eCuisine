@@ -15,9 +15,11 @@
 
     </mat-card-header>
 
-      <mat-card-content [ngClass]="{'content' : (mode=='tablet')}" *ngIf="(mode == 'tablet' && novice()) || (mode == 'tv' && task.chef.level == 'novice')"  [ngStyle]="{background: (mode=='tablet')  ? '#f1f3f4' : ''}">
+      <mat-card-content [ngClass]="{'content' : (mode=='tablet')}" 
+      
+      [ngStyle]="{background: (mode=='tablet')  ? '#f1f3f4' : ''}">
         <div class="liste">
-          <liste (checkerEvent)=receiveCheckValue($event) [task]=task [mode]=mode> </liste></div>
+          <liste [typeAffichage]="(mode == 'tablet' && novice()) || (mode == 'tv' && task.chef.level == 'novice')"   (checkerEvent)=receiveCheckValue($event) [task]=task [mode]=mode> </liste></div>
       </mat-card-content>
 
   </mat-card>

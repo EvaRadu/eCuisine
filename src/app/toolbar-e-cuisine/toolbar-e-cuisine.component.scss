@@ -9,3 +9,15 @@
     background-color: green;
 }
 
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+.example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  

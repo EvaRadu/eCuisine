@@ -24,7 +24,8 @@ import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import {ProgressBarMode} from '@angular/material/progress-bar';
 import {MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import { TeamComponent } from './team/team.component'
 
 
 
@@ -39,7 +40,8 @@ import {MatIconModule} from '@angular/material/icon'
     BoardComponent,
     TvComponent,
     TabletComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    TeamComponent
 
     ],
   imports: [
