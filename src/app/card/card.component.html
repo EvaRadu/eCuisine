@@ -1,5 +1,5 @@
 
-  <mat-card  class="card" [ngStyle]="{background: getColor()}">
+  <mat-card *ngIf="!this.checkBoxValue" class="card" [ngStyle]="{background: getColor()}"> <!-- *ngIf="!this.checkBoxValue" -->
 
     <mat-card-header *ngIf="notEmptyCard" class="header">
 

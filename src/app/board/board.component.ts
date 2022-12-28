@@ -22,7 +22,7 @@ export class BoardComponent {
 
   notClusterize(task: Task) {
     this.determineBorne(this.notCluster)
-    if (task.endTime != undefined) {
+    if (task.endTime != undefined && task.destroy == false) {
       return Math.abs(task.endTime - Date.now())  >= this.borne && Math.abs(task.endTime - Date.now()) < this.borneSuperieur;
     }
     return false;
@@ -77,7 +77,7 @@ export class BoardComponent {
     let borneSuperieur = this.borneSuperieur;
     let nb = 0;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined) {
+      if(task.endTime != undefined && task.destroy == false) {
         if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }
