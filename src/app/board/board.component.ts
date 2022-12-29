@@ -14,7 +14,7 @@ export class BoardComponent {
   breakpoint = 5;
   @Input() notCluster = "Red"
   @Input() notEmptyCard = true;
-  borne = 0;
+  borne = 0; 
   borneSuperieur = 5000;
   tasks = tasks;
 
@@ -24,7 +24,11 @@ export class BoardComponent {
 
   notClusterize(task: Task) {
     this.determineBorne(this.notCluster)
-    if (task.endTime != undefined && task.destroy == false) {
+    if (task.destroy == true && this.borne == -1) {
+      //task.
+      return true;
+    }
+    else if (task.endTime != undefined && task.destroy == false) {
       return Math.abs(task.endTime - Date.now())  >= this.borne && Math.abs(task.endTime - Date.now()) < this.borneSuperieur;
     }
     return false;
@@ -41,7 +45,11 @@ export class BoardComponent {
     } else if (typeCluster == "Yellow") {
       this.borne = 5000;
       this.borneSuperieur = 10000;
-    } else {
+    } else if( typeCluster == "Grey"){
+      this.borne = -1;
+      this.borneSuperieur = -1;
+    }    
+      else {
       this.borne = 0;
       this.borneSuperieur = Number.MAX_VALUE;
     }
@@ -83,6 +91,9 @@ export class BoardComponent {
         if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }
+      }
+      else if(task.completed == true && borneInferieur == -1) {
+        nb += 1;
       }
     })
     return nb;

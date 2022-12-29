@@ -27,21 +27,27 @@ export class ListeComponent {
 
 
   @Output() checkerEvent = new EventEmitter<boolean>();
+
+  checked: boolean;
   
   send() {
-    console.log("send")
+    console.log("send");
+    this.task.completedTime = Date.now();
     this.checkerEvent.emit(this.checked && this.allComplete);
   }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    console.log(this.task);
+    this.checked = this.task.completed;
+  }
 
   ngOnChanges(): void {
     this.updateAllComplete();
   }
 
   allComplete: boolean = false;
-  checked = false;
 
   percentage: number = 0;
 
