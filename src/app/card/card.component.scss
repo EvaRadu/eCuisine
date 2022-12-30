@@ -5,8 +5,12 @@
     border: 2px solid #3f51b5;
 }
 
+.liste {
+  width: 100%;
+}
 
 .content {
+  display: flex;
   margin-top: 5px;
   border-top: 5px solid #3f51b5;
   border-bottom: 2px solid #3f51b5;
