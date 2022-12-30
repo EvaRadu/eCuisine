@@ -1,5 +1,16 @@
 .example-section{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  height: 100%;
   margin-top: 5px;
+}
+
+.listeSpan {
+  width:100%;
+  height: 80%;
+  border: 1px solid #3f51b5;
+  border-radius: 5px;
 }
 
 
@@ -10,28 +21,14 @@
   }
 
   .recette {
-    height: 100%;
-    width: 100%;
-    border: 1px solid #3f51b5;
-    border-radius: 5px;
-    overflow-y: auto;
+    height: 99%;
+    width: 99%;
+    overflow-y: scroll;
   }
 
-#scrollbar::-webkit-scrollbar {
-    width: 8px;
-}
 
-#scrollbar::-webkit-scrollbar-track {
-    border-radius: 6px;
-    background-color: #e7e7e7;
-    border: 1px solid #cacaca;
-    box-shadow: inset 0 0 6px #495495;
-}
 
-#scrollbar::-webkit-scrollbar-thumb {
-    border-radius: 6px;
-    background-color: #3f51b5;
-}
+
   /*
   .example-viewport {
     height: 80px;

@@ -10,7 +10,7 @@
       </mat-checkbox>
     </span>
 
-    <span *ngIf="typeAffichage" class="example-list-section" >
+    <span *ngIf="typeAffichage" class="listeSpan" >
       <div class="recette" id="scrollbar">
         <li *ngFor="let subtask of task.subtasks">
           <mat-checkbox  [(ngModel)]="subtask.completed"
