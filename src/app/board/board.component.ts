@@ -14,7 +14,7 @@ export class BoardComponent {
   breakpoint = 5;
   @Input() notCluster = "Red"
   @Input() notEmptyCard = true;
-  borne = 0; 
+  borne = 0;
   borneSuperieur = 5000;
   tasks = tasks;
 
@@ -25,7 +25,6 @@ export class BoardComponent {
   notClusterize(task: Task) {
     this.determineBorne(this.notCluster)
     if (task.destroy == true && this.borne == -1) {
-      //task.
       return true;
     }
     else if (task.endTime != undefined && task.destroy == false) {
@@ -48,7 +47,7 @@ export class BoardComponent {
     } else if( typeCluster == "Grey"){
       this.borne = -1;
       this.borneSuperieur = -1;
-    }    
+    }
       else {
       this.borne = 0;
       this.borneSuperieur = Number.MAX_VALUE;

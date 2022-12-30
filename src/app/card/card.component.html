@@ -1,14 +1,14 @@
 
-  <mat-card *ngIf="!this.checkBoxValue" class="card" 
+  <mat-card class="card"
   [ngStyle]="{background: (!task.completed) ? getColor() :
      'linear-gradient(-45deg,'+ getColor() + ' 25%, Grey 25%, Grey 50%,' + getColor() + ' 50%,' + getColor() + ' 75%, Grey 75%, Grey)'}">
 
     <mat-card-header *ngIf="notEmptyCard" class="header">
 
       <img mat-card-avatar class="avatar" *ngIf="mode == 'tv'" src={{this.task.chef.url}} alt="homme">
-      
+
       <mat-card-title>COMMANDE n°{{task.id}} </mat-card-title>
-      
+
       <mat-card-subtitle class="text"><b>{{task.recipe.name}} {{type}} </b></mat-card-subtitle>
       <mat-card-subtitle *ngIf="!task.completed" class="text"><b>Fin prévue : </b> {{task.endTime | date:'hh:mm:ss'}}</mat-card-subtitle>
       <mat-card-subtitle *ngIf="task.completed" class="text"><b>Terminée à : </b> {{task.completedTime  | date:'hh:mm:ss'}}</mat-card-subtitle>
@@ -17,8 +17,8 @@
 
     </mat-card-header>
 
-      <mat-card-content [ngClass]="{'content' : (mode=='tablet')}" 
-      
+      <mat-card-content [ngClass]="{'content' : (mode=='tablet')}"
+
       [ngStyle]="{background: (mode=='tablet')  ? '#f1f3f4' : ''}">
         <div class="liste">
           <liste [typeAffichage]="(mode == 'tablet' && novice()) || (mode == 'tv' && task.chef.level == 'novice')"   (checkerEvent)=receiveCheckValue($event) [task]=task [mode]=mode> </liste></div>

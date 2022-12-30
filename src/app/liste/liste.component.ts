@@ -29,7 +29,7 @@ export class ListeComponent {
   @Output() checkerEvent = new EventEmitter<boolean>();
 
   checked: boolean;
-  
+
   send() {
     console.log("send");
     this.task.completedTime = Date.now();
@@ -51,7 +51,7 @@ export class ListeComponent {
 
   percentage: number = 0;
 
-  
+
   updatePercentage() {
     if (this.task.subtasks == null) {
       return;
@@ -62,6 +62,7 @@ export class ListeComponent {
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
     this.task.completed = this.allComplete;
+    this.task.destroy = this.task.completed;
     this.updatePercentage();
   }
 

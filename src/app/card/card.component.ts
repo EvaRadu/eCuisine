@@ -19,7 +19,6 @@ export class CardComponent{
   @Input() mode !: string;
   @Input() notEmptyCard !: boolean;
   dateTime : number =  Date.now();
-  checkBoxValue = false;
 
   @Output() onChange = new EventEmitter<any>();
 
@@ -27,8 +26,6 @@ export class CardComponent{
   //intervalDestroy = setInterval(this.destroy, 10000);
 
   receiveCheckValue(bool) {
-    console.log("received");
-    this.checkBoxValue=bool;
     this.task.destroy = bool;
   }
 
@@ -56,21 +53,6 @@ export class CardComponent{
 
   novice() {
     return modeUser == 'novice';
-  }
-
-  destroy() {
-    console.log("called destroy");
-    console.log(this.task.id);
-    console.log(this.task.completed);
-    console.log("recipes before : ", recipes);
-    for (var i = 0; i < recipes.length; i++) {
-      if (this.task.recipe.name === recipes[i].name && this.task.completed) {
-        console.log("destroying");
-        recipes.splice(i, 1);
-        console.log("recipes after : ", recipes);
-        return
-      }
-    }
   }
 
 }
