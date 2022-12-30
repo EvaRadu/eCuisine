@@ -1,4 +1,5 @@
 .cardCluster {
+  display: flex;
   width: 100%;
   height: 100%;
   background: #f1f3f4;
@@ -11,9 +12,10 @@
 }
 
 .content {
+  overflow-y: hidden;
   border: 5px #3f51b5;
   border-top-style: solid;
-  height: 100%;
+  margin-bottom: 5px;
   padding-top: 5px;
 }
 
