@@ -33,12 +33,13 @@ export class ListeComponent {
   send() {
     console.log("send");
     this.task.completedTime = Date.now();
+    setTimeout(()=> {
     this.checkerEvent.emit(this.checked && this.allComplete);
+    },250);
   }
 
 
   ngOnInit(): void {
-
     console.log(this.task);
     this.checked = this.task.completed;
   }
@@ -61,9 +62,12 @@ export class ListeComponent {
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    this.checked = this.allComplete;
     this.task.completed = this.allComplete;
-    this.task.destroy = this.task.completed;
-    this.updatePercentage();
+    setTimeout(()=> {
+      this.task.destroy = this.task.completed;
+      this.updatePercentage();
+    },250);
   }
 
   someComplete(): boolean {
