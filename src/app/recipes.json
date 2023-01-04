@@ -11,7 +11,7 @@
     },
     {
         "id":1,
-        "name": "'Salade César'",
+        "name": "Salade César",
         "preparationTime":1000,
         "stepList":["Lavez la salade.",
         "Faîtes cuire le poulet.",

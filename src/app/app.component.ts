@@ -4,6 +4,8 @@ import * as recipesJson from "./recipes.json";
 import * as chefsJson from "./chefs.json";
 import {Recipe} from "./recipe"; 
 import { Chef } from "./chef";
+import { HttpClient } from '@angular/common/http';
+import { json } from 'express';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +16,13 @@ import { Chef } from "./chef";
 export class AppComponent implements OnInit {
   title = 'ecuisine';
 
-  ngOnInit(): void {
+  constructor(private http: HttpClient){}
 
+  ngOnInit(): void {
+    this.http.get('http://localhost:5000/api/tasks').subscribe((data) =>{
+    tasks = JSON.parse(JSON.stringify(data)).datas.tasks;
+    console.log(tasks);
+    })
   }
 }
 

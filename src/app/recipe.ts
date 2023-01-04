@@ -1,8 +1,7 @@
 export class Recipe{
     id : number; //id de la recette
     name: string; //nom de la recette
-    time : number; //temps de la recette
-    preparationTime: number;
+    preparationTime: number; //temps de préparation de la recette
     stepList: string[]; //liste des tâches de la recette
 
     constructor(jsonStr: string){
