@@ -1,19 +1,43 @@
-.example-section {
-    margin: 12px 0;
-  }
-  
-  .example-margin {
-    margin: 0 12px;
-  }
-  
-  ul {
+.example-section{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  height: 100%;
+  margin-top: 5px;
+}
+
+.listeSpan {
+  width:100%;
+  height: 80%;
+}
+
+
+  li{
     list-style-type: none;
-    margin-top: 4px;
+    margin-left: 10px;
+    height: auto;
   }
-  
+
+  .recette {
+    width: 100%;
+    max-height: 100%; // à enlever si on veut que le cadre soit toujours de la même hauteur quelque soit le contenue
+    border: 1px solid #3f51b5;
+    border-radius: 5px;
+    overflow-y: scroll;
+  }
+
+
+
+
+  /*
   .example-viewport {
-    height: 135px;
-    width: 250px;
-    border: 1px solid black;
-  }
+    height: 80px;
+    border: 1px solid #3f51b5;
+    border-radius: 5px;
+  }*/
+
+
+
+
+
 

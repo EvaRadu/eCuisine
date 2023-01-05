@@ -24,6 +24,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { TeamComponent } from './team/team.component'
+import { AvatarModule } from '@coreui/angular';
+
 
 const config: SocketIoConfig = {
   url: '',
@@ -41,8 +45,8 @@ const config: SocketIoConfig = {
     BoardComponent,
     TvComponent,
     TabletComponent,
-    ProgressBarComponent
-
+    ProgressBarComponent,
+    TeamComponent
     ],
   imports: [
     BrowserModule,
@@ -57,9 +61,11 @@ const config: SocketIoConfig = {
     MatCardModule,
     MatGridListModule,
     ScrollingModule,
-    MatProgressBarModule ,
+    MatProgressBarModule,
+    MatIconModule,
+    
     HttpClientModule,
-    SocketIoModule.forRoot(config),
+    SocketIoModule.forRoot(config),AvatarModule,
     ],
   providers: [ HttpClientModule ],
   bootstrap: [AppComponent]

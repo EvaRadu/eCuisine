@@ -1,0 +1,25 @@
+<h1 class="center">Veuillez choisir votre profil : </h1>
+
+<div class="center">
+    <ng-container *ngFor="let chef of chefs">
+        <button class="myButton" (click)="redirection(chef.name)"  size="sm" >
+            <mat-card>
+                <mat-card-header>
+        
+                    <img mat-card-avatar class="avatar" src={{chef.url}}>
+                    
+                    <mat-card-title class="text"><br> {{chef.name | titlecase}} </mat-card-title>
+                    <mat-card-subtitle class="text"><b>Niveau : </b> {{chef.level | titlecase}}</mat-card-subtitle>
+        
+                  </mat-card-header>
+              
+            </mat-card>  
+        </button>
+        <br>
+        <br>
+    </ng-container>
+
+</div>
+
+
+

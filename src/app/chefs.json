@@ -2,23 +2,31 @@
     "chefs":[
     {
         "id":0,
-        "name":"Mia",
-        "level":"expert"
+        "name":"mia",
+        "level":"expert", 
+        "genre":"femme",
+        "url":"../../assets/cheffe.jpg"
     },
     {
         "id":1,
-        "name":"Raph",
-        "level":"novice"
+        "name":"raph",
+        "level":"novice", 
+        "genre":"homme",
+        "url":"../../assets/chef.jpg"
     },
     {
         "id":2,
-        "name":"Juliette",
-        "level":"expert"
+        "name":"juliette",
+        "level":"expert", 
+        "genre":"femme",
+        "url":"../../assets/cheffe.jpg"
     },
     {
         "id":3,
-        "name":"Eva",
-        "level":"novice"
+        "name":"eva",
+        "level":"novice", 
+        "genre":"femme",
+        "url":"../../assets/cheffe.jpg"
     }
     ]
 }

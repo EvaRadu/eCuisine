@@ -14,7 +14,9 @@ export class Task {
     recipe : Recipe;  // recipe of the order
     chef: Chef;  // chef assign to the order
     subtasks: Subtask[];
-    pressingNumber: number;
+    pressingNumber: number; // to remove 
+    destroy: boolean = false; 
+    completedTime: number; // heure à laquelle la commande est terminée
 
     constructor(id: number, name: string, completed: boolean, color: ThemePalette, recipe: Recipe, chef: Chef) {
       this.recipe = recipe;
@@ -22,7 +24,7 @@ export class Task {
       this.name = name;
       this.orderTime = Date.now();
       this.endTime = this.orderTime+this.recipe.preparationTime;
-      this.completed = completed;
+      this.completed = false;
       this.color = color;
       this.chef = chef;
       this.subtasks = new Array();
@@ -30,6 +32,7 @@ export class Task {
         this.subtasks.push(new Subtask(false, recipe.stepList[i]));
       }
       this.pressingNumber = 70;
+      this.completedTime = 0;
     }
 }
 
