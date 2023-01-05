@@ -28,5 +28,10 @@
     <app-card-cluster class="card" (click)="clickCluster('Grey')" [numberOfCommand]="numberOfType('Grey')" [typeCluster]="'Grey'" [nameCluster]="'TERMINEES'"></app-card-cluster>
     </mat-grid-tile>
 
+    <mat-grid-tile *ngIf="doCluster('Commande') && mode=='tablet'" [colspan]="1"
+                   [rowspan]="1">
+      <app-card-cluster class="card" (click)="clickCluster('Commande')" [numberOfCommand]="numberOfType('Commande')" [typeCluster]="'Commande'" [nameCluster]="'EN COURS'"></app-card-cluster>
+    </mat-grid-tile>
+
     </mat-grid-list>
 </div>

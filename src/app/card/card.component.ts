@@ -32,9 +32,9 @@ export class CardComponent{
   getColor() {
       var dateSoustraction = this.task.completed ? this.task.completedTime : Date.now();
       if(this.task.completed){
-        if (Math.abs(this.task.endTime - dateSoustraction) < 5000){
+        if (Math.abs(this.task.orderTime - dateSoustraction) < 5000){
           return "Green" // GREEN
-        } else if (( Math.abs(this.task.endTime - dateSoustraction) > 5000) &&  Math.abs(this.task.endTime - dateSoustraction) < 10000) {
+        } else if (( Math.abs(this.task.orderTime - dateSoustraction) > 5000) &&  Math.abs(this.task.orderTime - dateSoustraction) < 10000) {
           return "Yellow" // YELLOW
         } else {
         return "Red"  // RED
