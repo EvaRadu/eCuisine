@@ -4,6 +4,7 @@ import  { changeType, Task } from '../task';
 import { Recipe } from '../recipe';
 import { tasks, recipes, chefs} from '../app.component';
 import { SocketService } from '../services/socket.service';
+import { Chef } from '../chef';
 
 //@ViewChild('myToolbar') myToolbar : ElementRef;
 
@@ -26,14 +27,13 @@ constructor(private socketService: SocketService){}
 @Output() messageEvent = new EventEmitter<string>();
   @Input() mode !: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
   @Input() profile !: string; 
+  chef !: Chef;
 
   // get the new time every second and put it into the variable dateTime 
   ngOnInit(): void {
-  
-    
-  
     setInterval(() => {this.dateTime = new Date();  
     }, 1000)
+    this.chef = chefs.find(x => x.id == Number(this.profile));
   };
 
   changeModeUser(val) {
