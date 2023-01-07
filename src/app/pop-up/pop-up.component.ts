@@ -1,6 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { cilThumbDown } from '@coreui/icons';
+import { Chef } from '../chef';
+
+
 
 
 @Component({
@@ -8,11 +11,19 @@ import { cilThumbDown } from '@coreui/icons';
   templateUrl: './pop-up.component.html',
   styleUrls: ['./pop-up.component.scss']
 })
-export class PopUpComponent {
+export class PopUpComponent implements OnDestroy {
 
-  name: string;
+  test !: boolean;
+  chef : Chef;
+  name : string;
   constructor(@Inject(MAT_DIALOG_DATA) public data) { 
-    this.name = data.name;
+    this.chef = data.chef;
+  }
+
+  ngOnDestroy(): void {
+    console.log("destroy");
+    console.log(this.test);
+    console.log(this.chef.genre);
   }
 
 }

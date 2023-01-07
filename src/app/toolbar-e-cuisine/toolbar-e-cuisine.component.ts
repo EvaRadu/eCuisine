@@ -32,7 +32,7 @@ status = 'Enable'
 
   openDialog() {
    this.dialogRef.open(PopUpComponent, 
-    {data : { name: "test"}}
+    {data : { chef : this.chef}}
     );
   }
   

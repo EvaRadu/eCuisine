@@ -1,4 +1,15 @@
-<p>{{this.name}}</p>
-<button>
-    ❌
-</button>
+<h2>{{this.chef.name}}</h2>
+
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Genre</mat-label>
+    <mat-select>
+      <mat-option value="chef.genre">homme</mat-option>
+      <mat-option value="chef.genre">femme</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+<button mat-button [mat-dialog-close]="test" cdkFocusInitial>❌</button>
+</div>

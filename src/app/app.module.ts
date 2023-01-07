@@ -29,6 +29,9 @@ import { TeamComponent } from './team/team.component'
 import { AvatarModule } from '@coreui/angular';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -63,7 +66,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatProgressBarModule,
     MatIconModule,
     AvatarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule
     ],
   providers: [  ],
   bootstrap: [AppComponent]
