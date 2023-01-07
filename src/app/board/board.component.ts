@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { tasks , recipes, chefs} from '../app.component'
 import { Task } from '../task';
 
@@ -17,6 +17,7 @@ export class BoardComponent {
   borne = 0;
   borneSuperieur = 5000;
   tasks = tasks;
+  //@Output() tasks;
 
   @Input() mode !: string;
   //@Input() profile !: string;

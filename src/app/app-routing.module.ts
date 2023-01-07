@@ -6,7 +6,7 @@ import { TeamComponent } from './team/team.component';
 import { TvComponent } from './tv/tv.component';
 
 const routes: Routes = [
-  //{ path: 'tablet', component: TabletComponent },
+  { path: 'tablet', component: TabletComponent },
   { path: 'tv', component: TvComponent }
 ];
 

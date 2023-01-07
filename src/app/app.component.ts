@@ -4,8 +4,7 @@ import * as recipesJson from "./recipes.json";
 import * as chefsJson from "./chefs.json";
 import {Recipe} from "./recipe"; 
 import { Chef } from "./chef";
-import { HttpClient } from '@angular/common/http';
-import { json } from 'express';
+import { SocketService } from './services/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +15,24 @@ import { json } from 'express';
 export class AppComponent implements OnInit {
   title = 'ecuisine';
 
-  constructor(private http: HttpClient){}
+  constructor(private socketService: SocketService){}
 
   ngOnInit(): void {
-    this.http.get('http://localhost:5000/api/tasks').subscribe((data) =>{
-    tasks = JSON.parse(JSON.stringify(data)).datas.tasks;
-    console.log(tasks);
-    })
+ 
+    this.socketService.fetchTasks();
+
+    this.socketService.onFetchTasks().subscribe((data: any) => {
+      console.log("fetech datas")
+      console.log(data);
+      let theTasks = JSON.parse(JSON.stringify(data));
+      theTasks.forEach(t => {
+        tasks.push(t as Task);
+      })
+    });
   }
-}
+}   
 
 export let chefs : Chef[] = JSON.parse(JSON.stringify(chefsJson)).chefs;
 export let recipes: Recipe[]= JSON.parse(JSON.stringify(recipesJson)).recipes;
 export let tasks : Task[] = [];
+ 

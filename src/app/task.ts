@@ -14,7 +14,6 @@ export class Task {
     recipe : Recipe;  // recipe of the order
     chef: Chef;  // chef assign to the order
     subtasks: Subtask[];
-    pressingNumber: number; // to remove 
     destroy: boolean = false; 
     completedTime: number; // heure à laquelle la commande est terminée
 
@@ -31,10 +30,10 @@ export class Task {
       for (let i=0; i<recipe.stepList.length; i++){
         this.subtasks.push(new Subtask(false, recipe.stepList[i]));
       }
-      this.pressingNumber = 70;
       this.completedTime = 0;
     }
-}
+
+  }
 
 export let modeUser = 'novice';
 

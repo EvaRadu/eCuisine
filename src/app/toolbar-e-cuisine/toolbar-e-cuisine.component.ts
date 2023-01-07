@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import  { changeType, Task } from '../task';
 import { Recipe } from '../recipe';
 import { tasks, recipes, chefs} from '../app.component';
+import { SocketService } from '../services/socket.service';
 
 //@ViewChild('myToolbar') myToolbar : ElementRef;
 
@@ -19,12 +20,18 @@ dateTime: any;
 toogle = true;
 status = 'Enable'
 
+constructor(private socketService: SocketService){}
+
+
 @Output() messageEvent = new EventEmitter<string>();
   @Input() mode !: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
   @Input() profile !: string; 
 
   // get the new time every second and put it into the variable dateTime 
   ngOnInit(): void {
+  
+    
+  
     setInterval(() => {this.dateTime = new Date();  
     }, 1000)
   };
@@ -47,7 +54,9 @@ status = 'Enable'
 
     // ajouter la tache dans la liste des taches
     tasks.push(task);
-    console.log(tasks);
+
+    this.socketService.updateTasks();
+
   }
   
 }

@@ -6,7 +6,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ToolbarECuisineComponent } from './toolbar-e-cuisine/toolbar-e-cuisine.component';
@@ -30,7 +29,7 @@ import { AvatarModule } from '@coreui/angular';
 
 
 const config: SocketIoConfig = {
-  url: '',
+  url: 'http://localhost:3000',
   options: {
     transports: ['websocket']
   }
