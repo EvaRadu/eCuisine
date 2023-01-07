@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     this.socketService.fetchTasks();
 
     this.socketService.onFetchTasks().subscribe((data: any) => {
-      console.log("fetech datas")
+      console.log("fetch datas")
       console.log(data);
       let theTasks = JSON.parse(JSON.stringify(data));
       theTasks.forEach(t => {

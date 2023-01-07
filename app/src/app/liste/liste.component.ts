@@ -7,6 +7,7 @@ import { Task } from '../task'
 import { Chef } from '../chef'
 import { tasks, recipes, chefs} from '../app.component'
 import { Output, EventEmitter } from '@angular/core';
+import { SocketService } from '../services/socket.service';
 
 
 
@@ -30,6 +31,10 @@ export class ListeComponent {
 
   checked: boolean;
 
+  constructor(private socketService: SocketService){
+
+  } 
+
   send() {
     console.log("send");
     this.task.completedTime = Date.now();
@@ -46,6 +51,7 @@ export class ListeComponent {
 
   ngOnChanges(): void {
     this.updateAllComplete();
+    this.socketService.updateTasks();
   }
 
   allComplete: boolean = false;
@@ -58,6 +64,7 @@ export class ListeComponent {
       return;
     }
     this.percentage = this.task.subtasks.filter(t => t.completed).length / this.task.subtasks.length;
+    this.socketService.updateTasks();
   }
 
   updateAllComplete() {
@@ -68,6 +75,7 @@ export class ListeComponent {
       this.task.destroy = this.task.completed;
       this.updatePercentage();
     },250);
+    this.socketService.updateTasks();
   }
 
   someComplete(): boolean {
@@ -75,6 +83,7 @@ export class ListeComponent {
     if (this.task.subtasks == null) {
       return false;
     }
+    this.socketService.updateTasks();
     return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
   }
 
@@ -86,6 +95,7 @@ export class ListeComponent {
       return;
     }
     this.task.subtasks.forEach(t => (t.completed = completed));
+    this.socketService.updateTasks();
   }
 
 }
