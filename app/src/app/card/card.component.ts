@@ -30,6 +30,11 @@ export class CardComponent{
     this.task.destroy = bool;
   }
 
+  pinChecked(){
+    this.task.pinned = !this.task.pinned;
+    this.pinned = !this.pinned;
+  }
+
   getColor() {
       var dateSoustraction = this.task.completed ? this.task.completedTime : Date.now();
       if(this.task.completed){

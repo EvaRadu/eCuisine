@@ -28,6 +28,9 @@ export class BoardComponent implements OnInit {
   };
 
   notClusterize(task: Task) {
+    if (task.pinned) { 
+      return true; 
+    }
     this.determineBorne(this.notCluster)
     if (task.destroy == true && this.borne == -1) {
       return true;
