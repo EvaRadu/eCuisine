@@ -72,8 +72,8 @@ export class ListeComponent {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
     this.checked = this.allComplete;
     this.task.completed = this.allComplete;
+    if(this.task.completed) {this.task.completedTime = Date.now()}
     setTimeout(()=> {
-      if(this.task.completed) {this.task.completedTime = Date.now()}
       this.task.destroy = this.task.completed;
       this.updatePercentage();
     },250);
