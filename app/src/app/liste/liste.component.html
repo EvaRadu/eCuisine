@@ -14,7 +14,8 @@
       <div class="recette" id="scrollbar">
         <li *ngFor="let subtask of task.subtasks">
           <mat-checkbox  [(ngModel)]="subtask.completed"
-                        (ngModelChange)="updateAllComplete()">
+                          (ngModelChange)="updateAllComplete()"
+                        (click)="subtaskCheck()">
             {{subtask.name}}
           </mat-checkbox>
         </li>
