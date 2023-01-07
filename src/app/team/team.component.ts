@@ -16,7 +16,7 @@ export class TeamComponent {
   constructor(private router: Router) { }
 
   redirection(url: number) {
-    this.router.navigateByUrl("tablet/myProfile/chef"+url);
+    this.router.navigateByUrl("tablet/myProfile/"+url);
   }
 
 }
