@@ -12,7 +12,7 @@ import { Task } from '../task';
 export class BoardComponent {
   @Input() clusterize = true;
   breakpoint = 5;
-  @Input() notCluster = "Red"
+  @Input() notCluster = "Commande"
   @Input() notEmptyCard = true;
   borne = 0;
   borneSuperieur = 5000;
@@ -78,7 +78,9 @@ export class BoardComponent {
   }
 
   doCluster(typeCluster: string) {
-    return this.notCluster != typeCluster && this.clusterize
+    return (this.notCluster != typeCluster && this.clusterize && typeCluster != "Commande")
+      || (typeCluster === "Grey" && this.notCluster != typeCluster)
+      || (typeCluster === "Commande" && this.clusterize == false && this.notCluster === "Grey")
   }
 
   numberOfType(typeCluster: string) {
