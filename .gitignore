@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+.angular 
+/node_modules
+
 # Compiled output
 /app/dist
 /app/tmp

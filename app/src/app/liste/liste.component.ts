@@ -52,6 +52,7 @@ export class ListeComponent {
   ngOnChanges(): void {
     this.updateAllComplete();
     this.socketService.updateTasks();
+    this.updatePercentage();
   }
 
   allComplete: boolean = false;
