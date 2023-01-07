@@ -3,6 +3,9 @@ import { DatePipe } from '@angular/common';
 import  { changeType, Task } from '../task';
 import { Recipe } from '../recipe';
 import { tasks, recipes, chefs} from '../app.component';
+import { Chef } from '../chef';
+import {MatDialog} from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 //@ViewChild('myToolbar') myToolbar : ElementRef;
 
@@ -21,12 +24,23 @@ status = 'Enable'
 
 @Output() messageEvent = new EventEmitter<string>();
   @Input() mode !: string;  // to know if the user is on the tablet or tv mode (to display the left buttons or not)
-  @Input() profile !: string; 
+  @Input() profile !: string; //id
+  chef !: Chef;
 
+  constructor(private dialogRef : MatDialog) {
+  }
+
+  openDialog() {
+   this.dialogRef.open(PopUpComponent, 
+    {data : { name: "test"}}
+    );
+  }
+  
   // get the new time every second and put it into the variable dateTime 
   ngOnInit(): void {
     setInterval(() => {this.dateTime = new Date();  
     }, 1000)
+    this.chef = chefs.find(chef => chef.id == Number(this.profile));
   };
 
   changeModeUser(val) {

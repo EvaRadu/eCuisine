@@ -14,7 +14,7 @@
         </mat-button-toggle-group>
         -->
         <span class="example-spacer"></span>
-        <span *ngIf="mode == 'tablet'"> {{this.profile | titlecase}} </span>
+        <span *ngIf="mode == 'tablet'"> {{this.chef.name | titlecase}} </span>
         <span *ngIf="mode == 'tv'"> e-cuisine </span>
         <span class="example-spacer"></span>
 
@@ -25,6 +25,13 @@
         </div>
         <!-- button (click)="addTask()"> Ajouter une commande</button -->
         <span class="example-spacer"></span>
+
+        <button (click)="openDialog()">
+            ⚙️
+        </button>
+        
+        <span class="example-spacer"></span>
+
         <p>{{ dateTime | date:'hh:mm:ss'}}</p>
     </mat-toolbar-row>
 </mat-toolbar>

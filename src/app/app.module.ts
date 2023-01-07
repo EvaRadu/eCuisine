@@ -27,6 +27,8 @@ import {MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
 import { TeamComponent } from './team/team.component'
 import { AvatarModule } from '@coreui/angular';
+import { PopUpComponent } from './pop-up/pop-up.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -42,7 +44,8 @@ import { AvatarModule } from '@coreui/angular';
     TvComponent,
     TabletComponent,
     ProgressBarComponent,
-    TeamComponent
+    TeamComponent,
+    PopUpComponent
     ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { AvatarModule } from '@coreui/angular';
     ScrollingModule,
     MatProgressBarModule,
     MatIconModule,
-    AvatarModule
+    AvatarModule,
+    MatDialogModule
     ],
   providers: [  ],
   bootstrap: [AppComponent]
