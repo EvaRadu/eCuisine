@@ -47,7 +47,7 @@ constructor(private socketService: SocketService){}
     let rd = Math.floor(Math.random()*recipes.length)
     let recipe = recipes[rd];
     // prendre un chef au hasard
-    let chef = chefs[Math.floor(Math.random()*chefs.length)];
+    let chef = this.chef;//chefs[Math.floor(Math.random()*chefs.length)];
 
     // créer une tasks a partir de la recette
     let task = new Task(tasks.length+1, recipe.name, false, "primary", recipe, chef);
