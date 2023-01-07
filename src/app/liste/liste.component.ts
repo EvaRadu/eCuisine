@@ -60,6 +60,17 @@ export class ListeComponent {
     this.percentage = this.task.subtasks.filter(t => t.completed).length / this.task.subtasks.length;
   }
 
+  subtaskCheck() {
+    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+    this.checked = this.allComplete;
+    this.task.completed = this.allComplete;
+    setTimeout(()=> {
+      if(this.task.completed) {this.task.completedTime = Date.now()}
+      this.task.destroy = this.task.completed;
+      this.updatePercentage();
+    },250);
+  }
+
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
     this.checked = this.allComplete;
