@@ -18,6 +18,7 @@ export class TvComponent implements OnInit {
   isCluster = false;
   borne = 0
   borneSuperieur = 10000
+  currentScrollY = 0;
 
   checkScrollbar() {
     //const hasHorizontalScrollbar = window.innerWidth < document.body.scrollWidth;
@@ -91,9 +92,15 @@ export class TvComponent implements OnInit {
     }
   }
 
+
   ngOnInit() {
     setInterval(() => {
       this.checkScrollbar()
+      window.scrollBy(0, 50);
+      if(window.scrollY == this.currentScrollY) {
+        window.scrollTo(0, 0);
+      }
+      this.currentScrollY = window.scrollY;
     }, 1000);
   }
 }
