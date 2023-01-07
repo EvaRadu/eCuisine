@@ -11,7 +11,7 @@ import { Task } from '../task';
 
 export class BoardComponent implements OnInit {
   @Input() clusterize = true;
-  breakpoint = 5;
+  breakpoint = this.getCols();
   @Input() notCluster = "Commande"
   @Input() notEmptyCard = true;
   borne = 0;
@@ -62,6 +62,18 @@ export class BoardComponent implements OnInit {
   onResize(event) {
       this.breakpoint = this.notEmptyCard ? this.getCols() : 5;
   }
+
+  numberNotFinish() {
+    let nb = 0;
+    tasks.forEach(function(task) {
+      if(task.endTime != undefined) {
+        if(!task.completed) {
+          nb += 1;
+        }
+      }
+    })
+    return nb;
+  }  
 
   getCols() {
     if (window.innerWidth < 600) {
