@@ -16,8 +16,8 @@ export class BoardComponent {
   @Input() notEmptyCard = true;
   borne = 0;
   borneSuperieur = 5000;
-  //tasks = tasks;
-  @Input() tasks;
+  tasks = tasks;
+  //@Input() tasks;
 
   @Input() mode !: string;
   //@Input() profile !: string;
