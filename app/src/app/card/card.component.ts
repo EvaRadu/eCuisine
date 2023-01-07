@@ -19,6 +19,7 @@ export class CardComponent{
   @Input() mode !: string;
   @Input() notEmptyCard !: boolean;
   dateTime : number =  Date.now();
+  pinned : boolean = false;
 
   @Output() onChange = new EventEmitter<any>();
 
