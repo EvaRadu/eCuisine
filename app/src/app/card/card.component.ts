@@ -19,6 +19,7 @@ export class CardComponent{
   @Input() mode !: string;
   @Input() notEmptyCard !: boolean;
   dateTime : number =  Date.now();
+  pinned : boolean = false;
 
   @Output() onChange = new EventEmitter<any>();
 
@@ -27,6 +28,11 @@ export class CardComponent{
 
   receiveCheckValue(bool) {
     this.task.destroy = bool;
+  }
+
+  pinChecked(){
+    this.task.pinned = !this.task.pinned;
+    this.pinned = !this.pinned;
   }
 
   getColor() {

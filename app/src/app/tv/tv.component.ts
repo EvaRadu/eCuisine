@@ -18,13 +18,14 @@ export class TvComponent implements OnInit {
   isCluster = false;
   borne = 0
   borneSuperieur = 10000
+  currentScrollY = 0;
 
   checkScrollbar() {
     //const hasHorizontalScrollbar = window.innerWidth < document.body.scrollWidth;
     if(this.numberNotFinish() > this.getCols() * 2 && (this.numberOfType("Red") > 0 || this.numberOfType("Yellow") > 0)) {
       this.clusterizeBis = true;
       if(this.isCluster == false) {
-        this.notClusterBis = this.numberOfType("Red") > 0 ? "Red" : "Yellow"
+      this.notClusterBis = this.numberOfType("Red") > 0 ? "Red" : "Yellow"
       }
       this.isCluster = true;
     } else {
@@ -91,9 +92,15 @@ export class TvComponent implements OnInit {
     }
   }
 
+
   ngOnInit() {
     setInterval(() => {
       this.checkScrollbar()
+      window.scrollBy(0, 50);
+      if(window.scrollY == this.currentScrollY) {
+        window.scrollTo(0, 0);
+      }
+      this.currentScrollY = window.scrollY;
     }, 1000);
   }
 }

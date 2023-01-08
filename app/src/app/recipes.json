@@ -7,23 +7,121 @@
         "Dans un mortier, pilez le basilic avec l'ail et les pignons jusqu'à obtention d'une crème lisse.",
         "Mettez la préparation dans un bol, puis ajouter l'huile peu à peu en fouettant.",
         "Rajoutez les fromage râpés, assaisonner et mélangez.",
-        "Egouttez les pâtes, mélangez-les au pesto et servez."]
+        "Egouttez les pâtes, mélangez-les au pesto et servez."
+        ]
     },
     {
         "id":1,
         "name": "Salade César",
-        "preparationTime":1000,
-        "stepList":["Lavez la salade.",
-        "Faîtes cuire le poulet.",
-        "Mélangez."]
+        "preparationTime":2000,
+        "stepList":["Faites dorer le pain, coupé en cubes, 3 min dans un peu d'huile.",
+        "Déchirez les feuilles de romaine dans un saladier, et ajoutez les croûtons préalablement épongés dans du papier absorbant.",
+        "Préparez la sauce : Faites cuire l'oeuf 1 min 30 dans l'eau bouillante, et rafraîchissez-le.",
+        "Cassez-le dans le bol d'un mixeur et mixez, avec tous les autres ingrédients; rectifiez l'assaissonnement et incorporez à la salade.",
+        "Décorez de copeaux de parmesan, et servez."
+        ]
     },
     {
         "id":2,
         "name": "Fondant au chocolat",
-        "preparationTime":0,
-        "stepList":["Faîtes fondre le chocolat.",
-        "Enfournez le tout.",
-        "Ajoutez une de la chantilly."]
-    }]
+        "preparationTime":3000,
+        "stepList":["Préchauffer le four à 180°C (thermostat 6). Faire fondre le chocolat et le beurre au bain-marie à feu doux.",
+        "Pendant ce temps, séparer les jaunes des blancs d'oeuf.        ",
+        "Monter les blancs en neige ferme. Réserver",
+        "Quand le mélange chocolat-beurre est bien fondu, ajouter les jaunes d’oeufs et fouetter.",
+        "Incorporer le sucre et la farine, puis ajouter les blancs d’oeufs sans les casser.",
+        "Beurrer et fariner un moule à manqué et y verser la pâte à gâteau.",
+        "Enfourner pendant 20 minutes.", 
+        "Quand le gâteau est cuit, le laisser refroidir avant de le démouler."
+        ]
+    },
+    {
+        "id":3,
+        "name": "Risotto aux truffes",
+        "preparationTime":2000,
+        "stepList":["Epluchez les échalotes et hachez-les finement.",
+        "Dans une casserole, faites mousser le beurre et faites-y suer les échalotes jusqu'à ce qu'elles deviennent translucides.",
+        "Versez un peu de vin et portez à ébullition.",
+        "Ajoutez le riz et sans cesser de tourner, laissez bouillir pendant 2 minutes.",
+        "Versez le reste du vin et un peu de fond de volaille et laissez cuire à petits bouillons jusqu'à absorption du bouillon.",
+        "Versez encore du fond de volaille et remuez fréquemment jusqu’à complète absorption. Continuez jusqu'à ce que le riz soit cuit (15 à 20 minutes).",
+        "Ajoutez la crème et 50 g de parmesan râpé dans le risotto cuit et mélangez bien.",
+        "Salez et poivrez et répartissez dans des assiettes tièdes.",
+        "Nettoyez délicatement les truffes et râpez-les directement sur le risotto ainsi que le reste du parmesan."
+        ]
+    },
+    {
+        "id":4,
+        "name": "Tataki de thon",
+        "preparationTime":4000,
+        "stepList":["Détailler le thon en tranches épaisses.",
+        "Mélanger tous les ingrédients de la marinade à l'exception des graines de sésame.",
+        "Plonger le thon dans la marinade et le retourner de sorte à ce qu'il soit bien nappé.",
+        "Laisser mariner 1h au frais.",
+        "Sortir les tranches de thon de la marinade et les rouler dans les graines de sésame.",
+        "Dans une poêle bien chaude avec un peu d'huile saisir le thon très rapidement sur chaque face. Il doit rester cru à l'intérieur.",
+        "Redétailler le thon en tranches plus fines avant de le servir accompagner de wasabi, de sauce soja et de gingembre mariné par exemple. Vous pouvez également le servir accompagné de la marinade."
+        ]
+    },
+    {
+        "id":5,
+        "name": "Tartare de saumon",
+        "preparationTime":2000,
+        "stepList":[ "Enlever la peau du filet de saumon, et le passer sous l'eau pour enlever d'éventuelles écailles.",
+        "Peler un oignon et le hacher finement au mixer.",
+        "Couper le filet en six morceaux et les passer au mixer avec les oignons, 2 cuillères à soupe d'huile d'olive, deux pincée de sel, un tour du moulin à poivre, et deux cuillères à café de jus de citron. Ne pas trop mouliner le saumon afin d'obtenir une structure pas trop fine.",
+        "Placer la préparation dans un saladier, couvrir et mettre au frigo pendant 2 heures."
+        ]
+    },
+    {
+        "id":6,
+        "name": "Blanquette de veau",
+        "preparationTime":2000,
+        "stepList":[ "Faire revenir la viande dans un peu de beurre doux jusqu'à ce que les morceaux soient un peu dorés.",
+        "Saupoudrer de 2 cuillères de farine. Bien remuer.",
+        "Ajouter 2 ou 3 verres d'eau, les cubes de bouillon, le vin et remuer. Ajouter de l'eau si nécessaire pour couvrir.",
+        "Couper les carottes en rondelles et émincer les oignons puis les incorporer à la viande, ainsi que les champignons.",
+        "Laisser mijoter à feu très doux environ 1h30 à 2h00 en remuant.",
+        "Si nécessaire, ajouter de l'eau de temps en temps.",
+        "Dans un bol, bien mélanger la crème fraîche, le jaune d’oeuf et le jus de citron. Ajouter ce mélange au dernier moment, bien remuer et servir tout de suite."
+        ]
+    },
+    {
+        "id":7,
+        "name": "Pavlova",
+        "preparationTime":5000,
+        "stepList":["Battre les blancs en neige très ferme. Ajouter le sucre peu a peu. Battre encore. Ajouter le vinaigre et la Maizena. Battre encore. Le mélange doit etre tres ferme et brillant.",
+        "Mettre sur une plaque très très légèrement huilée. On doit le mettre en forme de cercle assez haut (8 à 10cm).",
+        "Cuire au Four à 130°C pendant 1h15.",
+        "Laisser refroidir. Mettre au frigo. Une heure avant de servir, monter la crème en chantilly en ajoutant le sucre glace, répartir sur la meringue et disposez les fruits par-dessus."
+        ]
+    },
+    {
+        "id":8,
+        "name": "Tiramisu",
+        "preparationTime":4000,
+        "stepList":["Séparer les blancs des jaunes d'oeufs.",
+        "Mélanger les jaunes avec le sucre roux et le sucre vanillé.",
+        "Ajouter le mascarpone au fouet.",
+        "Monter les blancs en neige et les incorporer délicatement à la spatule au mélange précédent. Réserver.",
+        "Mouiller les biscuits dans le café rapidement avant d'en tapisser le fond du plat.",
+        "Recouvrir d'une couche de crème au mascarpone puis répéter l'opération en alternant couche de biscuits et couche de crème en terminant par cette dernière.",
+        "Saupoudrer de cacao.",
+        "Mettre au réfrigérateur 4 heures minimum puis déguster frais."
+        ]
+    },
+    {
+        "id":9,
+        "name": "Salade caprese",
+        "preparationTime":4000,
+        "stepList":["Laver les tomates et les couper en fines tranches.",
+        "Trancher la mozzarella en rondelles.",
+        "Disposer les tomates et la mozzarella dans un plat de service.",
+        "Verser le vinaigre et l’huile en fin filet.",
+        "Saler et poivrer.",
+        "Laver les feuilles de basilic et les disperser sur la salade."
+        ]
+    }
+]
 
 }

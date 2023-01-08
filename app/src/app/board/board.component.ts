@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, Output, ViewChild, OnInit} from '@angular/core';
 import { tasks , recipes, chefs} from '../app.component'
 import { Task } from '../task';
 
@@ -9,21 +9,31 @@ import { Task } from '../task';
   styleUrls: ['./board.component.scss']
 })
 
-export class BoardComponent {
+export class BoardComponent implements OnInit {
   @Input() clusterize = true;
-  breakpoint = 5;
+  breakpoint = this.getCols();
   @Input() notCluster = "Commande"
   @Input() notEmptyCard = true;
   borne = 0;
   borneSuperieur = 5000;
   tasks = tasks;
+  @Input() profile !: string;
   //@Input() tasks;
-
+  id !: number;
   @Input() mode !: string;
-  //@Input() profile !: string;
 
+
+  ngOnInit(): void {
+    this.id = Number(this.profile);
+  };
 
   notClusterize(task: Task) {
+    if (task.pinned && this.notEmptyCard) {
+      return true;
+    }
+    if (task.pinned && !this.notEmptyCard) {
+      return false;
+    }
     this.determineBorne(this.notCluster)
     if (task.destroy == true && this.borne == -1) {
       return true;
@@ -59,6 +69,18 @@ export class BoardComponent {
       this.breakpoint = this.notEmptyCard ? this.getCols() : 5;
   }
 
+  numberNotFinish() {
+    let nb = 0;
+    tasks.forEach(function(task) {
+      if(task.endTime != undefined) {
+        if(!task.completed) {
+          nb += 1;
+        }
+      }
+    })
+    return nb;
+  }
+
   getCols() {
     if (window.innerWidth < 600) {
       return 1;
@@ -89,7 +111,7 @@ export class BoardComponent {
     let borneSuperieur = this.borneSuperieur;
     let nb = 0;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined && task.destroy == false) {
+      if(task.endTime != undefined && task.destroy == false && !task.pinned) {
         if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }
