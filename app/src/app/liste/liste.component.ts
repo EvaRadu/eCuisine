@@ -37,12 +37,24 @@ export class ListeComponent {
   } 
 
   send() {
-    this.task.completedTime = Date.now();
-    this.task.pinned = false;
+    if (this.task.completed == true){
+      this.task.completedTime = Date.now();
+      this.task.pinned = false;
+      this.task.completed = true;
+      this.task.destroy = true;
+      setTimeout(()=> {
+        this.checkerEvent.emit(this.checked && this.allComplete);
+        },250);
+    }
+    else{
+      this.task.completedTime = 0;
+      this.task.completed = false;
+      this.task.destroy = false;
+      setTimeout(()=> {
+        this.checkerEvent.emit(this.checked && this.allComplete);
+        },250);
+    }
     this.socketService.updateTasks();
-    setTimeout(()=> {
-    this.checkerEvent.emit(this.checked && this.allComplete);
-    },250);
   }
 
   ngOnInit(): void {
@@ -51,7 +63,6 @@ export class ListeComponent {
 
   ngOnChanges(): void {
     this.updateAllComplete();
-    //this.socketService.updateTasks();
     this.updatePercentage();
   }
 
@@ -68,15 +79,19 @@ export class ListeComponent {
   }
 
   subtaskCheck() {
-    this.socketService.updateTasks();
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
     this.checked = this.allComplete;
     this.task.completed = this.allComplete;
-    if(this.task.completed) {this.task.completedTime = Date.now()}
+    if(this.task.completed) {
+      this.task.pinned = false
+      this.task.completedTime = Date.now();
+    }
     setTimeout(()=> {
       this.task.destroy = this.task.completed;
       this.updatePercentage();
     },250);
+    this.socketService.updateTasks();
+
   }
 
   updateAllComplete() {
@@ -87,7 +102,6 @@ export class ListeComponent {
       this.task.destroy = this.task.completed;
       this.updatePercentage();
     },250);
-    //this.socketService.updateTasks();
   }
 
   someComplete(): boolean {

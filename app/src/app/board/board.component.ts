@@ -131,11 +131,9 @@ constructor(private socketService: SocketService){
     this.determineBorne(typeCluster)
     let borneInferieur = this.borne;
     let borneSuperieur = this.borneSuperieur;
-    let id = this.id
-    let mode = this.mode
     let nb = 0;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined && task.destroy == false && !task.pinned && (task.chef.id == id || mode =="tv")) {
+      if(task.endTime != undefined && task.destroy == false && !task.pinned) {
         if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }

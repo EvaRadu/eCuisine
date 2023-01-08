@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
       theTasks.forEach(t => {
         tasks.push(t as Task);
       })
+      console.log("ngOnInit app.component")
       console.log(tasks);
     });
   }
