@@ -21,8 +21,11 @@ module.exports = (io) => {
 		
         socket.on('udpateTasks', (data) => {
             console.log('updateTasks')
+            console.log(data);
             tasks.tasks.datas.tasks = data
             //socket.emit('fetchedTasks', tasks.tasks.datas.tasks);
+            console.log(tasks.tasks.datas.tasks);
+
             for (let [key, value] of io.sockets.sockets){
                 console.log("send to "+key);
                 value.emit('fetchedTasks',tasks.tasks.datas.tasks);

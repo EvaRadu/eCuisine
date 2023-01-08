@@ -4,7 +4,7 @@ import { modeUser } from '../task';
 import { Task } from '../task';
 import { recipes, tasks, chefs } from '../app.component';
 import {MatIconModule} from '@angular/material/icon'
-
+import { SocketService } from '../services/socket.service';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -26,11 +26,17 @@ export class CardComponent{
   //intervalColor = setInterval(this.getColor, 10000);
   //intervalDestroy = setInterval(this.destroy, 10000);
 
+  constructor(private socketService: SocketService){
+
+  }
+
   ngOnChange(): void{
     this.pinned = this.task.pinned;
     if(this.task.completed){
       this.pinned = false;
       this.task.pinned = false;
+      this.socketService.updateTasks();
+
     }
   }
 
@@ -47,6 +53,7 @@ export class CardComponent{
       this.task.pinned = !this.task.pinned;
       this.pinned = !this.pinned;
     }
+    this.socketService.updateTasks();
   }
 
   getColor() {
