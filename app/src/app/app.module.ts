@@ -27,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { TeamComponent } from './team/team.component'
 import { AvatarModule } from '@coreui/angular';
 import { CommandsComponent } from './commands/commands.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 const config: SocketIoConfig = {
@@ -47,7 +48,8 @@ const config: SocketIoConfig = {
     TabletComponent,
     ProgressBarComponent,
     TeamComponent,
-    CommandsComponent
+    CommandsComponent,
+    MenuComponent
     ],
   imports: [
     BrowserModule,

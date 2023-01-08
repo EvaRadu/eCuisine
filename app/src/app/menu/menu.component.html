@@ -1,0 +1,29 @@
+<app-toolbar-e-cuisine mode='menu'></app-toolbar-e-cuisine>
+
+<h1 class="header">Veuillez choisir un mode : </h1>
+
+<div class="center">
+    <ng-container>
+        <button class="myButton" (click)="redirectionTV()"  size="sm" >
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Télévision</mat-card-title>
+                  </mat-card-header>
+              
+            </mat-card>  
+        </button>
+        <br>
+        <br>
+    </ng-container>
+    <ng-container>
+        <button class="myButton" (click)="redirectionTablet()"  size="sm" >
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Tablette</mat-card-title>
+                  </mat-card-header>
+              
+            </mat-card>  
+        </button>
+    </ng-container>
+
+</div>
