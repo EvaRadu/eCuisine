@@ -12,6 +12,7 @@
       <mat-card-subtitle class="text"><b>{{task.recipe.name}} {{type}} </b></mat-card-subtitle>
       <mat-card-subtitle *ngIf="!task.completed" class="text"><b>Fin prévue : </b> {{task.endTime | date:'hh:mm:ss'}}</mat-card-subtitle>
       <mat-card-subtitle *ngIf="task.completed" class="text"><b>Terminée à : </b> {{task.completedTime  | date:'hh:mm:ss'}}</mat-card-subtitle>
+      
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Cuisinier : </b> {{task.chef.name | titlecase}} </mat-card-subtitle>
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Niveau : </b> {{task.chef.level}} </mat-card-subtitle>
 
@@ -23,7 +24,7 @@
 
       [ngStyle]="{background: (mode=='tablet')  ? getContentColor() : ''}">
         <div class="listeDiv">
-          <liste class="liste" [typeAffichage]="(mode == 'tablet' && novice()) || (mode == 'tv' && task.chef.level == 'novice')"   (checkerEvent)=receiveCheckValue($event) [task]=task [mode]=mode> </liste></div>
+          <liste class="liste" [typeAffichage]="(mode == 'tablet' && novice()) || (mode == 'tv' && !novice())" [typeUser]="task.chef.level"  (checkerEvent)=receiveCheckValue($event) [task]=task [mode]=mode> </liste></div>
       </mat-card-content>
 
   </mat-card>

@@ -22,6 +22,7 @@ import { SocketService } from '../services/socket.service';
 export class ListeComponent {
   @Input() task !: Task;
   @Input() mode !: string;
+  @Input() typeUser !: string;
 
   @Input() typeAffichage !: boolean;
 
@@ -46,7 +47,6 @@ export class ListeComponent {
 
   ngOnInit(): void {
     this.checked = this.task.completed;
-
   }
 
   ngOnChanges(): void {
