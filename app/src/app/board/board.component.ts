@@ -1,5 +1,6 @@
 import { Component, HostListener, Input, Output, ViewChild, OnInit} from '@angular/core';
 import { tasks , recipes, chefs} from '../app.component'
+import { SocketService } from '../services/socket.service';
 import { Task } from '../task';
 
 
@@ -21,6 +22,12 @@ export class BoardComponent implements OnInit {
   //@Input() tasks;
   id !: number;
   @Input() mode !: string;
+
+
+constructor(private socketService: SocketService){
+
+}
+
 
 
   ngOnInit(): void {
@@ -124,3 +131,5 @@ export class BoardComponent implements OnInit {
   }
 
 }
+
+export let board : BoardComponent = this;
