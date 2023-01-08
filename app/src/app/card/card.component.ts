@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, ComponentRef,HostListener, ElementRef , Renderer2, OnDestroy } from '@angular/core';
 import { Output } from '@angular/core';
-import { modeUser } from '../task';
+import { borneInferieurRed, borneInferieurYellow, modeUser } from '../task';
 import { Task } from '../task';
 import { recipes, tasks, chefs } from '../app.component';
 import {MatIconModule} from '@angular/material/icon'
@@ -59,18 +59,18 @@ export class CardComponent{
   getColor() {
       var dateSoustraction = this.task.completed ? this.task.completedTime : Date.now();
       if(this.task.completed){
-        if (Math.abs(this.task.orderTime - dateSoustraction) < 5000){
+        if (Math.abs(this.task.orderTime - dateSoustraction) < borneInferieurYellow){
           return "Green" // GREEN
-        } else if (( Math.abs(this.task.orderTime - dateSoustraction) > 5000) &&  Math.abs(this.task.orderTime - dateSoustraction) < 10000) {
+        } else if (( Math.abs(this.task.orderTime - dateSoustraction) > borneInferieurYellow) &&  Math.abs(this.task.orderTime - dateSoustraction) < borneInferieurRed) {
           return "Yellow" // YELLOW
         } else {
         return "Red"  // RED
         }
       }
       else{
-      if (Math.abs(this.task.endTime - dateSoustraction) < 5000){
+      if (Math.abs(this.task.endTime - dateSoustraction) < borneInferieurYellow){
         return "Green" // GREEN
-      } else if (( Math.abs(this.task.endTime - dateSoustraction) > 5000) &&  Math.abs(this.task.endTime - dateSoustraction) < 10000) {
+      } else if (( Math.abs(this.task.endTime - dateSoustraction) > borneInferieurYellow) &&  Math.abs(this.task.endTime - dateSoustraction) < borneInferieurRed) {
         return "Yellow" // YELLOW
       } else {
       return "Red"  // RED
@@ -81,18 +81,18 @@ export class CardComponent{
   getContentColor() {
     var dateSoustraction = this.task.completed ? this.task.completedTime : Date.now();
     if(this.task.completed){
-      if (Math.abs(this.task.orderTime - dateSoustraction) < 5000){
+      if (Math.abs(this.task.orderTime - dateSoustraction) < borneInferieurYellow){
         return "#50b36b" // GREEN
-      } else if (( Math.abs(this.task.orderTime - dateSoustraction) > 5000) &&  Math.abs(this.task.orderTime - dateSoustraction) < 10000) {
+      } else if (( Math.abs(this.task.orderTime - dateSoustraction) > borneInferieurYellow) &&  Math.abs(this.task.orderTime - dateSoustraction) < borneInferieurRed) {
         return "#f7ec88" // YELLOW
       } else {
       return "#d66e67"  // RED
       }
     }
     else{
-    if (Math.abs(this.task.endTime - dateSoustraction) < 5000){
+    if (Math.abs(this.task.endTime - dateSoustraction) < borneInferieurYellow){
       return "#50b36b" // GREEN
-    } else if (( Math.abs(this.task.endTime - dateSoustraction) > 5000) &&  Math.abs(this.task.endTime - dateSoustraction) < 10000) {
+    } else if (( Math.abs(this.task.endTime - dateSoustraction) > borneInferieurYellow) &&  Math.abs(this.task.endTime - dateSoustraction) < borneInferieurRed) {
       return "#f7ec88" // YELLOW
     } else {
     return "#d66e67"  // RED

@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import { tasks, recipes } from '../app.component';
+import {borneInferieurRed, borneInferieurYellow} from '../task';
 
 @Component({
   selector: 'app-tablet',
@@ -35,14 +36,14 @@ export class TabletComponent implements OnInit {
 
   determineBorne(typeCluster: string) {
     if(typeCluster == "Red") {
-      this.borne = 10000;
+      this.borne = borneInferieurRed;
       this.borneSuperieur = Number.MAX_VALUE;
     } else if(typeCluster == "Green") {
       this.borne = 0;
-      this.borneSuperieur = 5000;
+      this.borneSuperieur = borneInferieurYellow;
     } else if (typeCluster == "Yellow") {
-      this.borne = 5000;
-      this.borneSuperieur = 10000;
+      this.borne = borneInferieurYellow;
+      this.borneSuperieur = borneInferieurRed;
     } else {
       this.borne = 0;
       this.borneSuperieur = Number.MAX_VALUE;

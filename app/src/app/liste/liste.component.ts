@@ -38,19 +38,19 @@ export class ListeComponent {
 
   send() {
     if (this.task.completed == true){
-      this.task.completedTime = Date.now();
       this.task.pinned = false;
-      this.task.completed = true;
-      this.task.destroy = true;
+      this.task.completedTime = Date.now();
       setTimeout(()=> {
+        this.task.completed = true;
+        this.task.destroy = true;
         this.checkerEvent.emit(this.checked && this.allComplete);
         },250);
     }
     else{
-      this.task.completedTime = 0;
-      this.task.completed = false;
-      this.task.destroy = false;
       setTimeout(()=> {
+        this.task.completedTime = 0;
+        this.task.completed = false;
+        this.task.destroy = false;
         this.checkerEvent.emit(this.checked && this.allComplete);
         },250);
     }

@@ -2,6 +2,7 @@ import { Component, HostListener, Input, Output, ViewChild, OnInit} from '@angul
 import { tasks , recipes, chefs} from '../app.component'
 import { SocketService } from '../services/socket.service';
 import {modeUser, Task} from '../task';
+import {borneInferieurRed, borneInferieurYellow} from '../task';
 
 
 @Component({
@@ -66,22 +67,22 @@ constructor(private socketService: SocketService){
     return false;
   }
 
-
   determineBorne(typeCluster: string) {
     if(typeCluster == "Red") {
-      this.borne = 10000;
+      this.borne = borneInferieurRed;
       this.borneSuperieur = Number.MAX_VALUE;
     } else if(typeCluster == "Green") {
       this.borne = 0;
-      this.borneSuperieur = 5000;
+      this.borneSuperieur = borneInferieurYellow;
     } else if (typeCluster == "Yellow") {
-      this.borne = 5000;
-      this.borneSuperieur = 10000;
-    } else if( typeCluster == "Grey"){
+      this.borne = borneInferieurYellow;
+      this.borneSuperieur = borneInferieurRed;
+    } 
+    else if( typeCluster == "Grey"){
       this.borne = -1;
       this.borneSuperieur = -1;
     }
-      else {
+    else {
       this.borne = 0;
       this.borneSuperieur = Number.MAX_VALUE;
     }
@@ -93,8 +94,9 @@ constructor(private socketService: SocketService){
 
   numberNotFinish() {
     let nb = 0;
+    let id = this.profile;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined) {
+      if(task.endTime != undefined && (task.chef.id == Number(id))) {
         if(!task.completed) {
           nb += 1;
         }
@@ -132,8 +134,9 @@ constructor(private socketService: SocketService){
     let borneInferieur = this.borne;
     let borneSuperieur = this.borneSuperieur;
     let nb = 0;
+    let id = this.profile;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined && task.destroy == false && !task.pinned) {
+      if(task.endTime != undefined && task.destroy == false && !task.pinned && (task.chef.id == Number(id))) {
         if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }

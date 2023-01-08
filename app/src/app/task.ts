@@ -38,6 +38,8 @@ export class Task {
   }
 
 export let modeUser = 'novice';
+export let borneInferieurYellow = 10000;
+export let borneInferieurRed = 20000;
 
 export function changeType(newType: string) {
   modeUser = newType;
