@@ -57,18 +57,18 @@ export class CardComponent{
       if (Math.abs(this.task.orderTime - dateSoustraction) < 5000){
         return "#50b36b" // GREEN
       } else if (( Math.abs(this.task.orderTime - dateSoustraction) > 5000) &&  Math.abs(this.task.orderTime - dateSoustraction) < 10000) {
-        return "#f5d282" // YELLOW
+        return "#f7ec88" // YELLOW
       } else {
-      return "#e36a62"  // RED
+      return "#d66e67"  // RED
       }
     }
     else{
     if (Math.abs(this.task.endTime - dateSoustraction) < 5000){
       return "#50b36b" // GREEN
     } else if (( Math.abs(this.task.endTime - dateSoustraction) > 5000) &&  Math.abs(this.task.endTime - dateSoustraction) < 10000) {
-      return "#f5d282" // YELLOW
+      return "#f7ec88" // YELLOW
     } else {
-    return "#e36a62"  // RED
+    return "#d66e67"  // RED
     }
     }
 }
