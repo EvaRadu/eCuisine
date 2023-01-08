@@ -26,13 +26,27 @@ export class CardComponent{
   //intervalColor = setInterval(this.getColor, 10000);
   //intervalDestroy = setInterval(this.destroy, 10000);
 
+  ngOnChange(): void{
+    this.pinned = this.task.pinned;
+    if(this.task.completed){
+      this.pinned = false;
+      this.task.pinned = false;
+    }
+  }
+
   receiveCheckValue(bool) {
     this.task.destroy = bool;
   }
 
   pinChecked(){
-    this.task.pinned = !this.task.pinned;
-    this.pinned = !this.pinned;
+    if(this.task.completed){
+      this.task.pinned = false;
+      this.pinned = false;
+    }
+    else{
+      this.task.pinned = !this.task.pinned;
+      this.pinned = !this.pinned;
+    }
   }
 
   getColor() {
