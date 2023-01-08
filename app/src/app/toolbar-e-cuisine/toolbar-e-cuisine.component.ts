@@ -34,6 +34,8 @@ constructor(private socketService: SocketService){}
     setInterval(() => {this.dateTime = new Date();  
     }, 1000)
     this.chef = chefs.find(x => x.id == Number(this.profile));
+    changeType(this.chef.level);
+
   };
 
   changeModeUser(val) {
