@@ -29,25 +29,7 @@ constructor(private socketService: SocketService){
 }
 
   ngOnInit(): void {
-    console.log(this.socketService.socket.ioSocket);
-    this.socketService.onFetchTasks().subscribe((data: any) => {
-      console.log("fetch datas")
-      console.log(data);
-      tasks.splice(0,tasks.length);
-      let theTasks = JSON.parse(JSON.stringify(data));
-      theTasks.forEach(t => {
-        tasks.push(t as Task);
-      })
-      this.update();
-      this.tasks = tasks
-      console.log(tasks);
-    });
-  }
 
-
-  update(){
-    console.log("board reload")
-    this.ngOnInit();
   }
 
   notClusterize(task: Task) {

@@ -36,7 +36,6 @@ export class ListeComponent {
   } 
 
   send() {
-    console.log("send");
     this.task.completedTime = Date.now();
     setTimeout(()=> {
     this.checkerEvent.emit(this.checked && this.allComplete);
@@ -45,7 +44,6 @@ export class ListeComponent {
 
 
   ngOnInit(): void {
-    console.log(this.task);
     this.checked = this.task.completed;
   }
 

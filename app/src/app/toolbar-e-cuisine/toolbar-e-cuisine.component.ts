@@ -41,7 +41,6 @@ constructor(private socketService: SocketService){}
   }
 
   addTask(){
-    console.log("add tasks");
 
     // prendre un recette au hasard
     let rd = Math.floor(Math.random()*recipes.length)
@@ -56,7 +55,6 @@ constructor(private socketService: SocketService){}
     tasks.push(task);
 
     this.socketService.updateTasks();
-
   }
   
 }
