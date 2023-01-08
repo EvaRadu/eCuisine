@@ -1,5 +1,6 @@
 import { Component, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { tasks , recipes, chefs} from '../app.component'
+import { SocketService } from '../services/socket.service';
 import { Task } from '../task';
 
 
@@ -10,11 +11,6 @@ import { Task } from '../task';
 })
 
 export class BoardComponent implements OnInit{
-  
-  ngOnInit(): void {
-
-  }
-
   @Input() clusterize = true;
   breakpoint = 5;
   @Input() notCluster = "Commande"
@@ -26,6 +22,28 @@ export class BoardComponent implements OnInit{
 
   @Input() mode !: string;
   //@Input() profile !: string;
+
+
+constructor(private socketService: SocketService){
+
+}
+
+  ngOnInit(): void {
+    console.log(this.socketService.socket.ioSocket);
+    this.socketService.onFetchTasks().subscribe((data: any) => {
+      console.log("fetch datas")
+      console.log(data);
+      tasks.splice(0,tasks.length);
+      let theTasks = JSON.parse(JSON.stringify(data));
+      theTasks.forEach(t => {
+        tasks.push(t as Task);
+      })
+      this.update();
+      this.tasks = tasks
+      console.log(tasks);
+    });
+  }
+
 
   update(){
     console.log("board reload")

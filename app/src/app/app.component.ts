@@ -21,22 +21,20 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
- 
+    console.log(this.socketService.socket.ioSocket);
+
     this.socketService.fetchTasks();
-
-
 
     this.socketService.onFetchTasks().subscribe((data: any) => {
       console.log("fetch datas")
       console.log(data);
-      tasks = [];
+      tasks.splice(0,tasks.length);
       let theTasks = JSON.parse(JSON.stringify(data));
       theTasks.forEach(t => {
         tasks.push(t as Task);
       })
-      //this.board.update();
+      console.log(tasks);
     });
-
   }
 }   
 

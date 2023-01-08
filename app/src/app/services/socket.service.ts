@@ -19,7 +19,7 @@ export class SocketService {
 
   // listen event
   onFetchTasks(){
-    return this.socket.fromEvent('fetchTasks');
+    return this.socket.fromEvent('fetchedTasks');
   }
 
 
