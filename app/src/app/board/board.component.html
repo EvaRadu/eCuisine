@@ -1,7 +1,7 @@
 <div class="board">
-  <mat-grid-list class="grid" [cols]="breakpoint" (window:resize)="onResize($event)">
+  <mat-grid-list class="grid" [rowHeight]="calculRowHeight()" [cols]="breakpoint" (window:resize)="onResize($event)">
     <div *ngFor="let task of tasks">
-      <mat-grid-tile *ngIf="(notClusterize(task) && ((task.chef.id == this.id) || mode == 'tv'))"  
+      <mat-grid-tile *ngIf="(notClusterize(task) && ((task.chef.id == this.id) || mode == 'tv' || this.id == -1))"
           [colspan]="1"
           [rowspan]="1">
         <app-card class="card" [notEmptyCard]=notEmptyCard [task]=task [mode]=mode></app-card>

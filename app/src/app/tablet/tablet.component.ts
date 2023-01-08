@@ -22,9 +22,9 @@ export class TabletComponent implements OnInit {
     //const hasHorizontalScrollbar = window.innerWidth < document.body.scrollWidth;
     if(this.numberNotFinish() > this.getCols() * 2 && (this.numberOfType("Red") > 0 || this.numberOfType("Yellow") > 0)) {
       this.clusterizeBis = true;
-      if(this.isCluster == false) {
+      //if(this.isCluster == false) {
       this.notClusterBis = this.numberOfType("Red") > 0 ? "Red" : "Yellow"
-      }
+      //}
       this.isCluster = true;
     } else {
       this.clusterizeBis = false;
@@ -51,9 +51,10 @@ export class TabletComponent implements OnInit {
 
   numberNotFinish() {
     let nb = 0;
+    let id = this.profile;  
     tasks.forEach(function(task) {
       if(task.endTime != undefined) {
-        if(!task.completed) {
+        if(!task.completed && (task.chef.id == Number(id))) {
           nb += 1;
         }
       }
@@ -65,17 +66,21 @@ export class TabletComponent implements OnInit {
     this.determineBorne(typeCluster)
     let borneInferieur = this.borne;
     let borneSuperieur = this.borneSuperieur;
+    let id = this.profile;  
     let nb = 0;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined) {
-        if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur && !task.completed) {
+      if(task.endTime != undefined && task.destroy == false && !task.pinned && (task.chef.id == Number(id))) {
+        if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }
+      }
+      else if(task.completed == true && borneInferieur == -1) { // commandes déjà terminées
+        nb += 1;
       }
     })
     return nb;
   }
-
+  
   getCols() {
     if (window.innerWidth < 600) {
       return 1;

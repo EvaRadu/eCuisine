@@ -37,6 +37,6 @@
     </span>
 </section>
 
-<div class="divProgress" *ngIf="mode == 'tv'">
+<div class="divProgress" *ngIf="mode == 'tv' && (typeUser=='novice')">
   <progress-bar class="progressBar" [value] = percentage*100 [percent]=percentage></progress-bar>
 </div>
