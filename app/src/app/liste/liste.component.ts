@@ -37,6 +37,7 @@ export class ListeComponent {
 
   send() {
     this.task.completedTime = Date.now();
+    this.task.pinned = false;
     setTimeout(()=> {
     this.checkerEvent.emit(this.checked && this.allComplete);
     },250);
