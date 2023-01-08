@@ -107,11 +107,12 @@ export class ListeComponent {
     setTimeout(()=> {
       this.task.destroy = this.task.completed;
       this.updatePercentage();
+      this.socketService.updateTasks();
     },250);
     if (this.task.subtasks == null) {
       return;
     }
-    this.socketService.updateTasks();
+
   }
 
 }
