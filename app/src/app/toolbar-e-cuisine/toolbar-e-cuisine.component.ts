@@ -40,6 +40,13 @@ constructor(private socketService: SocketService){}
 
   changeModeUser(val) {
     changeType(val);
+    tasks.forEach(t => {
+      if (t.chef.id == this.chef.id){
+        t.chef.level = val;
+      }
+    })
+    console.log(tasks);
+    this.socketService.updateTasks();
   }
 
   addTask(){
