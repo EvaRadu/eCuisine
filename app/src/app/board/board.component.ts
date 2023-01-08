@@ -28,8 +28,11 @@ export class BoardComponent implements OnInit {
   };
 
   notClusterize(task: Task) {
-    if (task.pinned) { 
-      return true; 
+    if (task.pinned && this.notEmptyCard) {
+      return true;
+    }
+    if (task.pinned && !this.notEmptyCard) {
+      return false;
     }
     this.determineBorne(this.notCluster)
     if (task.destroy == true && this.borne == -1) {
@@ -76,7 +79,7 @@ export class BoardComponent implements OnInit {
       }
     })
     return nb;
-  }  
+  }
 
   getCols() {
     if (window.innerWidth < 600) {
@@ -108,7 +111,7 @@ export class BoardComponent implements OnInit {
     let borneSuperieur = this.borneSuperieur;
     let nb = 0;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined && task.destroy == false) {
+      if(task.endTime != undefined && task.destroy == false && !task.pinned) {
         if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }
