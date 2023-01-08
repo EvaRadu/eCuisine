@@ -15,7 +15,7 @@
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Cuisinier : </b> {{task.chef.name | titlecase}} </mat-card-subtitle>
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Niveau : </b> {{task.chef.level}} </mat-card-subtitle>
 
-      <mat-checkbox *ngIf="mode == 'tablet' && task.completed == false" class="example-spacer" align="end"  (click)="pinChecked()"></mat-checkbox>
+      <mat-checkbox  *ngIf="mode == 'tablet' && task.completed == false"  class="example-spacer" align="end" [checked]="task.pinned" (click)="pinChecked()"></mat-checkbox>
       <mat-checkbox *ngIf="mode == 'tablet' && task.completed == true" class="example-spacer" align="end"  [disabled]="true" (click)="pinChecked()"></mat-checkbox>
     </mat-card-header>
 

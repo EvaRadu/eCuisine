@@ -38,11 +38,11 @@ export class ListeComponent {
   send() {
     this.task.completedTime = Date.now();
     this.task.pinned = false;
+    this.socketService.updateTasks();
     setTimeout(()=> {
     this.checkerEvent.emit(this.checked && this.allComplete);
     },250);
   }
-
 
   ngOnInit(): void {
     this.checked = this.task.completed;
@@ -95,7 +95,7 @@ export class ListeComponent {
     if (this.task.subtasks == null) {
       return false;
     }
-    //this.socketService.updateTasks();
+    this.socketService.updateTasks();
     return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
   }
 
@@ -107,7 +107,7 @@ export class ListeComponent {
       return;
     }
     this.task.subtasks.forEach(t => (t.completed = completed));
-    //this.socketService.updateTasks();
+    this.socketService.updateTasks();
   }
 
 }
