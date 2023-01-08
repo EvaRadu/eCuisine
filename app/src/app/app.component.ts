@@ -5,6 +5,7 @@ import * as chefsJson from "./chefs.json";
 import {Recipe} from "./recipe"; 
 import { Chef } from "./chef";
 import { SocketService } from './services/socket.service';
+import { BoardComponent } from './board/board.component';
 
 @Component({
   selector: 'app-root',
@@ -14,21 +15,28 @@ import { SocketService } from './services/socket.service';
 
 export class AppComponent implements OnInit {
   title = 'ecuisine';
+  constructor(private socketService: SocketService){
 
-  constructor(private socketService: SocketService){}
+  }
+
 
   ngOnInit(): void {
  
     this.socketService.fetchTasks();
 
+
+
     this.socketService.onFetchTasks().subscribe((data: any) => {
       console.log("fetch datas")
       console.log(data);
+      tasks = [];
       let theTasks = JSON.parse(JSON.stringify(data));
       theTasks.forEach(t => {
         tasks.push(t as Task);
       })
+      //this.board.update();
     });
+
   }
 }   
 

@@ -9,18 +9,14 @@ module.exports = (io) => {
         
         socket.on('fetchTasks', () => {
             console.log('fetch tasks')
-            socket.emit('fetchTasks',tasks.tasks.datas.tasks);
-            console.log(tasks.tasks.datas);
+            socket.emit('fetchedTasks',tasks.tasks.datas.tasks);
 
         });
 		
         socket.on('udpateTasks', (data) => {
-            console.log("recieve data")
-            console.log(data);
+            console.log('updateTasks')
             tasks.tasks.datas.tasks = data
-            console.log("server data")
-            console.log(tasks.tasks.datas)
-            socket.emit('fetchTask', tasks.tasks.datas.tasks);
+            socket.emit('fetchedTasks', tasks.tasks.datas.tasks);
         })
 
 		socket.on('disconnect', () => console.log('disconnected')); 

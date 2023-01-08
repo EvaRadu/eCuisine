@@ -9,7 +9,8 @@ import { coerceStringArray } from '@angular/cdk/coercion';
 })
 export class SocketService {
 
-  constructor(public socket: Socket) { }
+  constructor(public socket: Socket) {
+   }
 
   //emit event
   fetchTasks(){
@@ -21,8 +22,8 @@ export class SocketService {
     return this.socket.fromEvent('fetchTasks');
   }
 
+
   updateTasks(){
-    console.log(JSON.parse(JSON.stringify(tasks)))
     this.socket.emit('udpateTasks',JSON.parse(JSON.stringify(tasks)));
     console.log("update tasks");
   }

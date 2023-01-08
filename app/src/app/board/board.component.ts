@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { tasks , recipes, chefs} from '../app.component'
 import { Task } from '../task';
 
@@ -9,7 +9,12 @@ import { Task } from '../task';
   styleUrls: ['./board.component.scss']
 })
 
-export class BoardComponent {
+export class BoardComponent implements OnInit{
+  
+  ngOnInit(): void {
+
+  }
+
   @Input() clusterize = true;
   breakpoint = 5;
   @Input() notCluster = "Commande"
@@ -17,11 +22,15 @@ export class BoardComponent {
   borne = 0;
   borneSuperieur = 5000;
   tasks = tasks;
-  //@Input() tasks;
+  //@Output() tasks;
 
   @Input() mode !: string;
   //@Input() profile !: string;
 
+  update(){
+    console.log("board reload")
+    this.ngOnInit();
+  }
 
   notClusterize(task: Task) {
     this.determineBorne(this.notCluster)
@@ -102,3 +111,5 @@ export class BoardComponent {
   }
 
 }
+
+export let board : BoardComponent = this;

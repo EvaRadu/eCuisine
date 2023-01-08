@@ -51,7 +51,7 @@ export class ListeComponent {
 
   ngOnChanges(): void {
     this.updateAllComplete();
-    this.socketService.updateTasks();
+    //this.socketService.updateTasks();
     this.updatePercentage();
   }
 
@@ -65,7 +65,7 @@ export class ListeComponent {
       return;
     }
     this.percentage = this.task.subtasks.filter(t => t.completed).length / this.task.subtasks.length;
-    this.socketService.updateTasks();
+    //this.socketService.updateTasks();
   }
 
   subtaskCheck() {
@@ -87,7 +87,7 @@ export class ListeComponent {
       this.task.destroy = this.task.completed;
       this.updatePercentage();
     },250);
-    this.socketService.updateTasks();
+    //this.socketService.updateTasks();
   }
 
   someComplete(): boolean {
@@ -95,7 +95,7 @@ export class ListeComponent {
     if (this.task.subtasks == null) {
       return false;
     }
-    this.socketService.updateTasks();
+    //this.socketService.updateTasks();
     return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
   }
 
@@ -107,7 +107,7 @@ export class ListeComponent {
       return;
     }
     this.task.subtasks.forEach(t => (t.completed = completed));
-    this.socketService.updateTasks();
+    //this.socketService.updateTasks();
   }
 
 }
