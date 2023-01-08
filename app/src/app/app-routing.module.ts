@@ -26,7 +26,7 @@ export class AppRoutingModule {
     routes.push({ path: 'tablet/myProfile' , component : TeamComponent } )  // on crée une route en mode tablet pour l'équipe
     for(let i=0; i<chefs["chefs"].length; i++) {  // Pour chaque chef, on crée une route en mode tablet
       console.log('tablet/' + chefs["chefs"][i]["name"].toLowerCase());
-      routes.push({ path: 'tablet/myProfile/' + chefs["chefs"][i]["name"].toLowerCase(), component: TabletComponent })
+      routes.push({ path: 'tablet/myProfile/' + chefs["chefs"][i]["id"], component: TabletComponent })
       //console.log(chefs["chefs"][i]["name"])
     }
   }

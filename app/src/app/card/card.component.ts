@@ -19,6 +19,7 @@ export class CardComponent{
   @Input() mode !: string;
   @Input() notEmptyCard !: boolean;
   dateTime : number =  Date.now();
+  pinned : boolean = false;
 
   @Output() onChange = new EventEmitter<any>();
 
@@ -27,6 +28,11 @@ export class CardComponent{
 
   receiveCheckValue(bool) {
     this.task.destroy = bool;
+  }
+
+  pinChecked(){
+    this.task.pinned = !this.task.pinned;
+    this.pinned = !this.pinned;
   }
 
   getColor() {
@@ -50,6 +56,28 @@ export class CardComponent{
       }
       }
   }
+
+  getContentColor() {
+    var dateSoustraction = this.task.completed ? this.task.completedTime : Date.now();
+    if(this.task.completed){
+      if (Math.abs(this.task.orderTime - dateSoustraction) < 5000){
+        return "#50b36b" // GREEN
+      } else if (( Math.abs(this.task.orderTime - dateSoustraction) > 5000) &&  Math.abs(this.task.orderTime - dateSoustraction) < 10000) {
+        return "#f7ec88" // YELLOW
+      } else {
+      return "#d66e67"  // RED
+      }
+    }
+    else{
+    if (Math.abs(this.task.endTime - dateSoustraction) < 5000){
+      return "#50b36b" // GREEN
+    } else if (( Math.abs(this.task.endTime - dateSoustraction) > 5000) &&  Math.abs(this.task.endTime - dateSoustraction) < 10000) {
+      return "#f7ec88" // YELLOW
+    } else {
+    return "#d66e67"  // RED
+    }
+    }
+}
 
   novice() {
     return modeUser == 'novice';

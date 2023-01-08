@@ -15,11 +15,13 @@
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Cuisinier : </b> {{task.chef.name | titlecase}} </mat-card-subtitle>
       <mat-card-subtitle class="text" *ngIf="mode == 'tv'"><b> Niveau : </b> {{task.chef.level}} </mat-card-subtitle>
 
+      <mat-checkbox *ngIf="mode == 'tablet'" class="example-spacer" align="end"  (click)="pinChecked()"></mat-checkbox>
+
     </mat-card-header>
 
       <mat-card-content [ngClass]="{'content' : (mode=='tablet')}"
 
-      [ngStyle]="{background: (mode=='tablet')  ? '#f1f3f4' : ''}">
+      [ngStyle]="{background: (mode=='tablet')  ? getContentColor() : ''}">
         <div class="listeDiv">
           <liste class="liste" [typeAffichage]="(mode == 'tablet' && novice()) || (mode == 'tv' && task.chef.level == 'novice')"   (checkerEvent)=receiveCheckValue($event) [task]=task [mode]=mode> </liste></div>
       </mat-card-content>
