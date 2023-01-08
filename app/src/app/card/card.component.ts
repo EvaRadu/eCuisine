@@ -57,6 +57,28 @@ export class CardComponent{
       }
   }
 
+  getContentColor() {
+    var dateSoustraction = this.task.completed ? this.task.completedTime : Date.now();
+    if(this.task.completed){
+      if (Math.abs(this.task.orderTime - dateSoustraction) < 5000){
+        return "#50b36b" // GREEN
+      } else if (( Math.abs(this.task.orderTime - dateSoustraction) > 5000) &&  Math.abs(this.task.orderTime - dateSoustraction) < 10000) {
+        return "#f7ec88" // YELLOW
+      } else {
+      return "#d66e67"  // RED
+      }
+    }
+    else{
+    if (Math.abs(this.task.endTime - dateSoustraction) < 5000){
+      return "#50b36b" // GREEN
+    } else if (( Math.abs(this.task.endTime - dateSoustraction) > 5000) &&  Math.abs(this.task.endTime - dateSoustraction) < 10000) {
+      return "#f7ec88" // YELLOW
+    } else {
+    return "#d66e67"  // RED
+    }
+    }
+}
+
   novice() {
     return modeUser == 'novice';
   }
