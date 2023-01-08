@@ -1,7 +1,7 @@
 import { Component, HostListener, Input, Output, ViewChild, OnInit} from '@angular/core';
 import { tasks , recipes, chefs} from '../app.component'
 import { SocketService } from '../services/socket.service';
-import { Task } from '../task';
+import {modeUser, Task} from '../task';
 
 
 @Component({
@@ -33,6 +33,21 @@ constructor(private socketService: SocketService){
   ngOnInit(): void {
     this.id = Number(this.profile);
   };
+
+  calculRowHeight() {
+    if(this.mode == 'tv' && this.notEmptyCard) {
+      return "270px"
+    }
+    if(modeUser == 'novice') {
+      return "1:1"
+    }
+    if(!this.notEmptyCard) {
+      return "30px"
+    }
+    else {
+      return "200px"
+    }
+  }
 
   notClusterize(task: Task) {
     if (task.pinned && this.notEmptyCard) {
@@ -116,9 +131,11 @@ constructor(private socketService: SocketService){
     this.determineBorne(typeCluster)
     let borneInferieur = this.borne;
     let borneSuperieur = this.borneSuperieur;
+    let id = this.id
+    let mode = this.mode
     let nb = 0;
     tasks.forEach(function(task) {
-      if(task.endTime != undefined && task.destroy == false && !task.pinned) {
+      if(task.endTime != undefined && task.destroy == false && !task.pinned && (task.chef.id == id || mode =="tv")) {
         if(Math.abs(task.endTime - Date.now()) >= borneInferieur && Math.abs(task.endTime - Date.now()) < borneSuperieur) {
           nb += 1;
         }
