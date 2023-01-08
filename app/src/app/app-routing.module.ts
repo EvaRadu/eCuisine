@@ -5,11 +5,13 @@ import { CommandsComponent } from './commands/commands.component';
 import { TabletComponent } from './tablet/tablet.component';
 import { TeamComponent } from './team/team.component';
 import { TvComponent } from './tv/tv.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
-  { path: 'tablet', component: TabletComponent },
-  { path: 'tv', component: TvComponent },
-  { path: 'commands', component: CommandsComponent}
+  { path: 'ecuisine', component: MenuComponent },        // Menu pour choisir entre tablet et tv
+  { path: 'tv', component: TvComponent },                // Ecran de la télé
+  { path: 'commands', component: CommandsComponent},     // Ecran pour rajouter des commandes
+  { path: 'tablet/myProfile', component: TeamComponent}  // Menu pour choisir le chef
 ];
 
 
@@ -21,13 +23,11 @@ export class AppRoutingModule {
 
   constructor() {
 
-    let chefs = require("./chefs.json");  // on récupère le fichier json des chefs
+    let chefs = require("./chefs.json");  // On récupère le fichier json des chefs
 
-    routes.push({ path: 'tablet/myProfile' , component : TeamComponent } )  // on crée une route en mode tablet pour l'équipe
     for(let i=0; i<chefs["chefs"].length; i++) {  // Pour chaque chef, on crée une route en mode tablet
       console.log('tablet/' + chefs["chefs"][i]["name"].toLowerCase());
       routes.push({ path: 'tablet/myProfile/' + chefs["chefs"][i]["id"], component: TabletComponent })
-      //console.log(chefs["chefs"][i]["name"])
     }
   }
 
