@@ -17,7 +17,7 @@ export class BoardComponent implements OnInit {
   @Input() notCluster = "Commande"
   @Input() notEmptyCard = true;
   borne = 0;
-  borneSuperieur = 5000;
+  borneSuperieur = borneInferieurYellow;
   tasks = tasks;
   @Input() profile !: string;
   //@Input() tasks;
@@ -77,7 +77,7 @@ constructor(private socketService: SocketService){
     } else if (typeCluster == "Yellow") {
       this.borne = borneInferieurYellow;
       this.borneSuperieur = borneInferieurRed;
-    } 
+    }
     else if( typeCluster == "Grey"){
       this.borne = -1;
       this.borneSuperieur = -1;

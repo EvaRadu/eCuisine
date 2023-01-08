@@ -34,27 +34,9 @@ export class ListeComponent {
   percentage: number;
   constructor(private socketService: SocketService){
     this.percentage = 0;
-  } 
+  }
 
   send() {
-    if (this.task.completed == true){
-      this.task.pinned = false;
-      this.task.completedTime = Date.now();
-      setTimeout(()=> {
-        this.task.completed = true;
-        this.task.destroy = true;
-        this.checkerEvent.emit(this.checked && this.allComplete);
-        },250);
-    }
-    else{
-      setTimeout(()=> {
-        this.task.completedTime = 0;
-        this.task.completed = false;
-        this.task.destroy = false;
-        this.checkerEvent.emit(this.checked && this.allComplete);
-        },250);
-    }
-    this.socketService.updateTasks();
   }
 
   ngOnInit(): void {
@@ -114,13 +96,21 @@ export class ListeComponent {
   }
 
   setAll(completed: boolean) {
+    console.log("ID COMMAND " + this.task.id + " EVENT COMPLETED : " + completed)
+    this.task.pinned = completed ? false : this.task.pinned;
     this.updatePercentage();
     this.allComplete = completed;
+    this.checked = completed;
     this.task.completed = completed;
+    this.task.completedTime = completed ? Date.now() : 0;
+    this.task.subtasks.forEach(t => (t.completed = completed));
+    setTimeout(()=> {
+      this.task.destroy = this.task.completed;
+      this.updatePercentage();
+    },250);
     if (this.task.subtasks == null) {
       return;
     }
-    this.task.subtasks.forEach(t => (t.completed = completed));
     this.socketService.updateTasks();
   }
 
