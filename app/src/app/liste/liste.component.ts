@@ -30,9 +30,9 @@ export class ListeComponent {
   @Output() checkerEvent = new EventEmitter<boolean>();
 
   checked: boolean;
-
+  percentage: number;
   constructor(private socketService: SocketService){
-
+    this.percentage = 0;
   } 
 
   send() {
@@ -46,6 +46,7 @@ export class ListeComponent {
 
   ngOnInit(): void {
     this.checked = this.task.completed;
+
   }
 
   ngOnChanges(): void {
@@ -56,7 +57,7 @@ export class ListeComponent {
 
   allComplete: boolean = false;
 
-  percentage: number = 0;
+
 
 
   updatePercentage() {
@@ -64,10 +65,10 @@ export class ListeComponent {
       return;
     }
     this.percentage = this.task.subtasks.filter(t => t.completed).length / this.task.subtasks.length;
-    //this.socketService.updateTasks();
   }
 
   subtaskCheck() {
+    this.socketService.updateTasks();
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
     this.checked = this.allComplete;
     this.task.completed = this.allComplete;

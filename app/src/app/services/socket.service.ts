@@ -24,8 +24,8 @@ export class SocketService {
 
 
   updateTasks(){
+    console.log("update task socket");
     this.socket.emit('udpateTasks',JSON.parse(JSON.stringify(tasks)));
-    console.log("update tasks");
   }
 
 }
