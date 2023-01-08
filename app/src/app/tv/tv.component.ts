@@ -24,9 +24,9 @@ export class TvComponent implements OnInit {
     //const hasHorizontalScrollbar = window.innerWidth < document.body.scrollWidth;
     if(this.numberNotFinish() > this.getCols() * 2 && (this.numberOfType("Red") > 0 || this.numberOfType("Yellow") > 0)) {
       this.clusterizeBis = true;
-      //if(this.isCluster == false) {
+      if(this.isCluster == false) {
       this.notClusterBis = this.numberOfType("Red") > 0 ? "Red" : "Yellow"
-      //}
+      }
       this.isCluster = true;
     } else {
       this.clusterizeBis = false;

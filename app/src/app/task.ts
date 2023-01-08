@@ -16,6 +16,7 @@ export class Task {
     subtasks: Subtask[];
     destroy: boolean = false; 
     completedTime: number; // heure à laquelle la commande est terminée
+    pinned : boolean;
 
     constructor(id: number, name: string, completed: boolean, color: ThemePalette, recipe: Recipe, chef: Chef) {
       this.recipe = recipe;
@@ -31,6 +32,7 @@ export class Task {
         this.subtasks.push(new Subtask(false, recipe.stepList[i]));
       }
       this.completedTime = 0;
+      this.pinned = false;
     }
 
   }
