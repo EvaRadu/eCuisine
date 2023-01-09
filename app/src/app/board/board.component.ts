@@ -33,6 +33,9 @@ constructor(private socketService: SocketService){
 
   ngOnInit(): void {
     this.id = Number(this.profile);
+    if(!this.notEmptyCard) {
+      this.breakpoint = 5;
+    }
   };
 
   calculRowHeight() {
